@@ -1,0 +1,1601 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/llama",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 2,
+    "num_workers": 4,
+    "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/val.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 3
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/llama
+Data loaded from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/val.jsonl
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'meta-llama/Llama-4-Scout-17B-16E-Instruct'...
+✅ Found Canonical Yes ID: 15580, Canonical No ID: 3318
+✅ Model 'meta-llama/Llama-4-Scout-17B-16E-Instruct' and Processor loaded successfully.
+
+--- DEBUG: SINGLE AGENT SAMPLE (1/3) ---
+Stay ID: 38484652
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 69
+ - Gender: F
+ - Ethnicity: BLACK/AFRICAN AMERICAN
+
+History of Present Illness:
+___ y/o woman with history of HTN and T2 DM (non-insulin 
+dependent), admitted to OSH (___), for dyspnea and single 
+episode of syncope. Ms. ___ reports that she has been feeling 
+increasing DOE starting 2 days PTA walking to and from her 
+bathroom. She originally attributed this to accidentally taking 
+twice her regular dose of HCTZ. She felt slightly better 1 day 
+PTA, but on morning of admission, she was walking in her kitchen 
+when she became SOB with new sensation of LH. The next thing she 
+remembered was waking up on the floor. Per her grandson, she had 
+lost consciousness and fallen. She denies any chest pain 
+throughout these events and does not think she sustained any 
+injuries to her head or elsewhere due to her syncopal fall.
+
+Past Medical History:
+HTN
+T2DM (not on insulin)
+HLP
+Total Knee Replacement (Left) in ___
+Hysterectomy in ___
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+
+
+Medications on Admission:
+ASA 81mg PO daily
+HCTZ 25 mg PO daily
+Losartan 100mg PO daily
+Amlodipine 10mg PO daily
+Carvedilol 3.125mg PO BID
+Metformin 100mg PO BID
+Pravastatin 40
+
+
+Radiology Report:
+EXAMINATION:  BILAT LOWER EXT VEINS
+
+INDICATION:  History: ___ with pulmonary embolus, would like to eval for clot
+burden
+
+TECHNIQUE:  Grey scale, color, and spectral Doppler evaluation was performed
+on the bilateral lower extremity veins.
+
+COMPARISON:  None.
+
+FINDINGS: 
+
+This study is limited due to patient body habitus.
+
+There is normal compressibility, flow and augmentation of the bilateral common
+femoral, superficial femoral, and popliteal veins.  Limited evaluation of the
+calf veins demonstrates normal color flow, but compressibility could not be
+assessed.
+
+There is normal respiratory variation in the common femoral veins bilaterally.
+
+No evidence of medial popliteal fossa (___) cyst.
+
+IMPRESSION: 
+
+1.  Limited evaluation of the bilateral calf veins due to patient body habitus
+demonstrates no definite evidence of an occlusive deep venous thrombus.
+2.  No DVT in the common femoral, superficial femoral or popliteal veins.
+ INDICATION:  ___ year old woman admitted as transfer from OSH with saddle PE,
+with incidental finding of hepatic mass on CTA chest  // Evaluate for
+incidental hepatic mass, ?malignancy
+
+TECHNIQUE:  MDCT images were obtained from the lung bases to the lesser
+trochanters after administration of oral and intravenous contrast.  Coronal
+and sagittal reformations were prepared. DLP:
+
+ Total DLP (Body) = 1,994 mGy-cm.
+
+COMPARISON:  None
+
+FINDINGS: 
+
+CT ABDOMEN:  There are a ground-glass opacities in the lower lobes
+bilaterally.  .  There is a suggestion of filling defects in the pulmonary
+arteries to the lower lobes bilaterally that are identified on recent CT from
+___.  The visualized portions of the heart pericardium are normal. The
+liver enhances homogeneously and there is a 4.8 x 4.6 cm hypodense mass in the
+liver in segment ___.  Seen on series 2, ___ 25 on the non contrast-enhanced
+scan.  This lesion demonstrates peripheral puddling with intravenous contrast
+injection.  And some fill in on delayed images.  The hepatic and portal veins
+are patent. The gallbladder contains high-density material are likely
+vicarious excretion of contrast.  The, pancreas, spleen, and adrenals are
+normal. The kidneys enhance symmetrically and excrete contrast without
+evidence of hydronephrosis.  There is a 1.7 cm hypodense lesion in the left
+kidney that measures 34 ___ on the contrast-enhanced scan and 12 on the non
+contrast-enhanced scan. The stomach and small bowel are unremarkable. There is
+no portacaval, mesenteric and retroperitoneal lymphadenopathy. There is no
+free air or free fluid.
+
+CT PELVIS: The appendix is normal. The colon, rectum, urinary bladder and  are
+normal.  A Foley catheter is seen in the bladder.  An is air in the bladder
+from catheter placement.  The uterus is not definitely identified.  There is
+no pelvic lymphadenopathy or free fluid.
+
+OSSEOUS STRUCTURES: There is no lytic or blastic lesion worrisome for
+malignancy.
+
+IMPRESSION:
+
+
+1. 4.8 cm hemangioma in the liver
+2. 1.7 cm enhancing lesion in the left kidney.  Please note that renal cell
+carcinoma cannot be excluded and further evaluation with MRI of the kidney is
+recommended.  Differential diagnosis includes oncocytoma.
+3. Known pulmonary embolism to the lower lobes
+Findings were discussed with Dr. ___ by Dr. ___ by telephone at
+2:05PM.
+ EXAMINATION:  RENAL MRI WITH AND WITHOUT CONTRAST
+
+INDICATION:  ___ year old woman with 1.7 cm indeterminate lesion in the left
+kidney.
+
+TECHNIQUE:  T1- and T2-weighted multiplanar images of the abdomen were
+acquired in a 1.5 t magnet.
+
+Intravenous contrast: Gadavist 13  cc.
+
+COMPARISON:  CT abdomen and pelvis ___.
+
+FINDINGS: 
+
+Kidneys: T2 hyperintense nonenhancing lesion in the upper pole of the left
+kidney measuring 1.4 x 1.4 cm, corresponds to the lesion seen on recent CT
+scan, and is consistent with a simple cyst.  The right kidney is unremarkable
+without focal lesions.  There is no hydronephrosis.  There is no perinephric
+abnormality.
+
+Liver: There is a 4.8 x 5.4 cm (transverse by AP), T2 hyperintense lesion in
+segment VII/V of the liver which demonstrates discontinuous peripheral nodular
+enhancement with centripetal fill-in, compatible with a hemangioma. 
+Additionally a cystic lesion in segment ___ of the liver without enhancement,
+which by locations is most consistent with a ciliated hepatic foregut cyst.  
+No additional focal liver lesions are seen.
+
+Biliary: The gallbladder is normal.  There is no intra or extrahepatic biliary
+duct dilation.
+
+Pancreas: The pancreas demonstrates normal signal intensity and enhancement. 
+No focal pancreatic lesions are seen.  There is no pancreatic ductal dilation.
+
+Spleen: The spleen is unremarkable.
+
+Adrenal Glands: The adrenal glands are normal.
+
+Gastrointestinal Tract:  Views of the small and large bowel are unremarkable.
+
+Lymph Nodes: There are no enlarged mesenteric or retroperitoneal lymph nodes.
+
+Vasculature: The abdominal aorta and its major branches are patent.  The
+portal vein is patent.
+
+Osseous and Soft Tissue Structures: Bone marrow signal is normal.  There are
+no suspicious osseous abnormalities.  Superficial soft tissues are normal.
+
+IMPRESSION:
+
+
+1. Left renal lesion seen on CT corresponds to a simple cyst.
+2. 4.8 x 5.4 cm hepatic hemangioma.
+
+
+EHR:
+Hourly EHR Vitals and Labs (imputed using 'previous' value):
+- Capillary refill rate: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Diastolic blood pressure: [[NaN], [NaN], 82.0, 76.0, 63.0, 69.0, 64.0, 76.0, [imp]76.0, [imp]76.0, 80.0, 81.0, 82.0, 90.0, 94.0, 88.0, 65.0, 85.0, 85.0, 118.0, 97.0, 94.0, 89.0, 99.0, 130.0, 121.0, 85.0, 85.0, 89.0, 80.0, 116.0, 79.0, 77.0, 84.0, 81.0, 68.0, 91.0, 87.0, 76.0, 99.0, [imp]99.0, 95.0, 76.0, 68.0, 88.0, 85.0, 91.0, 58.0]
+- Fraction inspired oxygen: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Glascow coma scale eye opening: [[NaN], [NaN], Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously]
+- Glascow coma scale motor response: [[NaN], [NaN], Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands]
+- Glascow coma scale total: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Glascow coma scale verbal response: [[NaN], [NaN], Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented]
+- Glucose: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 124.0, [imp]124.0, [imp]124.0, [imp]124.0, [imp]124.0, 131.0, [imp]131.0, [imp]131.0, [imp]131.0, [imp]131.0, [imp]131.0, [imp]131.0, [imp]131.0, [imp]131.0, [imp]131.0, 147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, [imp]147.0, 129.0, [imp]129.0, 122.0, [imp]122.0, [imp]122.0, [imp]122.0, 125.0, [imp]125.0, [imp]125.0, [imp]125.0, [imp]125.0, 113.0, [imp]113.0, [imp]113.0]
+- Heart Rate: [[NaN], [NaN], 78, 83, 74, 63, 65, 68, 69, 72, 73, 70, 72, 73, 75, 71, 69, 70, 66, 69, 77, 72, 72, 66, 70, 76, 85, 77, 70, 69, 64, 71, 61, 60, 63, 65, 62, 76, 64, 72, 68, 72, 80, 70, 73, 69, 66, 66]
+- Height: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Mean blood pressure: [[NaN], [NaN], 97, 82, 72, 77, 74, 84, [imp]84, [imp]84, 96, 94, 95, 108, 113, 102, 73, 89, 102, 127, 106, 107, 102, 113, 141, 131, 89, 94, 99, 90, 122, 90, 88, 101, 94, 80, 103, 100, 87, 129, [imp]129, 99, 87, 79, 100, 93, 103, 75]
+- Oxygen saturation: [[NaN], [NaN], 99.0, 97.0, 100.0, 100.0, 100.0, 100.0, 96.0, 95.0, 94.0, 93.0, 93.0, 96.0, 98.0, 98.0, 97.0, 99.0, 98.0, 97.0, 96.0, 99.0, 97.0, 99.0, 98.0, 99.0, 98.0, 98.0, 94.0, 99.0, 97.0, 98.0, 99.0, 99.0, 99.0, 97.0, 98.0, 99.0, 98.0, 96.0, 98.0, 92.0, 95.0, 92.0, 98.0, 97.0, 98.0, 99.0]
+- Respiratory rate: [[NaN], [NaN], 22, 24, 21, 20, 15, 26, 19, 21, 17, 16, 23, 20, 23, 22, 21, 25, 20, 26, 24, 21, 27, 21, 15, 24, 23, 20, 25, 20, 18, 22, 20, 18, 18, 19, 22, 29, 24, 22, 13, 21, 24, 17, 20, 23, 24, 16]
+- Systolic blood pressure: [[NaN], [NaN], 143.0, 117.0, 104.0, 106.0, 103.0, 114.0, [imp]114.0, [imp]114.0, 148.0, 132.0, 143.0, 159.0, 172.0, 174.0, 121.0, 134.0, 155.0, 168.0, 146.0, 156.0, 152.0, 160.0, 180.0, 161.0, 103.0, 121.0, 135.0, 136.0, 139.0, 125.0, 126.0, 149.0, 138.0, 114.0, 135.0, 149.0, 147.0, 157.0, [imp]157.0, 113.0, 120.0, 123.0, 130.0, 129.0, 144.0, 131.0]
+- Temperature: [[NaN], [NaN], 36.611111111111114, [imp]36.611111111111114, 36.833333333333336, [imp]36.833333333333336, [imp]36.833333333333336, [imp]36.833333333333336, 36.94444444444444, [imp]36.94444444444444, [imp]36.94444444444444, [imp]36.94444444444444, 37.111111111111114, [imp]37.111111111111114, [imp]37.111111111111114, [imp]37.111111111111114, 37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, 36.94444444444444, [imp]36.94444444444444, [imp]36.94444444444444, [imp]36.94444444444444, 37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, 36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, 37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, 37.166666666666664, [imp]37.166666666666664, [imp]37.166666666666664, [imp]37.166666666666664, 36.77777777777778, [imp]36.77777777777778, [imp]36.77777777777778, [imp]36.77777777777778]
+- Weight: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 133.0385336, [imp]133.0385336, [imp]133.0385336, [imp]133.0385336, [imp]133.0385336, [imp]133.0385336, [imp]133.0385336, [imp]133.0385336, [imp]133.0385336, [imp]133.0385336]
+- pH: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+[No image attached for this sample]
+---------------
+--- END DEBUG SAMPLE ---
+
+--- DEBUG: SINGLE AGENT SAMPLE (2/3) ---
+Stay ID: 34098275
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 71
+ - Gender: M
+ - Ethnicity: WHITE
+
+History of Present Illness:
+___ male known to our service, who was discharged from ___ 
+after a stay for resecton of a R fronal brain tumor diagnosed to 
+be GBM (Glioblastoma multiforme).  Today, he suffered a 
+witnessed fall at Rehab. Fall was witnessed by RN at facility, 
+positive LOC, question of transient CPR, then transported to 
+___. Ambulance flow sheet indicates that there was no trauma 
+at the time of the fall.
+
+Past Medical History:
+
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+non-
+
+Medications on Admission:
+
+
+
+Radiology Report:
+INDICATION:  ___ man with right frontal tumor status post resection.
+Question worsening of tumor refilling of cyst.
+
+COMPARISON:  Multiple head CTs, most recent ___ and head MRIs, most
+recent ___.
+
+TECHNIQUE:  T1 sagittal and axial and FLAIR T2 susceptibility and diffusion
+axial images were obtained before gadolinium.  Axial and sagittal T1 and axial
+and coronal MP-RAGE images were acquired following gadolinium.
+
+FINDINGS:  The patient is status post right frontal craniotomy for debulking
+of right frontal lobe tumor.  Blood products and air are again seen within the
+surgical site, with a decrease in the amount of pneumocephalus.  Mass effect
+of the associated edema appear unchanged since head CT from yesterday, with
+continued compression of the right ventricle and shift of midline structures
+of approximately 21 mm.
+
+On diffusion-weighted images, large areas of decreased signal are seen,
+consistent with areas of slow diffusion within the frontal lobe mass.  On
+post-contrast images, there is an enhancing rim of the main lesion with areas
+of residual enhancement seen anteriorly, medially, laterally, and inferiorly.
+Again noted is another smaller enhancing mass within the right temporal lobe,
+and two small areas of enhancement posterior to the smaller lesion, consistent
+with intraventricular seeding.  No new areas of abnormal enhancement are seen.
+
+IMPRESSION:  Large area of residual tumor burden within the right frontal lobe
+mass.  Mass effect unchanged from CT scan yesterday. Other areas of abnormal
+enhancement unchanged. No new areas of abnormal enhancement seen.
+ HISTORY:  ___ male with right frontal mass, stereotactic protocol.
+
+COMPARISON:  MRI brain, ___, and CT head ___.
+
+TECHNIQUE:  Contiguous axial images of the head were obtained within a
+stereotactic frame with the administration of IV contrast.
+
+FINDINGS:  Streak artifact from the stereotactic frame limits evaluation. A
+right frontal lobe resection cavity bed, containing fluid, air, and high
+attenuating hemorrhage posteriorly is similar from prior study.  There is rim
+enhancement along the resection cavity, particularly anteriorly and medially,
+again suspicious for residual tumor burden as noted on MRI of the head,
+___. There is significant mass effect, with obliteration of the
+right lateral ventricle and leftward subfalcine herniation of grossly 2.0 cm.
+Residual vasogenic edema is seen within the right frontal lobe.
+
+A second enhancing lesion is present within the right temporal lobe, with
+early right uncal herniation.  There is mucosal thickening of the ethmoidal
+sinuses bilaterally.  Osseous structures reveal right frontal craniotomy
+defect.
+
+IMPRESSION:
+1.  Right frontal lobe resection cavity containing fluid, air, and a small
+amount of residual hemorrhage, with an enhancing rim identified particularly
+anteriorly and medially, suspicious for residual tumor burden.
+2.  Significant mass effect, with obliteration of the right lateral ventricle
+and leftward subfalcine herniation of approximately 2.0 cm.
+3.  Right temporal lobe enhancing mass, with early uncal herniation.
+
+ CHEST RADIOGRAPH
+
+INDICATION:  ETT placement.
+
+COMPARISON:  ___.
+
+FINDINGS:  As compared to the previous radiograph, an endotracheal tube has
+been placed.  The tip of the tube projects 7 cm above the carina.  The tube
+could be advanced by 1-2 cm.  There is no evidence of complications.  The lung
+volumes have slightly increased.  The previously described subtle right basal
+opacity is no longer visible.  Otherwise, the radiograph is unchanged.
+ HISTORY:  ___ male with right frontal mass, evaluate postoperatively.
+
+COMPARISON:  ___, at 10:32 p.m.
+
+TECHNIQUE:  Contiguous axial images of the head were obtained without IV
+contrast.
+
+FINDINGS:  There are post-surgical changes following a right frontal
+craniotomy, with interval placement of a catheter that courses into the right
+frontal lobe.  Within the surgical resection bed, there continues to be fluid
+as well as a small amount of postoperative hemorrhage, similar in appearance
+from the prior study, with residual vasogenic edema within the right frontal
+lobe.  There continues to be a marked mass effect with obliteration of the
+right lateral ventricle, and leftward subfalcine herniation of approximately
+16 mm, grossly unchanged from the prior study.  Assessment of the resection
+cavity is limited without IV contrast.
+
+Early right uncal herniation is stable, with a known right temporal lobe mass,
+not clearly appreciated without contrast.  There has been no other interval
+change, without new foci of hemorrhage or acute major vascular territorial
+infarction. There is minimal mucosal thickening of the ethmoidal sinuses.
+Osseous structures reveal a right frontal craniotomy defect, with subcutaneous
+air along the right frontal soft tissues.
+
+IMPRESSION:
+1.  Interval placement of a catheter into right frontal lobe, with residual
+fluid and hemorrhage within the surgical bed.
+2.  Stable continued local mass effect with obliteration of the right lateral
+ventricle and leftward subfalcine herniation.
+
+
+EHR:
+Hourly EHR Vitals and Labs (imputed using 'previous' value):
+- Capillary refill rate: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Diastolic blood pressure: [76.0, 89.0, 73.0, 76.0, 75.0, 64.0, 71.0, 85.0, 87.0, 86.0, 89.0, 85.0, [imp]85.0, 73.0, 83.0, 77.0, 86.0, 84.0, 77.0, 69.0, 69.0, 44.0, 81.0, 77.0, 74.0, 73.0, 61.0, 58.0, [imp]58.0, [imp]58.0, 72.0, 61.0, 73.0, 68.0, 63.0, 63.0, 57.0, 57.0, 61.0, 61.0, 64.0, 63.0, 67.0, 72.0, 80.0, 64.0, 36.0, 68.0]
+- Fraction inspired oxygen: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 0.5, [imp]0.5, [imp]0.5, 0.4, 0.4, [imp]0.4, [imp]0.4, [imp]0.4, 0.4, 0.4, [imp]0.4, [imp]0.4, [imp]0.4, 0.4, [imp]0.4, [imp]0.4, [imp]0.4, [imp]0.4]
+- Glascow coma scale eye opening: [Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, To Speech, To Pain, [imp]To Pain, [imp]To Pain, [imp]To Pain, [imp]To Pain, None, None, To Speech, None, None, [imp]None, None, To Speech, To Speech, Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously]
+- Glascow coma scale motor response: [Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, Flex-withdraws, [imp]Flex-withdraws, [imp]Flex-withdraws, [imp]Flex-withdraws, [imp]Flex-withdraws, No response, No response, Localizes Pain, No response, No response, [imp]No response, Flex-withdraws, Obeys Commands, Obeys Commands, Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands]
+- Glascow coma scale total: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Glascow coma scale verbal response: [Confused, [imp]Confused, Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, Confused, [imp]Confused, [imp]Confused, Confused, [imp]Confused, [imp]Confused, Oriented, [imp]Oriented, [imp]Oriented, Confused, Incomprehensible sounds, [imp]Incomprehensible sounds, [imp]Incomprehensible sounds, [imp]Incomprehensible sounds, [imp]Incomprehensible sounds, No Response-ETT, No Response-ETT, No Response-ETT, No Response-ETT, No Response-ETT, [imp]No Response-ETT, No Response-ETT, No Response-ETT, No Response-ETT, Confused, [imp]Confused, Confused, [imp]Confused, Confused, [imp]Confused, Confused, [imp]Confused]
+- Glucose: [[NaN], 122.0, [imp]122.0, [imp]122.0, 146.0, [imp]146.0, [imp]146.0, [imp]146.0, [imp]146.0, 119.0, 122.0, [imp]122.0, [imp]122.0, [imp]122.0, [imp]122.0, [imp]122.0, 99.0, [imp]99.0, [imp]99.0, [imp]99.0, [imp]99.0, [imp]99.0, 119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, 119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, [imp]119.0, 114.0, [imp]114.0, [imp]114.0, [imp]114.0, [imp]114.0, [imp]114.0, 113.0, [imp]113.0]
+- Heart Rate: [77, 71, 77, 80, 81, 72, 76, 77, 71, 74, 73, 76, 77, 76, 81, 79, 79, 71, 75, 74, 71, 80, 76, 82, 85, 102, 83, 90, [imp]90, [imp]90, 71, 78, 74, 76, 82, 86, 80, 79, 78, 80, 78, 75, 75, 76, 81, 76, 77, 77]
+- Height: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Mean blood pressure: [91, 100, 90, 119, 91, 78, 83, 97, 100, 97, 103, 93, 97, 89, 95, 92, 95, 97, 92, 87, 84, 61, 89, 87, 77, 94, 91, 84, [imp]84, [imp]84, 93, 71, 96, 88, 82, 87, 76, 76, 82, 80, 83, 77, 78, 80, 87, 77, 51, 81]
+- Oxygen saturation: [94.0, 95.0, 92.0, 93.0, 95.0, 94.0, 95.0, 94.0, 93.0, 93.0, 94.0, 94.0, 96.0, 95.0, 95.0, 95.0, 96.0, 96.0, 97.0, 98.0, 96.0, 94.0, 95.0, 95.0, 95.0, 96.0, 93.0, 93.0, [imp]93.0, [imp]93.0, 99.0, 96.0, 100.0, 97.0, 97.0, 95.0, 96.0, 97.0, 98.0, 97.0, 95.0, 96.0, 97.0, 96.0, 96.0, 92.0, 97.0, 94.0]
+- Respiratory rate: [18, 14, 18, 18, 22, 14, 17, 22, 18, 19, 17, 20, 19, 16, 18, 19, 18, 18, 19, 13, 15, 19, 18, 20, 17, 23, 20, 20, [imp]20, [imp]20, 0, 16, 16, 13, 14, 14, 13, 14, 14, 14, 15, 12, 14, 18, 17, 14, 16, 20]
+- Systolic blood pressure: [138.0, 142.0, 143.0, 147.0, 145.0, 121.0, 126.0, 141.0, 149.0, 150.0, 153.0, 128.0, [imp]128.0, 142.0, 137.0, 142.0, 125.0, 141.0, 137.0, 155.0, 131.0, 113.0, 115.0, 142.0, 173.0, 148.0, 164.0, 146.0, [imp]146.0, [imp]146.0, 134.0, 88.0, 141.0, 136.0, 134.0, 140.0, 129.0, 125.0, 138.0, 134.0, 135.0, 113.0, 104.0, 95.0, 97.0, 119.0, 96.0, 113.0]
+- Temperature: [36.611111111111114, [imp]36.611111111111114, 37.27777777777778, [imp]37.27777777777778, [imp]37.27777777777778, [imp]37.27777777777778, 36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, 36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, 37.0, [imp]37.0, [imp]37.0, [imp]37.0, [imp]37.0, 37.166666666666664, [imp]37.166666666666664, [imp]37.166666666666664, 36.94444444444444, [imp]36.94444444444444, [imp]36.94444444444444, [imp]36.94444444444444, 37.0, [imp]37.0, [imp]37.0, [imp]37.0, 36.55555555555556, [imp]36.55555555555556, [imp]36.55555555555556, [imp]36.55555555555556, 37.55555555555556, [imp]37.55555555555556, [imp]37.55555555555556, [imp]37.55555555555556, 37.44444444444444, [imp]37.44444444444444, [imp]37.44444444444444, [imp]37.44444444444444, [imp]37.44444444444444, [imp]37.44444444444444, [imp]37.44444444444444, [imp]37.44444444444444, 36.111111111111114, [imp]36.111111111111114]
+- Weight: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, [imp]81.5, 86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1, [imp]86.1]
+- pH: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, 7.45, [imp]7.45, [imp]7.45, [imp]7.45, [imp]7.45, [imp]7.45, [imp]7.45]
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+[No image attached for this sample]
+---------------
+--- END DEBUG SAMPLE ---
+[ERROR] OOM during batched generation. Try reducing batch size.
+
+--- DEBUG: SINGLE AGENT SAMPLE (3/3) ---
+Stay ID: 35501216
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 70
+ - Gender: M
+ - Ethnicity: UNKNOWN
+
+History of Present Illness:
+___ M with hx of alcohol/opioid abuse, hepatitis C, CKD, CVA, 
+___ transferred from ___ after found to be in 
+respiratory distress and cyanotic at homeless shelter and 
+intubated on site, transferred to ___ because there is no 
+current ICU bed in ___.
+
+Past Medical History:
+-uncontrolled ___ s/p amputation of toe of R foot
+-hyperlipidemia
+-hypertension
+-CVA with residual dysarthria, mild R facial droop in ___
+-opiod, tobacco, alcohol abuse
+-COPD
+-carotid stenosis
+-OA
+-CKD stage III
+-bradycardia
+-
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+mother and father died of MI in late ___
+
+Medications on Admission:
+The Preadmission Medication list is accurate and complete.
+1. ___ 30 Units Breakfast
+___ 15 Units Bedtime
+2. Gabapentin 300 mg PO TID 
+3. Clopidogrel 75 mg PO DAILY 
+4. Metoprolol Succinate XL 50 mg PO DAILY 
+5. Pravastatin 40 mg PO DAILY 
+6. tadalafil 0.5  oral PRN erectile dysfunction 
+7. Tiotropium Bromide 1 CAP IH DAILY 
+8. Amlodipine 10
+
+
+Radiology Report:
+EXAMINATION:  CT HEAD W/O CONTRAST
+
+INDICATION:  ___ year old man with altered mental status, increased urinary
+frequency and gait instability of unclear chronicity.  Evaluate for
+ventriculomegaly or acute intracranial hemorrhage
+
+TECHNIQUE:  Contiguous axial images images of the brain were obtained without
+contrast.
+
+DOSE:  DLP:  1009.26 mGy-cm
+CTDI:  ___ MGy
+
+COMPARISON:  None.
+
+FINDINGS: 
+
+There is no evidence of infarction, hemorrhage, edema, or mass.  Prominent
+ventricles and sulci are consistent with age-related involutional change.
+Hypodensity in the region of the left corona radiata is consistent with
+chronic infarct. Periventricular white matter hypodensities are consistent
+with chronic small vessel ischemic disease.
+
+There is suggestion of bilateral parietal foramina, which is a normal variant
+(see series 3, image 31). No osseous abnormalities seen. The paranasal
+sinuses, mastoid air cells, and middle ear cavities are clear. The orbits are
+unremarkable.
+
+IMPRESSION:
+
+
+1. No acute intracranial process.
+2. Findings suggestive of left coronal radiata chronic infarct as described.
+3. Please note MRI is more sensitive for the evaluation of acute infarct.
+
+
+EHR:
+Hourly EHR Vitals and Labs (imputed using 'previous' value):
+- Capillary refill rate: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Diastolic blood pressure: [55.0, 49.0, [imp]49.0, 51.0, 48.0, 51.0, 55.0, 52.0, 56.0, 49.0, 67.0, 93.0, 56.0, 73.0, 55.0, 55.0, 57.0, 68.0, [imp]68.0, 107.0, 88.0, 68.0, [imp]68.0, 72.0, 77.0, 68.0, 74.0, 71.0, [imp]71.0, 97.0, 93.0, 77.0, [imp]77.0, [imp]77.0, [imp]77.0, [imp]77.0, [imp]77.0, 75.0, [imp]75.0, [imp]75.0, 76.0, [imp]76.0, [imp]76.0, [imp]76.0, 98.0, [imp]98.0, [imp]98.0, [imp]98.0]
+- Fraction inspired oxygen: [0.5, 0.5, [imp]0.5, [imp]0.5, 0.5, 0.5, [imp]0.5, [imp]0.5, 0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35]
+- Glascow coma scale eye opening: [None, [imp]None, [imp]None, [imp]None, None, [imp]None, [imp]None, [imp]None, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously]
+- Glascow coma scale motor response: [Flex-withdraws, [imp]Flex-withdraws, [imp]Flex-withdraws, [imp]Flex-withdraws, Flex-withdraws, [imp]Flex-withdraws, [imp]Flex-withdraws, [imp]Flex-withdraws, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands]
+- Glascow coma scale total: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Glascow coma scale verbal response: [No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Confused, [imp]Confused, [imp]Confused, [imp]Confused]
+- Glucose: [[NaN], 245.0, [imp]245.0, [imp]245.0, 202.0, [imp]202.0, [imp]202.0, [imp]202.0, [imp]202.0, [imp]202.0, 71.0, [imp]71.0, [imp]71.0, [imp]71.0, [imp]71.0, [imp]71.0, 75.0, [imp]75.0, 88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, [imp]88.0, 163.0, [imp]163.0, [imp]163.0, [imp]163.0, 267.0, [imp]267.0, [imp]267.0, [imp]267.0, [imp]267.0, 79.0, 123.0, [imp]123.0, [imp]123.0, [imp]123.0, [imp]123.0, 149.0]
+- Heart Rate: [43, 40, [imp]40, 39, 39, 48, 52, 48, 52, 56, 62, 62, 64, 71, 71, 75, 85, 78, 95, 83, 96, 81, [imp]81, 104, 85, 78, 75, 81, 99, 77, 79, 85, [imp]85, [imp]85, [imp]85, [imp]85, 85, [imp]85, [imp]85, [imp]85, [imp]85, [imp]85, [imp]85, [imp]85, [imp]85, [imp]85, [imp]85, [imp]85]
+- Height: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Mean blood pressure: [63, 58, [imp]58, 62, 58, 64, 67, 63, 69, 63, 70, 97, 70, 85, 77, 74, 73, 84, [imp]84, 117, 101, 81, [imp]81, 89, 100, 88, 92, 93, [imp]93, 110, 112, 95, [imp]95, [imp]95, [imp]95, [imp]95, [imp]95, 98, [imp]98, [imp]98, 99, [imp]99, [imp]99, [imp]99, 106, [imp]106, [imp]106, [imp]106]
+- Oxygen saturation: [97.0, 96.0, [imp]96.0, 98.0, 98.0, 99.0, 96.0, 96.0, 98.0, 93.0, 95.0, 92.0, 91.0, 92.0, 91.0, 91.0, 80.0, 91.0, 95.0, 96.0, 92.0, 95.0, 95.0, 95.0, 93.0, 94.0, 92.0, 93.0, 92.0, 92.0, 91.0, 95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, 96.0, [imp]96.0, [imp]96.0, 93.0, [imp]93.0, [imp]93.0, [imp]93.0, 96.0, [imp]96.0, [imp]96.0, [imp]96.0]
+- Respiratory rate: [15, 20, [imp]20, 18, 20, 15, 13, 10, 16, 15, 13, 18, 17, 16, 17, 19, 15, 22, 19, 18, 21, 10, [imp]10, 31, 25, 25, 21, 25, 25, 23, 25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25, [imp]25]
+- Systolic blood pressure: [95.0, 88.0, [imp]88.0, 94.0, 87.0, 106.0, 102.0, 96.0, 105.0, 105.0, 94.0, 108.0, 122.0, 130.0, 143.0, 130.0, 122.0, 142.0, [imp]142.0, 148.0, 162.0, 125.0, [imp]125.0, 165.0, 176.0, 157.0, 154.0, 163.0, [imp]163.0, 174.0, 166.0, 165.0, [imp]165.0, [imp]165.0, [imp]165.0, [imp]165.0, [imp]165.0, 178.0, [imp]178.0, [imp]178.0, 177.0, [imp]177.0, [imp]177.0, [imp]177.0, 144.0, [imp]144.0, [imp]144.0, [imp]144.0]
+- Temperature: [36.55555555555556, [imp]36.55555555555556, [imp]36.55555555555556, [imp]36.55555555555556, 36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, 36.833333333333336, [imp]36.833333333333336, [imp]36.833333333333336, [imp]36.833333333333336, 37.22222222222222, [imp]37.22222222222222, [imp]37.22222222222222, [imp]37.22222222222222, 37.72222222222222, [imp]37.72222222222222, [imp]37.72222222222222, [imp]37.72222222222222, 36.77777777777778, [imp]36.77777777777778, [imp]36.77777777777778, 37.5, [imp]37.5, [imp]37.5, [imp]37.5, [imp]37.5, 37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, 37.0, [imp]37.0, [imp]37.0, [imp]37.0, [imp]37.0, 37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, [imp]37.05555555555556, 37.111111111111114, [imp]37.111111111111114, [imp]37.111111111111114, 36.666666666666664, [imp]36.666666666666664, [imp]36.666666666666664, [imp]36.666666666666664, [imp]36.666666666666664]
+- Weight: [[NaN], 98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192, [imp]98.7016192]
+- pH: [[NaN], 7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34, [imp]7.34]
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+[No image attached for this sample]
+---------------
+--- END DEBUG SAMPLE ---
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+[ERROR] OOM during batched generation. Try reducing batch size.
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: SingleAgent
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8853028798411122,
+            "recall": 1.0,
+            "f1-score": 0.9391624967079273,
+            "support": 1783.0
+        },
+        "Mortality": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 231.0
+        },
+        "accuracy": 0.8853028798411122,
+        "macro avg": {
+            "precision": 0.4426514399205561,
+            "recall": 0.5,
+            "f1-score": 0.46958124835396364,
+            "support": 2014.0
+        },
+        "weighted avg": {
+            "precision": 0.7837611890549667,
+            "recall": 0.8853028798411122,
+            "f1-score": 0.831443262974297,
+            "support": 2014.0
+        },
+        "auroc": 0.5,
+        "auprc": 0.11469712015888779
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 6503,
+        "average_modalities_per_patient": 3.2288977159880834,
+        "request_counts": {
+            "patient_summary": 2014,
+            "ehr_timeseries": 2014,
+            "cxr": 461,
+            "radiology_report": 2014
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.22889771598808342,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 1.0,
+            "radiology_report": 1.1023535851122057
+        }
+    },
+    "total_patients_evaluated": 2014
+}
+
+Detailed results saved to: ./results/llama/SingleAgent_detailed_results.json
+Evaluation summary saved to: ./results/llama/SingleAgent_evaluation_summary.json

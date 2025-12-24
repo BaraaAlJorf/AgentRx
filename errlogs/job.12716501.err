@@ -1,0 +1,25 @@
+Running Simulation for 'SingleAgent':   0%|          | 0/308 [00:00<?, ?it/s]Chat templates should be in a 'chat_template.jinja' file but found key='chat_template' in the processor's config. Make sure to move your template to its own file.
+
+Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading checkpoint shards:  14%|█▍        | 1/7 [00:02<00:16,  2.79s/it][A
+Loading checkpoint shards:  29%|██▊       | 2/7 [00:05<00:13,  2.69s/it][A
+Loading checkpoint shards:  43%|████▎     | 3/7 [00:07<00:10,  2.63s/it][A
+Loading checkpoint shards:  57%|█████▋    | 4/7 [00:10<00:07,  2.62s/it][A
+Loading checkpoint shards:  71%|███████▏  | 5/7 [00:13<00:05,  2.61s/it][A
+Loading checkpoint shards:  86%|████████▌ | 6/7 [00:15<00:02,  2.58s/it][A
+Loading checkpoint shards: 100%|██████████| 7/7 [00:17<00:00,  2.46s/it][ALoading checkpoint shards: 100%|██████████| 7/7 [00:17<00:00,  2.56s/it]
+Running Simulation for 'SingleAgent':   0%|          | 0/308 [01:57<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/baj321/MedAgent/agent_main.py", line 100, in <module>
+    main()
+  File "/scratch/baj321/MedAgent/agent_main.py", line 60, in main
+    all_results = run_simulation(test_loader, args)
+  File "/scratch/baj321/MedAgent/simulation.py", line 25, in run_simulation
+    batch_results = initialize_agent_setup(batch, args)
+  File "/scratch/baj321/MedAgent/agent_architectures.py", line 597, in initialize_agent_setup
+    return _run_single_agent_batch(batch, model, processor, args)
+  File "/scratch/baj321/MedAgent/agent_architectures.py", line 308, in _run_single_agent_batch
+    texts, exp_probs, imp_probs = generate_probability_with_scores(
+  File "/scratch/baj321/MedAgent/agent_architectures.py", line 172, in generate_probability_with_scores
+    pad_token_id = processor.pad_token_id
+AttributeError: 'Idefics2Processor' object has no attribute 'pad_token_id'. Did you mean: 'image_token_id'?

@@ -1,0 +1,104 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/QWEN",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 8,
+    "num_workers": 4,
+    "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl",
+    "few_shot_data_path": null,
+    "num_shots": null,
+    "modalities": "ps",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 0
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/QWEN
+
+[Status] Initializing Data Loader from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl
+
+[Pre-Loading] Initializing parallel workers (4) to load data into RAM...
+[Pre-Loading] Successfully loaded 4925 samples into RAM.
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'Qwen/Qwen2.5-VL-7B-Instruct'...
+Loading Qwen/Qwen2.5-VL-7B-Instruct as Qwen2_5_VLForConditionalGeneration...
+✅ Model loaded successfully.
+...Simulation complete.
+
+Evaluating predictions...
+[WARNING] Could not calculate AUROC: Input contains NaN.
+[WARNING] Could not calculate AUPRC: Input contains NaN.
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: SingleAgent
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8797725426482534,
+            "recall": 1.0,
+            "f1-score": 0.9360414866032843,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 1.0,
+            "recall": 0.0016863406408094434,
+            "f1-score": 0.003367003367003367,
+            "support": 593.0
+        },
+        "accuracy": 0.8797969543147208,
+        "macro avg": {
+            "precision": 0.9398862713241267,
+            "recall": 0.5008431703204047,
+            "f1-score": 0.46970424498514385,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.8942486608633978,
+            "recall": 0.8797969543147208,
+            "f1-score": 0.8237417975557484,
+            "support": 4925.0
+        },
+        "auroc": null,
+        "auprc": null
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 4925,
+        "average_modalities_per_patient": 1.0,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 0,
+            "cxr": 0,
+            "radiology_report": 0
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 0.0,
+            "cxr": 0.0,
+            "radiology_report": 0.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 0.0,
+            "radiology_report": 0.0
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/QWEN/SingleAgent_detailed_results.json
+Evaluation summary saved to: ./results/QWEN/SingleAgent_evaluation_summary.json

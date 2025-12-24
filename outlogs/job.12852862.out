@@ -1,0 +1,595 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/stricter",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 8,
+    "num_workers": 4,
+    "model_id": "HuggingFaceM4/idefics2-8b",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 3
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/stricter
+Data loaded from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'HuggingFaceM4/idefics2-8b'...
+✅ Found Canonical Yes ID: 5592, Canonical No ID: 1770
+✅ Model 'HuggingFaceM4/idefics2-8b' and Processor loaded successfully.
+
+--- DEBUG: SINGLE AGENT SAMPLE (1/3) ---
+Stay ID: 37510196
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 68
+ - Gender: F
+ - Ethnicity: BLACK/AFRICAN AMERICAN
+
+History of Present Illness:
+___ with COPD who has been admitted 9 times since ___ for 
+dyspnea, CAD, atrial fibrillation on apixaban who presented with 
+shortness of breath since being discharged on ___. She was 
+discharged home with services.
+
+Past Medical History:
+- COPD/Asthma on home 2L O2
+- Atypical Chest Pain
+- Hypertension
+- Hyperlipidemia
+- Osteroarthritis
+- Atrial Fibrillation on Apixaban
+- Anxiety
+- Cervical Radiculitis
+- Cervical Spondylosis
+- Coronary Artery Disease
+- Headache
+- Herpes Zoster
+- GI Bleeding
+- Peripheral Vascular Disease s/p bilateral iliac stents
+- s/
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+Mother with asthma and hypertension. Father with colon cancer. 
+Brother with leukemia.
+
+Medications on Admission:
+The Preadmission Medication list is accurate and complete.
+1. Acetaminophen 325 mg PO Q4H:PRN Pain 
+2. Calcitrate-Vitamin D (calcium citrate-vitamin D3) 315 mg - 
+200 units  oral DAILY 
+3. Tiotropium Bromide 1 CAP IH DAILY 
+4. Theophylline SR 300 mg PO BID 
+5. Sulfameth/Trimethoprim SS 1 TAB PO DAILY prophylaxis for long 
+term steroid use 
+6. Ranitidine 300 mg PO DAILY 
+7. PredniSONE 40 mg PO DAILY 
+8. Lorazepam 0.5 mg PO Q8H:PRN Insomnia, anxiety, vertigo 
+9. Latanoprost 0.005% Ophth. Soln. 1 DROP BOTH EYES QHS 
+10. Isosorbide Mononitrate (Extended Release) 240 mg PO DAILY 
+11. Ipratropium Bromide Neb 1 NEB IH Q6H Wheezing 
+12. Hydrochlorothiazide 50 mg PO DAILY 
+13. Guaifenesin ___ mL PO Q4H:PRN cough 
+14. Fluticasone-Salmeterol Diskus (500/50)  1 INH IH BID 
+15. Fluticasone Propionate NASAL 2
+
+
+Radiology Report:
+EXAMINATION:  CHEST (SINGLE VIEW)
+
+INDICATION:  PACER WIRE INSERTION
+
+IMPRESSION: 
+
+Fluoroscopic images show placement of a temporary pacer wider that appears to
+extend to the right ventricle.  Further information can be gathered from the
+procedure report.
+ EXAMINATION:  CHEST PORT. LINE PLACEMENT
+
+INDICATION:  ___ year old woman with COPD, s/p respiratory arrest and
+intubation with temp wire placement  // please verify placement of ET tube and
+right sided temp pacing wire   Contact name: ___: ___   
+please verify placement of ET tube and right sided temp pacing wire
+
+IMPRESSION: 
+
+In comparison with the study of ___, there has been placement of a right
+IJ temporary pacer that extends to the region of the right ventricle.  No
+evidence of pneumothorax.  Endotracheal tube is now in place with its tip
+approximately 4.5 cm above the carina.
+Otherwise little change in the appearance of the heart and lungs.
+ EXAMINATION:  CHEST (PORTABLE AP)
+
+INDICATION:  ___ year old woman with severe COPD s/p cardiac arrest  // Eval
+for interval change
+
+IMPRESSION: 
+
+Compared to prior chest radiographs since ___, most recently ___
+and ___.
+
+Mild pulmonary edema has not resolved.  Moderate cardiomegaly is stable. 
+Pleural effusion, small if any.  No pneumothorax.
+
+Right transjugular temporary pacer lead tip projects over the floor of the
+right ventricle.  ET tube in standard placement.  Esophageal probe ends at the
+level of the carina.  Transesophageal drainage tube passes into the stomach
+and out of view.
+
+
+ EXAMINATION:  CT HEAD W/O CONTRAST Q111 CT HEAD
+
+INDICATION:  ___ woman status post cardiac arrest.
+
+TECHNIQUE:  Contiguous axial images of the brain were obtained without
+contrast.
+
+DOSE:  Acquisition sequence:
+   1) Sequenced Acquisition 10.0 s, 17.0 cm; CTDIvol = 48.8 mGy (Head) DLP =
+829.0 mGy-cm.
+ Total DLP (Head) = 842 mGy-cm.
+
+COMPARISON:  ___ noncontrast sinus CT.
+
+FINDINGS: 
+
+No sulcal effacement or loss of gray-white matter differentiation.  There is
+prominence of the ventricles and sulci suggestive of involutional changes. No
+acute intracranial hemorrhage.
+
+There is no evidence of fracture.  Opacification of the maxillary sinuses and
+mastoid air cells.  Otherwise the visualized portion of the paranasal sinuses
+and middle ear cavities are clear.  The visualized portion of the orbits are
+unremarkable.
+
+IMPRESSION: 
+
+No evidence of infarction or hemorrhage; however, initial head CT may be
+normal in the setting of hypoxic brain injury, so could consider obtaining a
+brain MRI for further evaluation if clinically indicated, or a repeat head CT
+in 1 day.
+
+RECOMMENDATION(S):  No evidence of large ischemic infarct or intracranial
+hemorrhage; however, initial head CT may be normal in the setting of hypoxic
+brain injury, so could consider obtaining a brain MRI for further evaluation
+if clinically indicated, or a repeat head CT in 1 day.
+
+NOTIFICATION:  The findings were discussed with Dr. ___ by Dr. ___ on the
+telephone on ___ at 6:23 ___, 20 minutes after discovery of the findings.
+
+
+EHR:
+Hourly EHR Vitals and Labs (imputed using 'previous' value):
+- Capillary refill rate: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Diastolic blood pressure: [49.0, 63.0, 62.0, 71.0, 76.0, 66.0, 60.0, 72.0, 77.0, 75.0, 69.0, 123.0, 91.0, 86.0, 73.0, 96.0, 75.0, 75.0, 81.0, 79.0, 70.0, 68.0, 73.0, 77.0, 82.0, 93.0, 83.0, 88.0, 74.0, 78.0, 77.0, 65.0, 78.0, 76.0, 78.0, 75.0, 77.0, 109.0, 79.0, 97.0, 80.0, 83.0, 82.0, 93.0, 88.0, 74.0, 77.0, 72.0]
+- Fraction inspired oxygen: [[NaN], [NaN], 0.5, [imp]0.5, [imp]0.5, [imp]0.5, 0.5, 0.5, [imp]0.5, [imp]0.5, [imp]0.5, 0.5, [imp]0.5, [imp]0.5, 0.5, [imp]0.5, [imp]0.5, [imp]0.5, [imp]0.5, 0.5, [imp]0.5, [imp]0.5, [imp]0.5, 0.5, [imp]0.5, [imp]0.5, 0.5, 0.4, [imp]0.4, [imp]0.4, 0.4, [imp]0.4, [imp]0.4, [imp]0.4, 0.4, [imp]0.4, [imp]0.4, [imp]0.4, [imp]0.4, [imp]0.4, 0.4, [imp]0.4, [imp]0.4, 0.4, [imp]0.4, [imp]0.4, [imp]0.4, 0.4]
+- Glascow coma scale eye opening: [[NaN], [NaN], [NaN], None, [imp]None, To Pain, [imp]To Pain, To Speech, [imp]To Speech, To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, [imp]To Speech, To Speech, [imp]To Speech, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, None]
+- Glascow coma scale motor response: [[NaN], [NaN], [NaN], No response, [imp]No response, No response, [imp]No response, Localizes Pain, [imp]Localizes Pain, Localizes Pain, [imp]Localizes Pain, Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, [imp]Localizes Pain, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Flex-withdraws]
+- Glascow coma scale total: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Glascow coma scale verbal response: [[NaN], [NaN], [NaN], No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, [imp]No Response-ETT, No Response-ETT, [imp]No Response-ETT, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, No Response-ETT]
+- Glucose: [[NaN], [NaN], 140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, [imp]140.0, 145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0, [imp]145.0]
+- Heart Rate: [60, 72, 70, 71, 71, 70, 70, 70, 70, 70, 71, 70, 73, 73, 75, 76, 74, 74, 73, 74, 79, 80, 77, 78, 71, 71, 85, 85, 85, 80, 79, 60, 80, 79, 79, 77, 80, 63, 83, 78, 78, 82, 56, 80, 76, 79, 50, 50]
+- Height: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Mean blood pressure: [70, 75, 73, 80, 92, 81, 72, 82, 86, 86, 82, 130, 109, 90, 87, 109, 87, 88, 92, 99, 81, 81, 86, 89, 99, 108, 97, 103, 88, 96, 93, 82, 93, 87, 93, 92, 94, 123, 94, 112, 96, 102, 104, 111, 105, 98, 100, 100]
+- Oxygen saturation: [98.0, 100.0, 100.0, 100.0, 98.0, 100.0, 100.0, 72.0, 100.0, 100.0, [imp]100.0, 100.0, 92.0, 99.0, 100.0, 99.0, 100.0, 100.0, 100.0, 100.0, [imp]100.0, 100.0, 100.0, 100.0, 97.0, 99.0, 100.0, 100.0, 97.0, 99.0, [imp]99.0, 99.0, 97.0, 97.0, 98.0, 98.0, 97.0, 97.0, 91.0, 93.0, 90.0, 99.0, 98.0, 97.0, 98.0, 94.0, 88.0, 91.0]
+- Respiratory rate: [10, 20, 20, 20, 20, 19, 20, 12, 19, 18, 17, 20, 17, 17, 23, 26, 17, 17, 15, 26, 17, 17, 14, 17, 23, 21, 18, 21, 16, 21, 24, 20, 23, 19, 17, 20, 23, 24, 26, 19, 21, 28, 22, 25, 23, 22, 24, 21]
+- Systolic blood pressure: [167.0, 102.0, 93.0, 102.0, 138.0, 116.0, 96.0, 98.0, 110.0, 106.0, 114.0, 138.0, 158.0, 135.0, 127.0, 151.0, 116.0, 116.0, 129.0, 154.0, 111.0, 114.0, 117.0, 119.0, 143.0, 145.0, 134.0, 136.0, 113.0, 135.0, 129.0, 139.0, 132.0, 112.0, 127.0, 137.0, 131.0, 161.0, 148.0, 149.0, 145.0, 144.0, 161.0, 151.0, 151.0, 157.0, 157.0, 182.0]
+- Temperature: [[NaN], [NaN], 35.4, 35.8, 36.3, 36.7, 36.8, 37.2, 37.2, 37.2, [imp]37.2, 35.1, [imp]35.1, [imp]35.1, 36.9, 37.1, 36.9, 36.7, 36.7, 36.6, 36.6, 36.6, 36.5, 36.6, 36.6, 36.7, 36.7, 36.7, 37.0, 36.9, 36.9, 37.3, 37.1, 37.0, 37.1, 36.9, 37.1, [imp]37.1, [imp]37.1, 36.72222222222222, [imp]36.72222222222222, [imp]36.72222222222222, [imp]36.72222222222222, 36.666666666666664, [imp]36.666666666666664, [imp]36.666666666666664, [imp]36.666666666666664, 36.55555555555556]
+- Weight: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- pH: [[NaN], [NaN], 7.33, [imp]7.33, [imp]7.33, [imp]7.33, [imp]7.33, 7.33, [imp]7.33, [imp]7.33, 7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, 7.32, [imp]7.32, [imp]7.32, [imp]7.32, [imp]7.32, 7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, 7.38, [imp]7.38, [imp]7.38, [imp]7.38, [imp]7.38, [imp]7.38, 7.42, [imp]7.42]
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+Image Path: /scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0/resized/7b25b3ed-e780a527-319cb7b3-02d5d071-f1cddee9.jpg
+Image Object: <PIL.Image.Image image mode=RGB size=512x462 at 0x1554373CEA40>
+Image Size: (512, 462) | Image Mode: RGB
+---------------
+--- END DEBUG SAMPLE ---
+
+--- DEBUG: SINGLE AGENT SAMPLE (2/3) ---
+Stay ID: 33685454
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 80
+ - Gender: F
+ - Ethnicity: WHITE
+
+History of Present Illness:
+___ is a ___ yo female with a past medical history of 
+CAD with a 1 vessel CABG (SVG to LAD) in ___ who presents with 
+chest pressure.  She woke up at 8 am with substernal chest 
+pressure.  It was severe initially.  She took SL NTG x3 with 
+relief of CP for a short period of time.  The CP radiated to her 
+right side and eventually down both arms.  She reports 
+diaphoresis, but denied associated nausea, vomiting, 
+lightheadedness or dizziness.  She reports that she has felt 
+mildly SOB since her recent pneumonia (first diagnosed appox ___ 
+weeks ago).  She denied worsening dyspnea.  Her cough has 
+improved substantially and is very minimal at this time.  She 
+went to her PCP's office and was found to have a new LBBB and 
+anterior ST elevations.  She was transferred to the ED. She 
+received Plavix 300mg, Aspirin, boluses of heparin and 
+integrillin. Code STEMI was called and went to the cath lab.  
+Cath showed occluded SVG, Native 3vd, occluded proximal LAD. 
+Wiring the LAD was difficult and there was concern about a 
+possible dissection. One BMS was placed in the proximal LAD. 
+Distal LAD is diminutive past ___ septal and diag branches.   
+She has been hemodynamically stable with HR 60-70s and SBP 
+120-130s.  On the floor, she is currently chest pain free and 
+feels well.
+.   
+.  
+On review of systems, she denies any prior history of deep 
+venous thrombosis, pulmonary embolism, bleeding at the time of 
+surgery, myalgias, joint pains, cough, hemoptysis, black stools 
+or red stools. She denies recent fevers, chills or rigors. All 
+of the other review of systems were negative.  
+.  
+Cardiac review of systems is notable for absence of chest pain, 
+dyspnea on exertion, paroxysmal nocturnal dyspnea, orthopnea, 
+ankle edema, palpitations, syncope or presyncope.
+
+Past Medical History:
+1.
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+Her father died due to CAD at age ___.  Her mother had
+stomach cancer and bone cancer.
+
+Medications on Admission:
+# Clopidogrel [Plavix] 75 mg Tablet PO Daily
+# Ezetimibe-Simvastatin [Vytorin ___ 10 mg-20 mg PO daily
+
+
+Radiology Report:
+CHEST RADIOGRAPH
+
+INDICATION:  Hypoxia, evaluation for infiltrate or edema.
+
+COMPARISON:  ___.
+
+FINDINGS:  As compared to the previous radiograph, a right basal opacity, most
+likely to represent pneumonia, has newly appeared.  There also is blunting of
+the right costophrenic sinus, suggesting a small accompanying pleural
+effusion.
+
+Otherwise, no focal parenchymal opacity suggesting an infectious disease. 
+Normal size of the cardiac silhouette, slight tortuosity of the thoracic
+aorta.  The hilar and mediastinal contours are unremarkable.
+ INDICATION:  ___ female with hypoxia.
+
+COMPARISON:  Chest radiographs available from ___ and ___.
+
+UPRIGHT AP VIEW OF THE CHEST:  
+The previously seen right bibasilar opacity has increased in density and size,
+concerning for progressive pneumonia. Of note, the patient has had a prior
+right lower lobe pneumonia seen on the ___ radiograph. There is a hazy
+opacity at the left base, which may represent atalectasis or a new early
+consolidative process. The remaining areas of the lungs are clear with no
+evidence of pneumothorax.  Cardiac and mediastinal contours are unchanged.
+
+IMPRESSION:
+1.  Increased size and density of the right basilar opacity is concerning for
+progression of pneumonia. Given a previous history of pneumonia in this area,
+followup through complete resolution of this current pneumonia is recommended.
+If there is persistent consolidation in this area, a CT is recommended to rule
+out an obstructive mass.
+2.  New hazy opacity at the left base may represent a new consolidation.
+
+Findings discussed by Dr. ___ with Dr. ___ at 10:50AM ___. Per
+discussion, this patient has had a more recent pneumonia of her right lower
+lobe at an outside hospital, and CT will be performed to rule out an
+obstructing entity. 
+
+ PROCEDURE:  CT chest without contrast.
+
+REASON FOR EXAM:  Heavy smoking history, recent history of diagnosis
+unresolved with two courses of antibiotics.
+
+TECHNIQUE:  MDCT chest performed without IV contrast.  5-mm and 1.25-mm axial
+slices were acquired with coronal and sagittal reformats.
+
+COMPARISON:  No previous CT was available for comparison.
+
+FINDINGS:  Dense homogeneous consolidation in the right lower lobe (3.45)
+contains multiple air bronchograms. Less extensive right basal consolidation
+was present on chest radiographs approximately one year ago. Diffuse nodules
+throughout the remaining lungs predominate in the middle lobe, right middle
+lobe and right lower lobe with relative sparing of the left lower lobe and
+lung apices.  These nodules range in size from 1 to 4 mm.  A right pleural
+effusion is minimal, and no pathologically enlargement of mediastinal or
+axillary lymph nodes is present.The airways are widely patent to subsegmental
+level bilaterally. The aorta, and heart size are normal with no pericardial
+effusion. Calcification is severe in the coronary arteries, the pulmonary
+artery is normal.
+
+A fatty structure appears adherent to the lateral right atrial wall abutting
+an area of atrial calcification could be an interatrial lipoma.
+The left lobe of the thyroid is heterogenous and enlarged at 21 x 27 mm.
+
+Limited review of the upper abdomen reveals multiple cystic structures in both
+kidneys and high attenuation dependent material in the gallbladder most likely
+small stones.
+
+No destructive or sclerotic bone lesions are present.  Degenerative changes
+throughout the thoracic spine are moderate.
+
+IMPRESSION:
+1)Severe right lower lobe consolidation, progressed or recurrent over a year,
+and extensive, new diffuse lung nodules most readily explained by multifocal
+bronchioalveolar carcinoma.  Alhernatively, the multiple lung nodules could
+also be metastases from an extrathoracic malignancy including thyroid
+carcinoma.
+
+2)Diffuse severe coronary artery calcification.
+
+3)Probable interatrial lipoma.
+
+4)Bilateral renal cysts.  Small gallstones.
+
+The case was posted to the critical findings dashboard for direct notification
+of the referring physician.
+
+
+
+EHR:
+Hourly EHR Vitals and Labs (imputed using 'previous' value):
+- Capillary refill rate: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Diastolic blood pressure: [[NaN], 46.0, 62.0, 64.0, 69.0, 66.0, [imp]66.0, 56.0, 57.0, 59.0, 68.0, 60.0, 54.0, 42.0, 29.0, 46.0, 46.0, 52.0, 48.0, 53.0, 55.0, 50.0, [imp]50.0, 62.0, 43.0, 51.0, 63.0, 65.0, 62.0, 59.0, 51.0, 48.0, 62.0, 46.0, 44.0, 42.0, 52.0, 42.0, 36.0, 40.0, 39.0, 47.0, 52.0, 43.0, 46.0, [imp]46.0, 48.0, 44.0]
+- Fraction inspired oxygen: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, 0.35, [imp]0.35, [imp]0.35, [imp]0.35, [imp]0.35]
+- Glascow coma scale eye opening: [[NaN], Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously]
+- Glascow coma scale motor response: [[NaN], Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands]
+- Glascow coma scale total: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Glascow coma scale verbal response: [[NaN], Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented]
+- Glucose: [[NaN], [NaN], [NaN], [NaN], [NaN], 95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, [imp]95.0, 107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, [imp]107.0, 106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0]
+- Heart Rate: [[NaN], 71, 76, 72, 68, 77, 78, 69, 80, 76, 76, 73, 70, 76, 76, 65, 70, 75, 69, 72, 78, 76, 71, 78, 80, 77, 93, 80, 87, 80, 81, 84, 75, 74, 75, 73, 72, 79, 76, 65, 61, 89, 73, 73, 74, 77, 84, 86]
+- Height: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Mean blood pressure: [[NaN], 67, 85, 88, 80, 80, [imp]80, 70, 66, 71, 81, 71, 67, 57, 43, 53, 57, 63, 57, 73, 68, 60, [imp]60, 75, 61, 63, 82, 79, 70, 70, 62, 61, 73, 56, 51, 75, 55, 53, 49, 51, 60, 61, 64, 56, 58, 65, 63, 59]
+- Oxygen saturation: [[NaN], 93.0, 94.0, 93.0, 92.0, 92.0, 90.0, 91.0, 92.0, 89.0, 91.0, 90.0, 97.0, 92.0, 93.0, 94.0, 95.0, 94.0, 95.0, 91.0, 93.0, 95.0, 91.0, 89.0, 89.0, 92.0, 93.0, 89.0, 91.0, 88.0, 90.0, 93.0, 94.0, 92.0, 97.0, 93.0, 95.0, 93.0, 95.0, 94.0, 95.0, 96.0, 93.0, 95.0, 93.0, 91.0, 91.0, 87.0]
+- Respiratory rate: [[NaN], 17, 18, 14, 17, 13, 16, 14, 15, 16, 17, 20, 18, 16, 18, 16, 15, 20, 15, 15, 16, 15, 14, 17, 14, 17, 18, 18, 18, 15, [imp]15, 19, 18, 17, 17, 18, 18, 17, 20, 18, 19, 17, 17, 16, 17, 16, 12, 20]
+- Systolic blood pressure: [[NaN], 98.0, 117.0, 124.0, 122.0, 119.0, [imp]119.0, 114.0, 113.0, 116.0, 131.0, 112.0, 107.0, 100.0, 90.0, 89.0, 92.0, 99.0, 84.0, 103.0, 111.0, 93.0, [imp]93.0, 118.0, 115.0, 103.0, 125.0, 127.0, 111.0, 97.0, 97.0, 97.0, 111.0, 93.0, 87.0, 89.0, 94.0, 87.0, 93.0, 91.0, 91.0, 104.0, 105.0, 99.0, 101.0, [imp]101.0, 113.0, 107.0]
+- Temperature: [[NaN], 35.5, [imp]35.5, [imp]35.5, 36.611111111111114, [imp]36.611111111111114, [imp]36.611111111111114, 36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, 36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, 36.166666666666664, [imp]36.166666666666664, [imp]36.166666666666664, 36.166666666666664, [imp]36.166666666666664, [imp]36.166666666666664, 36.833333333333336, [imp]36.833333333333336, [imp]36.833333333333336, 36.55555555555556, [imp]36.55555555555556, [imp]36.55555555555556, [imp]36.55555555555556, [imp]36.55555555555556, 36.72222222222222, [imp]36.72222222222222, [imp]36.72222222222222, [imp]36.72222222222222, 36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, [imp]36.888888888888886, 37.111111111111114, [imp]37.111111111111114, [imp]37.111111111111114, [imp]37.111111111111114, 36.666666666666664, [imp]36.666666666666664, [imp]36.666666666666664, [imp]36.666666666666664]
+- Weight: [53.0, 52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994, [imp]52.888827199999994]
+- pH: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36, [imp]7.36]
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+[No image attached for this sample]
+---------------
+--- END DEBUG SAMPLE ---
+
+--- DEBUG: SINGLE AGENT SAMPLE (3/3) ---
+Stay ID: 31090461
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 80
+ - Gender: F
+ - Ethnicity: WHITE
+
+History of Present Illness:
+The patient is a ___ year-old female with a history of NSCLC 
+(stage IV) who presents with shortness of breath.
+.
+The patient was in her usual state of health until the evening 
+before admission when she began to feel somewhat short of 
+breath.  The next morning, this sensation persisted, so she 
+became concerned.  She also reports a few day history of a 
+non-productive cough.  Denies sick contacts, recent travel or 
+sedentary lifestyle.  She denied chest pain, fever, chills, 
+dizziness, lightheadedness or syncope.  She presented to the ED 
+where she was found to be hypoxic to the ___ on room air.
+.  
+In the ED, she was placed on a non-rebreather with sats up to 
+the high 90's.  Attempts were made to wean her to NC but they 
+were unsuccessful, as she was satting 88% on 4L NC.  She 
+remained afebrile in the ED but was found to have WBC of 17.  
+Given that, she received levofloxacin and vancomycin.  Blood 
+cultures were drawn prior to antibiotic administration.  CXR did 
+not show PNA, but demonstrated progression of known lung cancer. 
+ She underwent a CT head to rule out metastases, which was 
+negative.  On transfer, patient was afebrile with HR- 77, BP- 
+112/49, RR- 16, SaO2- 98% on 15L NRB  
+.
+On transfer to the ICU, the patient was stable and comfortable.  
+Sats were 97% on 5L NC and 95% high-flow with a face-tent.  
+.
+
+Past Medical History:
+CAD s/p MI ___ s/p CABG ___
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+Her father died due to CAD at age ___. Her mother had stomach 
+cancer and osteosarcoma. No history of lung cancer, colon cancer 
+or breast cancer.
+
+Medications on Admission:
+amlodipine 5 mg Tablet- one Tablet(s) by mouth one daily  
+atorvastatin [Lipitor] 80 mg Tablet- one Tablet(s) by mouth one 
+daily 
+calcitriol 0.25 mcg Capsule- 1 Capsule(s) by mouth once a day
+clopidogrel [Plavix] 75 mg Tablet 1 Tablet(s) by mouth once a 
+day 
+folic acid- 1 mg Tablet one Tablet(s) by mouth one daily 
+furosemide 40 mg Tablet- 1 Tablet(s) by mouth daily
+loperamide 2 mg Capsule- one Capsule(s) by mouth one twice daily 
+as needed 
+lorazepam 0.5 mg Tablet ___ Tablet(s) by mouth q6 hours as 
+needed for Nausea 
+metoprolol tartrate [Lopressor] 50 mg Tablet- one Tablet(s) by 
+mouth ___ AM and one in ___ 
+tramadol 50 mg Tablet- 0.5 (One half) Tablet(s) by mouth three 
+times a day as needed for Pain  
+trazodone 50 mg Tablet- one Tablet(s) by mouth one daily as 
+needed 
+aspirin 81 mg Tablet, Chewable- 2 Tablet(s) by mouth one daily 
+ranitidine HCl [Acid Control] 150 mg Tablet- one Tablet(s)
+
+
+Radiology Report:
+AP CHEST 4:42 A.M. ___
+
+HISTORY:  Hypoxia and a white count.
+
+IMPRESSION:  AP chest compared to ___ through ___:
+
+The extent of consolidation in the left lower lung has increased substantially
+since ___, even since ___.  I suspect that in addition to
+widespread bronchoalveolar carcinoma there is new pneumonia.  The volume of
+any pleural effusion is indeterminate, at least small on the right.  Heart
+size is top normal.  Extensive nodulation and consolidation in the right lung
+is fully attributable to disseminated adenocarcinoma.
+ HISTORY:  ___ female with hypoxia.
+
+STUDY:  Bilateral lower extremity venous ultrasound.
+
+COMPARISON:  ___ left lower extremity venous ultrasound.
+
+FINDINGS:  Grayscale and color Doppler sonographic imaging was performed of
+the bilateral common femoral, superficial femoral, popliteal, peroneal, and
+posterior tibial veins.  Normal compressibility, flow and augmentation was
+demonstrated.
+
+IMPRESSION:  No evidence of DVT.
+
+
+EHR:
+Hourly EHR Vitals and Labs (imputed using 'previous' value):
+- Capillary refill rate: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Diastolic blood pressure: [51.0, 50.0, 33.0, 26.0, 38.0, 25.0, 35.0, 41.0, 57.0, 40.0, 55.0, 52.0, 44.0, 53.0, 45.0, 47.0, 55.0, 53.0, 57.0, 50.0, 43.0, 52.0, 64.0, 53.0, 60.0, 50.0, 54.0, 50.0, 65.0, 51.0, 48.0, 59.0, 44.0, 42.0, 43.0, 48.0, 52.0, 50.0, 57.0, 64.0, 65.0, 68.0, 68.0, 65.0, 64.0, 70.0, 58.0, 62.0]
+- Fraction inspired oxygen: [0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95, [imp]0.95]
+- Glascow coma scale eye opening: [[NaN], Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously, [imp]Spontaneously, [imp]Spontaneously, [imp]Spontaneously, Spontaneously]
+- Glascow coma scale motor response: [[NaN], Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, [imp]Obeys Commands, Obeys Commands]
+- Glascow coma scale total: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Glascow coma scale verbal response: [[NaN], Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented, [imp]Oriented, [imp]Oriented, [imp]Oriented, Oriented]
+- Glucose: [[NaN], [NaN], [NaN], 106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, [imp]106.0, 97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0, [imp]97.0]
+- Heart Rate: [91, 84, 77, 73, 92, 81, 68, 70, 87, 89, 81, 96, 77, 107, 91, 92, 96, 96, 98, 90, 72, 71, 74, 76, 82, 73, 93, 86, 83, 83, 78, 83, 80, 68, 91, [imp]91, 95, 87, 86, 96, 98, 98, 114, 94, 78, 75, 83, 82]
+- Height: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN]]
+- Mean blood pressure: [68, 68, 48, 50, 48, 39, 39, 55, 68, 52, 67, 62, 61, 69, 61, 64, 71, 70, 76, 68, 64, 67, 67, 69, 73, 65, 69, 68, 76, 65, 59, 73, 55, 55, 49, 52, 64, 62, 70, 42, 80, 102, 80, 79, 76, 83, 75, 76]
+- Oxygen saturation: [95.0, 97.0, 95.0, 96.0, 94.0, 97.0, 98.0, 95.0, 93.0, 94.0, 92.0, 92.0, 94.0, 91.0, 97.0, 92.0, 95.0, 92.0, 92.0, 92.0, 94.0, 92.0, 92.0, 91.0, 90.0, 91.0, 92.0, 91.0, 92.0, 92.0, 91.0, 92.0, 91.0, 93.0, 91.0, 94.0, 91.0, 91.0, 92.0, 93.0, 95.0, 91.0, 94.0, 92.0, 91.0, 94.0, 88.0, 93.0]
+- Respiratory rate: [18, 17, 16, 15, 19, 17, 15, 17, 17, 18, 16, 22, 14, 13, 16, 17, 16, 15, 16, 15, 13, 16, 18, 16, 15, 15, 14, 16, 15, 18, 19, 15, 21, 16, 20, 15, 23, 15, 20, 17, 13, 13, 18, 17, 17, 15, 16, 18]
+- Systolic blood pressure: [118.0, 124.0, 91.0, 114.0, 89.0, 77.0, 90.0, 101.0, 102.0, 92.0, 113.0, 106.0, 111.0, 115.0, 112.0, 116.0, 124.0, 122.0, 135.0, 128.0, 125.0, 116.0, 123.0, 128.0, 115.0, 109.0, 118.0, 124.0, 114.0, 104.0, 97.0, 119.0, 91.0, 93.0, 93.0, 103.0, 107.0, 101.0, 110.0, 122.0, 125.0, 132.0, 128.0, 130.0, 121.0, 129.0, 134.0, 126.0]
+- Temperature: [36.05555555555556, [imp]36.05555555555556, [imp]36.05555555555556, 36.166666666666664, [imp]36.166666666666664, [imp]36.166666666666664, [imp]36.166666666666664, 36.22222222222222, [imp]36.22222222222222, [imp]36.22222222222222, [imp]36.22222222222222, 36.111111111111114, [imp]36.111111111111114, [imp]36.111111111111114, 36.111111111111114, [imp]36.111111111111114, [imp]36.111111111111114, [imp]36.111111111111114, [imp]36.111111111111114, 37.166666666666664, [imp]37.166666666666664, [imp]37.166666666666664, [imp]37.166666666666664, 37.333333333333336, [imp]37.333333333333336, [imp]37.333333333333336, [imp]37.333333333333336, 37.0, [imp]37.0, [imp]37.0, [imp]37.0, 36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, 36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, [imp]36.388888888888886, 36.111111111111114, [imp]36.111111111111114, [imp]36.111111111111114, [imp]36.111111111111114, 36.833333333333336, [imp]36.833333333333336, [imp]36.833333333333336, [imp]36.833333333333336, 37.44444444444444]
+- Weight: [47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, 47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152, [imp]47.8993152]
+- pH: [[NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], [NaN], 7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37, [imp]7.37]
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+[No image attached for this sample]
+---------------
+--- END DEBUG SAMPLE ---
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: SingleAgent
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8796258641724278,
+            "recall": 0.9986149584487535,
+            "f1-score": 0.9353513513513514,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.14285714285714285,
+            "recall": 0.0016863406408094434,
+            "f1-score": 0.0033333333333333335,
+            "support": 593.0
+        },
+        "accuracy": 0.8785786802030456,
+        "macro avg": {
+            "precision": 0.5112415035147854,
+            "recall": 0.5001506495447815,
+            "f1-score": 0.46934234234234234,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.7909144221947703,
+            "recall": 0.8785786802030456,
+            "f1-score": 0.8231307047148672,
+            "support": 4925.0
+        },
+        "auroc": 0.4310424092093196,
+        "auprc": 0.10259946144639137
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 15949,
+        "average_modalities_per_patient": 3.2383756345177663,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 1174,
+            "radiology_report": 4925
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.2383756345177665,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 1.0,
+            "radiology_report": 1.1057476425684778
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/stricter/SingleAgent_detailed_results.json
+Evaluation summary saved to: ./results/stricter/SingleAgent_evaluation_summary.json

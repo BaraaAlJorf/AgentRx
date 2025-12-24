@@ -1,0 +1,702 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/QWEN-cxr-sa",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 3,
+    "num_workers": 4,
+    "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl",
+    "few_shot_data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/train.jsonl",
+    "consistency_samples": 5,
+    "num_shots": 2,
+    "refine_iterations": 1,
+    "modalities": "ps-cxr-rr-ehr",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 2
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/QWEN-cxr-sa
+
+[Status] Initializing Data Loader from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl
+
+[Pre-Loading] Initializing parallel workers (4) to load data into RAM...
+[Pre-Loading] Successfully loaded 4925 samples into RAM.
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'Qwen/Qwen2.5-VL-7B-Instruct'...
+⚡ Applying Left-Padding fix for Qwen...
+Loading Qwen/Qwen2.5-VL-7B-Instruct as Qwen2_5_VLForConditionalGeneration...
+✅ Using Token IDs - Yes: 9454, No: 2753
+✅ Model loaded successfully.
+
+--- Standard Agent (1/2) ---
+Stay ID: 37510196
+[TEXT BLOCK]:
+You are an expert ICU risk prediction model. This patient was just admitted.
+
+
+--------------------
+[IMAGE BLOCK]: <PIL.Image.Image image mode=RGB size=512x462 at 0x1554236AB0D0> (Size: (512, 462))
+[TEXT BLOCK]:
+--- Patient DATA ---
+
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 68
+ - Gender: F
+ - Ethnicity: BLACK/AFRICAN AMERICAN
+
+History of Present Illness:
+___ with COPD who has been admitted 9 times since ___ for 
+dyspnea, CAD, atrial fibrillation on apixaban who presented with 
+shortness of breath since being discharged on ___. She was 
+discharged home with services.
+
+Past Medical History:
+- COPD/Asthma on home 2L O2
+- Atypical Chest Pain
+- Hypertension
+- Hyperlipidemia
+- Osteroarthritis
+- Atrial Fibrillation on Apixaban
+- Anxiety
+- Cervical Radiculitis
+- Cervical Spondylosis
+- Coronary Artery Disease
+- Headache
+- Herpes Zoster
+- GI Bleeding
+- Peripheral Vascular Disease s/p bilateral iliac stents
+- s/
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+Mother with asthma and hypertension. Father with colon cancer. 
+Brother with leukemia.
+
+Medications on Admission:
+The Preadmission Medication list is accurate and complete.
+1. Acetaminophen 325 mg PO Q4H:PRN Pain 
+2. Calcitrate-Vitamin D (calcium citrate-vitamin D3) 315 mg - 
+200 units  oral DAILY 
+3. Tiotropium Bromide 1 CAP IH DAILY 
+4. Theophylline SR 300 mg PO BID 
+5. Sulfameth/Trimethoprim SS 1 TAB PO DAILY prophylaxis for long 
+term steroid use 
+6. Ranitidine 300 mg PO DAILY 
+7. PredniSONE 40 mg PO DAILY 
+8. Lorazepam 0.5 mg PO Q8H:PRN Insomnia, anxiety, vertigo 
+9. Latanoprost 0.005% Ophth. Soln. 1 DROP BOTH EYES QHS 
+10. Isosorbide Mononitrate (Extended Release) 240 mg PO DAILY 
+11. Ipratropium Bromide Neb 1 NEB IH Q6H Wheezing 
+12. Hydrochlorothiazide 50 mg PO DAILY 
+13. Guaifenesin ___ mL PO Q4H:PRN cough 
+14. Fluticasone-Salmeterol Diskus (500/50)  1 INH IH BID 
+15. Fluticasone Propionate NASAL 2
+
+
+Radiology Reports:
+EXAMINATION:  CHEST (SINGLE VIEW)
+
+INDICATION:  PACER WIRE INSERTION
+
+IMPRESSION: 
+
+Fluoroscopic images show placement of a temporary pacer wider that appears to
+extend to the right ventricle.  Further information can be gathered from the
+procedure report.
+ EXAMINATION:  CHEST PORT. LINE PLACEMENT
+
+INDICATION:  ___ year old woman with COPD, s/p respiratory arrest and
+intubation with temp wire placement  // please verify placement of ET tube and
+right sided temp pacing wire   Contact name: ___: ___   
+please verify placement of ET tube and right sided temp pacing wire
+
+IMPRESSION: 
+
+In comparison with the study of ___, there has been placement of a right
+IJ temporary pacer that extends to the region of the right ventricle.  No
+evidence of pneumothorax.  Endotracheal tube is now in place with its tip
+approximately 4.5 cm above the carina.
+Otherwise little change in the appearance of the heart and lungs.
+ EXAMINATION:  CHEST (PORTABLE AP)
+
+INDICATION:  ___ year old woman with severe COPD s/p cardiac arrest  // Eval
+for interval change
+
+IMPRESSION: 
+
+Compared to prior chest radiographs since ___, most recently ___
+and ___.
+
+Mild pulmonary edema has not resolved.  Moderate cardiomegaly is stable. 
+Pleural effusion, small if any.  No pneumothorax.
+
+Right transjugular temporary pacer lead tip projects over the floor of the
+right ventricle.  ET tube in standard placement.  Esophageal probe ends at the
+level of the carina.  Transesophageal drainage tube passes into the stomach
+and out of view.
+
+
+ EXAMINATION:  CT HEAD W/O CONTRAST Q111 CT HEAD
+
+INDICATION:  ___ woman status post cardiac arrest.
+
+TECHNIQUE:  Contiguous axial images of the brain were obtained without
+contrast.
+
+DOSE:  Acquisition sequence:
+   1) Sequenced Acquisition 10.0 s, 17.0 cm; CTDIvol = 48.8 mGy (Head) DLP =
+829.0 mGy-cm.
+ Total DLP (Head) = 842 mGy-cm.
+
+COMPARISON:  ___ noncontrast sinus CT.
+
+FINDINGS: 
+
+No sulcal effacement or loss of gray-white matter differentiation.  There is
+prominence of the ventricles and sulci suggestive of involutional changes. No
+acute intracranial hemorrhage.
+
+There is no evidence of fracture.  Opacification of the maxillary sinuses and
+mastoid air cells.  Otherwise the visualized portion of the paranasal sinuses
+and middle ear cavities are clear.  The visualized portion of the orbits are
+unremarkable.
+
+IMPRESSION: 
+
+No evidence of infarction or hemorrhage; however, initial head CT may be
+normal in the setting of hypoxic brain injury, so could consider obtaining a
+brain MRI for further evaluation if clinically indicated, or a repeat head CT
+in 1 day.
+
+RECOMMENDATION(S):  No evidence of large ischemic infarct or intracranial
+hemorrhage; however, initial head CT may be normal in the setting of hypoxic
+brain injury, so could consider obtaining a brain MRI for further evaluation
+if clinically indicated, or a repeat head CT in 1 day.
+
+NOTIFICATION:  The findings were discussed with Dr. ___ by Dr. ___ on the
+telephone on ___ at 6:23 ___, 20 minutes after discovery of the findings.
+
+
+Chest X-ray: [Attached Above]
+
+Electronic Health Records:
+EHR Clinical Time-Series Log (0-48h):
+[T+0.0h] Heart Rate=38
+[T+0.1h] Diastolic blood pressure=12.0, Mean blood pressure=46, Systolic blood pressure=180.0
+[T+0.7h] Heart Rate=60, Oxygen saturation=98.0, Respiratory rate=10
+[T+0.7h] Diastolic blood pressure=49.0, Mean blood pressure=70, Systolic blood pressure=167.0
+[T+1.7h] Heart Rate=72, Oxygen saturation=100.0, Respiratory rate=20
+[T+1.7h] Diastolic blood pressure=63.0, Mean blood pressure=75, Systolic blood pressure=102.0
+[T+2.2h] Glucose=148.0
+[T+2.3h] Glucose=140.0, Oxygen saturation=81.0, pH=7.33
+[T+2.4h] Heart Rate=71, Oxygen saturation=90.0, Respiratory rate=20
+[T+2.4h] Diastolic blood pressure=76.0, Heart Rate=71, Mean blood pressure=84, Respiratory rate=15, Systolic blood pressure=110.0, Temperature=35.4
+[T+2.7h] Fraction inspired oxygen=0.5, Heart Rate=70, Oxygen saturation=100.0, Respiratory rate=20
+[T+2.7h] Diastolic blood pressure=62.0, Mean blood pressure=73, Systolic blood pressure=93.0
+[T+3.7h] Glascow coma scale eye opening=None, Glascow coma scale motor response=No response, Glascow coma scale verbal response=No Response-ETT, Heart Rate=71, Oxygen saturation=100.0, Respiratory rate=20, Temperature=35.8
+[T+3.7h] Diastolic blood pressure=71.0, Mean blood pressure=80, Systolic blood pressure=102.0
+[T+4.7h] Heart Rate=71, Oxygen saturation=98.0, Respiratory rate=20, Temperature=36.3
+[T+4.7h] Diastolic blood pressure=76.0, Mean blood pressure=92, Systolic blood pressure=138.0
+[T+5.7h] Glascow coma scale eye opening=To Pain, Glascow coma scale motor response=No response, Glascow coma scale verbal response=No Response-ETT, Heart Rate=70, Oxygen saturation=100.0, Respiratory rate=19, Temperature=36.7
+[T+5.7h] Diastolic blood pressure=66.0, Mean blood pressure=81, Systolic blood pressure=116.0
+[T+6.7h] Fraction inspired oxygen=0.5, Heart Rate=70, Oxygen saturation=100.0, Respiratory rate=20, Temperature=36.8
+[T+6.7h] Diastolic blood pressure=60.0, Mean blood pressure=72, Systolic blood pressure=96.0
+[T+7.2h] Oxygen saturation=72.0, pH=7.33
+[T+7.7h] Fraction inspired oxygen=0.5, Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Localizes Pain, Glascow coma scale verbal response=No Response-ETT, Heart Rate=70, Respiratory rate=12, Temperature=37.2
+[T+7.7h] Diastolic blood pressure=72.0, Mean blood pressure=82, Systolic blood pressure=98.0
+[T+8.0h] Oxygen saturation=90.0
+[T+8.7h] Heart Rate=70, Oxygen saturation=100.0, Respiratory rate=19, Temperature=37.2
+[T+8.7h] Diastolic blood pressure=77.0, Mean blood pressure=86, Systolic blood pressure=110.0
+[T+9.7h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Localizes Pain, Glascow coma scale verbal response=No Response-ETT, Heart Rate=70, Oxygen saturation=100.0, Respiratory rate=18, Temperature=37.2
+[T+9.7h] Diastolic blood pressure=75.0, Mean blood pressure=86, Systolic blood pressure=106.0
+[T+10.5h] pH=7.36
+[T+10.7h] Heart Rate=71, Respiratory rate=17
+[T+10.7h] Diastolic blood pressure=69.0, Mean blood pressure=82, Systolic blood pressure=114.0
+[T+11.5h] Oxygen saturation=89.0
+[T+11.7h] Fraction inspired oxygen=0.5, Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Localizes Pain, Glascow coma scale verbal response=No Response-ETT, Heart Rate=70, Respiratory rate=20, Temperature=35.1
+[T+11.7h] Diastolic blood pressure=123.0, Mean blood pressure=130, Systolic blood pressure=138.0
+[T+11.9h] Oxygen saturation=100.0
+[T+12.7h] Heart Rate=73, Respiratory rate=17
+[T+12.7h] Diastolic blood pressure=91.0, Mean blood pressure=109, Systolic blood pressure=158.0
+[T+12.8h] Oxygen saturation=92.0
+[T+13.7h] Heart Rate=73, Oxygen saturation=99.0, Respiratory rate=17
+[T+13.7h] Diastolic blood pressure=86.0, Mean blood pressure=90, Systolic blood pressure=135.0
+[T+14.7h] Fraction inspired oxygen=0.5, Heart Rate=75, Oxygen saturation=100.0, Respiratory rate=23, Temperature=36.9
+[T+14.7h] Diastolic blood pressure=73.0, Mean blood pressure=87, Systolic blood pressure=127.0
+[T+15.7h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Localizes Pain, Glascow coma scale verbal response=No Response-ETT, Heart Rate=76, Oxygen saturation=99.0, Respiratory rate=26, Temperature=37.1
+[T+15.7h] Diastolic blood pressure=96.0, Mean blood pressure=109, Systolic blood pressure=151.0
+[T+16.7h] Heart Rate=74, Oxygen saturation=100.0, Respiratory rate=17, Temperature=36.9
+[T+16.7h] Diastolic blood pressure=75.0, Mean blood pressure=87, Systolic blood pressure=116.0
+[T+17.3h] Heart Rate=78, Oxygen saturation=100.0, Respiratory rate=19
+[T+17.7h] Heart Rate=74, Oxygen saturation=100.0, Respiratory rate=17, Temperature=36.7
+[T+17.7h] Diastolic blood pressure=75.0, Mean blood pressure=88, Systolic blood pressure=116.0
+[T+18.0h] pH=7.32
+[T+18.7h] Heart Rate=73, Oxygen saturation=100.0, Respiratory rate=15, Temperature=36.7
+[T+18.7h] Diastolic blood pressure=81.0, Mean blood pressure=92, Systolic blood pressure=129.0
+[T+19.7h] Fraction inspired oxygen=0.5, Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Localizes Pain, Glascow coma scale verbal response=No Response-ETT, Heart Rate=74, Oxygen saturation=100.0, Respiratory rate=26, Temperature=36.6
+[T+19.7h] Diastolic blood pressure=79.0, Mean blood pressure=99, Systolic blood pressure=154.0
+[T+20.7h] Heart Rate=79, Respiratory rate=17, Temperature=36.6
+[T+20.7h] Diastolic blood pressure=70.0, Mean blood pressure=81, Systolic blood pressure=111.0
+[T+21.0h] Oxygen saturation=98.0
+[T+21.7h] Heart Rate=80, Oxygen saturation=100.0, Respiratory rate=17, Temperature=36.6
+[T+21.7h] Diastolic blood pressure=68.0, Mean blood pressure=81, Systolic blood pressure=114.0
+[T+22.7h] Heart Rate=77, Oxygen saturation=100.0, Respiratory rate=14, Temperature=36.5
+[T+22.7h] Diastolic blood pressure=73.0, Mean blood pressure=86, Systolic blood pressure=117.0
+[T+23.2h] Glucose=145.0
+[T+23.5h] pH=7.36
+[T+23.7h] Fraction inspired oxygen=0.5, Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Localizes Pain, Glascow coma scale verbal response=No Response-ETT, Heart Rate=78, Oxygen saturation=100.0, Respiratory rate=17, Temperature=36.6
+[T+23.7h] Diastolic blood pressure=77.0, Mean blood pressure=89, Systolic blood pressure=119.0
+[T+24.7h] Heart Rate=71, Oxygen saturation=97.0, Respiratory rate=23, Temperature=36.6
+[T+24.7h] Diastolic blood pressure=82.0, Mean blood pressure=99, Systolic blood pressure=143.0
+[T+25.7h] Heart Rate=71, Oxygen saturation=99.0, Respiratory rate=21, Temperature=36.7
+[T+25.7h] Diastolic blood pressure=93.0, Mean blood pressure=108, Systolic blood pressure=145.0
+[T+26.7h] Fraction inspired oxygen=0.5, Heart Rate=85, Oxygen saturation=100.0, Respiratory rate=18, Temperature=36.7
+[T+26.7h] Diastolic blood pressure=83.0, Mean blood pressure=97, Systolic blood pressure=134.0
+[T+27.7h] Fraction inspired oxygen=0.4, Heart Rate=85, Oxygen saturation=100.0, Respiratory rate=21, Temperature=36.7
+[T+27.7h] Diastolic blood pressure=88.0, Mean blood pressure=103, Systolic blood pressure=136.0
+[T+28.5h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=No Response-ETT
+[T+28.7h] Heart Rate=85, Oxygen saturation=97.0, Respiratory rate=16, Temperature=37.0
+[T+28.7h] Diastolic blood pressure=74.0, Mean blood pressure=88, Systolic blood pressure=113.0
+[T+29.7h] Heart Rate=80, Oxygen saturation=99.0, Respiratory rate=21, Temperature=36.9
+[T+29.7h] Diastolic blood pressure=78.0, Mean blood pressure=96, Systolic blood pressure=135.0
+[T+30.7h] Fraction inspired oxygen=0.4, Heart Rate=75, Respiratory rate=23, Temperature=36.9
+[T+30.7h] Diastolic blood pressure=77.0, Mean blood pressure=93, Systolic blood pressure=129.0
+[T+30.7h] Heart Rate=79, Respiratory rate=24
+[T+31.1h] Oxygen saturation=96.0
+[T+31.2h] Diastolic blood pressure=69.0, Mean blood pressure=89, Systolic blood pressure=134.0
+[T+31.7h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=No Response-ETT, Heart Rate=51, Respiratory rate=23, Temperature=37.3
+[T+31.7h] Diastolic blood pressure=65.0, Mean blood pressure=82, Systolic blood pressure=139.0
+[T+31.7h] Oxygen saturation=100.0
+[T+31.7h] Heart Rate=60, Oxygen saturation=99.0, Respiratory rate=20
+[T+32.2h] Diastolic blood pressure=84.0, Mean blood pressure=98, Systolic blood pressure=137.0
+[T+32.7h] Heart Rate=79, Oxygen saturation=97.0, Respiratory rate=22, Temperature=37.1
+[T+32.7h] Diastolic blood pressure=78.0, Mean blood pressure=93, Systolic blood pressure=132.0
+[T+32.7h] Heart Rate=80, Oxygen saturation=97.0, Respiratory rate=23
+[T+33.2h] Diastolic blood pressure=73.0, Mean blood pressure=89, Systolic blood pressure=135.0
+[T+33.7h] Heart Rate=81, Oxygen saturation=97.0, Respiratory rate=18, Temperature=37.0
+[T+33.7h] Diastolic blood pressure=76.0, Mean blood pressure=87, Systolic blood pressure=112.0
+[T+33.7h] Heart Rate=79, Oxygen saturation=97.0, Respiratory rate=19
+[T+34.2h] Diastolic blood pressure=70.0, Mean blood pressure=84, Systolic blood pressure=116.0
+[T+34.7h] Fraction inspired oxygen=0.4, Heart Rate=78, Oxygen saturation=97.0, Respiratory rate=18, Temperature=37.1
+[T+34.7h] Diastolic blood pressure=78.0, Mean blood pressure=93, Systolic blood pressure=127.0
+[T+34.7h] Heart Rate=79, Oxygen saturation=98.0, Respiratory rate=17
+[T+35.2h] Diastolic blood pressure=73.0, Mean blood pressure=90, Systolic blood pressure=128.0
+[T+35.7h] Heart Rate=77, Oxygen saturation=98.0, Respiratory rate=18, Temperature=36.9
+[T+35.7h] Diastolic blood pressure=75.0, Mean blood pressure=92, Systolic blood pressure=137.0
+[T+35.7h] Heart Rate=77, Oxygen saturation=98.0, Respiratory rate=20
+[T+36.2h] Diastolic blood pressure=80.0, Mean blood pressure=96, Systolic blood pressure=133.0
+[T+36.7h] Heart Rate=76, Oxygen saturation=97.0, Respiratory rate=21, Temperature=37.1
+[T+36.7h] Diastolic blood pressure=77.0, Mean blood pressure=94, Systolic blood pressure=131.0
+[T+36.7h] Heart Rate=80, Oxygen saturation=97.0, Respiratory rate=23
+[T+37.2h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=No Response-ETT
+[T+37.2h] Diastolic blood pressure=68.0, Mean blood pressure=81, Systolic blood pressure=116.0
+[T+37.7h] Heart Rate=57, Oxygen saturation=97.0, Respiratory rate=20
+[T+37.7h] Diastolic blood pressure=109.0, Mean blood pressure=123, Systolic blood pressure=161.0
+[T+37.7h] Heart Rate=63, Oxygen saturation=97.0, Respiratory rate=24
+[T+38.2h] Diastolic blood pressure=88.0, Mean blood pressure=114, Systolic blood pressure=173.0
+[T+38.7h] Heart Rate=83, Oxygen saturation=91.0, Respiratory rate=26
+[T+38.7h] Diastolic blood pressure=79.0, Mean blood pressure=94, Systolic blood pressure=148.0
+[T+39.7h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=78, Oxygen saturation=93.0, Respiratory rate=19, Temperature=36.72222222222222
+[T+39.7h] Diastolic blood pressure=97.0, Mean blood pressure=112, Systolic blood pressure=149.0
+[T+40.7h] Fraction inspired oxygen=0.4, Heart Rate=78, Oxygen saturation=89.0, Respiratory rate=21
+[T+40.7h] Diastolic blood pressure=80.0, Mean blood pressure=96, Systolic blood pressure=145.0
+[T+40.7h] Oxygen saturation=90.0, pH=7.38
+[T+41.7h] Heart Rate=82, Oxygen saturation=99.0, Respiratory rate=28
+[T+41.7h] Diastolic blood pressure=83.0, Mean blood pressure=102, Systolic blood pressure=144.0
+[T+42.7h] Heart Rate=56, Oxygen saturation=98.0, Respiratory rate=22
+[T+42.7h] Diastolic blood pressure=82.0, Mean blood pressure=104, Systolic blood pressure=161.0
+[T+43.7h] Fraction inspired oxygen=0.4, Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=80, Oxygen saturation=97.0, Respiratory rate=25, Temperature=36.666666666666664
+[T+43.7h] Diastolic blood pressure=93.0, Mean blood pressure=111, Systolic blood pressure=151.0
+[T+44.7h] Heart Rate=76, Oxygen saturation=98.0, Respiratory rate=23
+[T+44.7h] Diastolic blood pressure=88.0, Mean blood pressure=105, Systolic blood pressure=151.0
+[T+45.7h] Heart Rate=79, Oxygen saturation=94.0, Respiratory rate=22
+[T+45.7h] Diastolic blood pressure=74.0, Mean blood pressure=98, Systolic blood pressure=157.0
+[T+46.1h] Oxygen saturation=92.0, pH=7.42
+[T+46.7h] Heart Rate=50, Oxygen saturation=88.0, Respiratory rate=24
+[T+46.7h] Diastolic blood pressure=77.0, Mean blood pressure=100, Systolic blood pressure=157.0
+[T+47.7h] Fraction inspired oxygen=0.4, Glascow coma scale eye opening=None, Glascow coma scale motor response=Flex-withdraws, Glascow coma scale verbal response=No Response-ETT, Heart Rate=50, Oxygen saturation=91.0, Respiratory rate=21, Temperature=36.55555555555556
+[T+47.7h] Diastolic blood pressure=72.0, Mean blood pressure=100, Systolic blood pressure=182.0
+
+--- DECISION ---
+Does this patient die in the ICU? Answer only using one word - Yes or No
+Answer: 
+--------------------
+============================================================
+
+
+--- Standard Agent (2/2) ---
+Stay ID: 32610785
+[TEXT BLOCK]:
+You are an expert ICU risk prediction model. This patient was just admitted.
+
+
+--------------------
+[TEXT BLOCK]:
+--- Patient DATA ---
+
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 77
+ - Gender: F
+ - Ethnicity: WHITE
+
+History of Present Illness:
+___ is a ___ female with hx cerebral aneurysm 
+clipping in ___ who presents from OSH with left cerebellar 
+hypodensity concerning for underlying lesion. Patient reports 
+that three weeks ago she started having headaches, which is 
+abnormal for her. She describes the headaches to be global and 
+resolve with Tylenol, but at the worst was an ___. She also 
+reports having difficulty walking, which also started about 
+three weeks ago. She describes her walking as "staggering side 
+to side." She denies any vision changes, nausea, vomiting, 
+confusion, or word finding difficulty. She saw her eye doctor 
+this morning for routine visit, who referred her to the ED for 
+evaluation of these symptoms. OSH CT showed an area of 
+hypodensity in the left cerebellum, concerning for underlying 
+lesion. She was subsequently transferred to ___.
+
+Past Medical History:
+- ___ 
+- Hypertension 
+- S/p aneurysm clipping ___ at ___ by Dr. ___
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+No known history of stroke, cancer, aneurysm.
+
+Medications on Admission:
+- ASA 81mg
+- Alendronate 70mg weekly
+- Vitamin D3 ___ units daily
+- Levothyroxine 88mcg daily
+- Lisinopril 20
+
+
+Radiology Reports:
+EXAMINATION:  CT ABD AND PELVIS WITH CONTRAST
+
+INDICATION:  History: ___ with new cerebellar mass// mass?
+
+TECHNIQUE:  Single phase contrast: MDCT axial images were acquired through the
+abdomen and pelvis following intravenous contrast administration.
+Oral contrast was administered.
+Coronal and sagittal reformations were performed and reviewed on PACS.
+
+DOSE:  Acquisition sequence: 1) Spiral Acquisition 4.9 s, 65.2 cm; CTDIvol =
+5.6 mGy (Body) DLP = 366.4 mGy-cm. 2) Stationary Acquisition 0.6 s, 0.5 cm;
+CTDIvol = 3.0 mGy (Body) DLP = 1.5 mGy-cm. 3) Stationary Acquisition 4.8 s,
+0.5 cm; CTDIvol = 24.4 mGy (Body) DLP = 12.2 mGy-cm. Total DLP (Body) = 380
+mGy-cm.
+
+COMPARISON:  There are no comparisons studies listed.
+
+FINDINGS: 
+
+LOWER CHEST: Please refer to separate report of CT chest performed on the same
+day for description of the thoracic findings.
+
+ABDOMEN:
+
+HEPATOBILIARY: There a few subcentimeter hypoattenuating lesions with the
+liver which are too small to characterize.  There is no evidence of
+intrahepatic or extrahepatic biliary dilatation. The gallbladder is within
+normal limits.
+
+PANCREAS: The pancreas has normal attenuation throughout, without evidence of
+focal lesions or pancreatic ductal dilatation.  There is no peripancreatic
+stranding.
+
+SPLEEN: The spleen shows normal size and attenuation throughout, without
+evidence of focal lesions.
+
+ADRENALS: The right and left adrenal glands are normal in size and shape.
+
+URINARY: The kidneys are of normal and symmetric size with normal nephrogram.
+There is no evidence of focal renal lesions or hydronephrosis.  There is no
+perinephric abnormality.
+
+GASTROINTESTINAL: The stomach is unremarkable. Small bowel loops demonstrate
+normal caliber, wall thickness, and enhancement throughout. Suture is seen in
+the RLQ, possibly from prior appendectomy. The colon and rectum are otherwise
+within normal limits.
+
+PELVIS: The urinary bladder and distal ureters are unremarkable.  There is no
+free fluid in the pelvis.
+
+REPRODUCTIVE ORGANS: Fibroid uterus.  No adnexal masses.
+
+LYMPH NODES: There is no retroperitoneal or mesenteric lymphadenopathy. There
+is no pelvic or inguinal lymphadenopathy.
+
+VASCULAR: There is no abdominal aortic aneurysm. Moderate atherosclerotic
+disease is noted.
+
+BONES: L1 vertebral body measures 85 Hounsfield units, suggestive for
+osteopenia given the patient's age and gender.  There is no evidence of
+worrisome osseous lesions or acute fracture.
+
+SOFT TISSUES: The abdominal and pelvic wall is within normal limits.
+
+IMPRESSION:
+
+
+1. No suspicious mass within the abdomen or pelvis.
+2. Osteopenia
+3. Same-day chest CT is reported separately.
+ EXAMINATION:  Chest CT with contrast
+
+INDICATION:  ___ with new cerebellar mass.  Right for thoracic metastases.
+
+TECHNIQUE:  MDCT axial images were acquired through the chest, abdomen and
+pelvis following intravenous contrast administration with split bolus
+technique.
+IV Contrast:  130 mL Omnipaque.
+Oral contrast was not administered.
+Coronal and sagittal reformations were performed and reviewed on PACS.
+
+DOSE:  Acquisition sequence:
+   1) Spiral Acquisition 4.9 s, 65.2 cm; CTDIvol = 5.6 mGy (Body) DLP = 366.4
+mGy-cm.
+   2) Stationary Acquisition 0.6 s, 0.5 cm; CTDIvol = 3.0 mGy (Body) DLP = 1.5
+mGy-cm.
+   3) Stationary Acquisition 4.8 s, 0.5 cm; CTDIvol = 24.4 mGy (Body) DLP =
+12.2 mGy-cm.
+ Total DLP (Body) = 380 mGy-cm.
+** Note: This radiation dose report was copied from CLIP ___ (CT ABD AND
+PELVIS WITH CONTRAST)
+
+COMPARISON:  None.
+
+FINDINGS: 
+
+NECK, THORACIC INLET, AXILLAE, CHEST WALL: Thyroid is unremarkable without
+nodules warranting further evaluation.  No supraclavicular or axillary
+lymphadenopathy.  Largest axillary node on the right measures 7 mm (02:20). 
+No suspicious lesions in the chest wall.
+
+UPPER ABDOMEN: Please refer to separate report for abdominopelvic CT from the
+same day for detailed abdominopelvic findings.
+
+MEDIASTINUM: No mass or lymphadenopathy.  Several lower left paratracheal
+nodes are not pathologically enlarged, measuring up 8 mm (302:78).  Subcarinal
+node is in the upper limits of normal measuring approximately 10 mm (302:106).
+
+HILA: No hilar mass or lymphadenopathy.
+
+HEART and PERICARDIUM: Heart is normal size.  The aorta is tortuous and mildly
+calcified.  Moderate calcifications are seen in coronary arteries, mild in the
+aortic valve.  No pericardial effusion.
+PLEURA: No pleural effusion or pneumothorax.
+LUNG:
+
+1. PARENCHYMA:  Extensive upper lobe dominant centrilobular emphysema.  Left
+paramedian spiculated mass abutting the aortic arch measures 2.2 x 1.7 cm
+(302: 47).  Also noted is a right upper lobe nodule 1.3 cm with associated
+peribronchial thickening and bronchiectasis (302:25).
+2. AIRWAYS: Traction bronchiectasis most notable in the right upper lobe. 
+Bilateral scattered endobronchial mucous plugging, more extensive at the
+segmental level in the lower lobes.
+3. VESSELS: Pulmonary artery is normal caliber.  No central pulmonary emboli.
+CHEST CAGE: No suspicious osseous lesions or acute fracture.
+
+IMPRESSION:
+
+
+1. Left paramedian spiculated mass measuring up to 2.2 cm.  Amenable to
+endobronchial tissue sampling.
+2. Irregular right upper lobe nodule, also suspicious for malignancy.
+3. Extensive centrilobular emphysema with bronchiectasis and scattered mucous
+plugging.
+
+
+Chest X-ray: [Not Available]
+
+Electronic Health Records:
+EHR Clinical Time-Series Log (0-48h):
+[T+0.1h] Temperature=36.611111111111114
+[T+0.1h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented
+[T+0.3h] Heart Rate=72, Oxygen saturation=93.0, Respiratory rate=14
+[T+0.6h] Heart Rate=57, Oxygen saturation=94.0, Respiratory rate=18
+[T+0.8h] Diastolic blood pressure=71.0, Mean blood pressure=85, Systolic blood pressure=129.0
+[T+1.6h] Heart Rate=84, Oxygen saturation=94.0, Respiratory rate=17
+[T+2.6h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=61, Oxygen saturation=97.0, Respiratory rate=17
+[T+2.7h] Diastolic blood pressure=66.0, Mean blood pressure=78, Systolic blood pressure=106.0
+[T+3.6h] Heart Rate=77, Oxygen saturation=93.0, Respiratory rate=18
+[T+4.6h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=65, Oxygen saturation=96.0, Respiratory rate=17, Temperature=36.55555555555556
+[T+4.6h] Diastolic blood pressure=63.0, Mean blood pressure=73, Systolic blood pressure=98.0
+[T+5.6h] Heart Rate=62, Oxygen saturation=95.0, Respiratory rate=16
+[T+6.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Glucose=121.0, Heart Rate=68, Oxygen saturation=91.0, Respiratory rate=21
+[T+6.6h] Diastolic blood pressure=64.0, Mean blood pressure=75, Systolic blood pressure=110.0
+[T+7.2h] Glucose=127.0
+[T+7.6h] Heart Rate=56, Oxygen saturation=94.0, Respiratory rate=19, Temperature=36.611111111111114
+[T+8.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=61, Oxygen saturation=93.0, Respiratory rate=19
+[T+8.6h] Diastolic blood pressure=66.0, Mean blood pressure=81, Systolic blood pressure=114.0
+[T+9.6h] Heart Rate=67, Oxygen saturation=90.0, Respiratory rate=24
+[T+10.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented
+[T+10.7h] Heart Rate=66, Oxygen saturation=92.0, Respiratory rate=20
+[T+10.7h] Diastolic blood pressure=74.0, Mean blood pressure=91, Systolic blood pressure=131.0
+[T+11.6h] Heart Rate=60, Oxygen saturation=96.0, Respiratory rate=25
+[T+12.5h] Diastolic blood pressure=72.0, Mean blood pressure=92, Systolic blood pressure=139.0
+[T+12.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Glucose=126.0, Temperature=36.77777777777778
+[T+12.6h] Heart Rate=62, Oxygen saturation=92.0, Respiratory rate=17
+[T+12.6h] Diastolic blood pressure=53.0, Mean blood pressure=63, Systolic blood pressure=96.0
+[T+13.6h] Heart Rate=59, Oxygen saturation=94.0, Respiratory rate=20
+[T+13.9h] Diastolic blood pressure=71.0, Mean blood pressure=88, Systolic blood pressure=133.0
+[T+14.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=71, Oxygen saturation=93.0, Respiratory rate=22
+[T+14.6h] Diastolic blood pressure=69.0, Mean blood pressure=83, Systolic blood pressure=124.0
+[T+15.6h] Heart Rate=65, Oxygen saturation=94.0, Respiratory rate=19
+[T+16.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=62, Oxygen saturation=91.0, Respiratory rate=21, Temperature=36.888888888888886
+[T+17.4h] Diastolic blood pressure=84.0, Mean blood pressure=98, Systolic blood pressure=138.0
+[T+17.6h] Glucose=125.0, Heart Rate=74, Oxygen saturation=95.0, Respiratory rate=23
+[T+18.6h] Diastolic blood pressure=81.0, Mean blood pressure=92, Systolic blood pressure=125.0
+[T+18.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=78, Oxygen saturation=91.0, Respiratory rate=17
+[T+18.6h] Diastolic blood pressure=59.0, Mean blood pressure=78, Systolic blood pressure=134.0
+[T+19.6h] Heart Rate=64, Oxygen saturation=92.0, Respiratory rate=16
+[T+20.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=66, Oxygen saturation=95.0, Respiratory rate=15, Temperature=36.94444444444444
+[T+21.5h] Diastolic blood pressure=71.0, Mean blood pressure=86, Systolic blood pressure=125.0
+[T+21.6h] Heart Rate=57, Oxygen saturation=97.0, Respiratory rate=20
+[T+22.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Glucose=108.0, Heart Rate=55, Respiratory rate=17
+[T+22.6h] Diastolic blood pressure=99.0, Mean blood pressure=106, Oxygen saturation=95.0, Systolic blood pressure=114.0
+[T+23.6h] Heart Rate=53, Oxygen saturation=97.0, Respiratory rate=13
+[T+24.6h] Glascow coma scale eye opening=To Speech, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=49, Oxygen saturation=97.0, Respiratory rate=13, Temperature=36.611111111111114
+[T+24.6h] Diastolic blood pressure=67.0, Mean blood pressure=83, Systolic blood pressure=130.0
+[T+25.6h] Heart Rate=50, Oxygen saturation=99.0, Respiratory rate=12
+[T+26.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented
+[T+26.6h] Heart Rate=68, Respiratory rate=18
+[T+26.6h] Oxygen saturation=97.0
+[T+27.3h] Diastolic blood pressure=79.0, Mean blood pressure=88, Systolic blood pressure=109.0
+[T+27.6h] Heart Rate=52, Respiratory rate=16
+[T+28.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=63, Respiratory rate=16, Temperature=37.0
+[T+28.6h] Diastolic blood pressure=44.0, Mean blood pressure=60, Systolic blood pressure=107.0
+[T+29.1h] Oxygen saturation=99.0
+[T+29.6h] Heart Rate=52, Oxygen saturation=95.0, Respiratory rate=19
+[T+30.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=63, Oxygen saturation=93.0, Respiratory rate=17
+[T+30.8h] Diastolic blood pressure=73.0, Mean blood pressure=84, Systolic blood pressure=117.0
+[T+31.6h] Heart Rate=47, Oxygen saturation=99.0, Respiratory rate=18, Temperature=36.888888888888886
+[T+32.5h] Diastolic blood pressure=64.0, Mean blood pressure=74, Systolic blood pressure=103.0
+[T+32.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Glucose=120.0, Heart Rate=64, Oxygen saturation=97.0, Respiratory rate=19
+[T+32.6h] Diastolic blood pressure=70.0, Mean blood pressure=83, Systolic blood pressure=109.0
+[T+33.7h] Heart Rate=57, Oxygen saturation=92.0, Respiratory rate=16
+[T+34.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=58, Oxygen saturation=97.0, Respiratory rate=20
+[T+35.3h] Diastolic blood pressure=67.0, Mean blood pressure=74, Systolic blood pressure=108.0
+[T+35.6h] Heart Rate=52, Oxygen saturation=98.0, Respiratory rate=16
+[T+36.4h] Diastolic blood pressure=62.0, Mean blood pressure=72, Systolic blood pressure=106.0
+[T+36.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Glucose=139.0, Heart Rate=61, Respiratory rate=18, Temperature=36.77777777777778
+[T+36.6h] Diastolic blood pressure=71.0, Mean blood pressure=86, Oxygen saturation=95.0, Systolic blood pressure=127.0
+[T+37.6h] Heart Rate=57, Oxygen saturation=95.0, Respiratory rate=23
+[T+37.9h] Diastolic blood pressure=62.0, Mean blood pressure=76, Systolic blood pressure=111.0
+[T+38.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=71, Oxygen saturation=94.0, Respiratory rate=20
+[T+38.6h] Mean blood pressure=102
+[T+39.6h] Heart Rate=75, Oxygen saturation=94.0, Respiratory rate=22
+[T+40.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Glucose=191.0, Heart Rate=63, Oxygen saturation=90.0, Respiratory rate=18, Temperature=36.72222222222222
+[T+40.9h] Diastolic blood pressure=65.0, Mean blood pressure=83, Systolic blood pressure=120.0
+[T+41.6h] Heart Rate=63, Oxygen saturation=92.0, Respiratory rate=23
+[T+42.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Glucose=108.0, Heart Rate=64, Oxygen saturation=95.0
+[T+43.2h] Diastolic blood pressure=73.0, Mean blood pressure=83, Systolic blood pressure=113.0
+[T+44.6h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented, Heart Rate=61, Oxygen saturation=87.0, Temperature=36.388888888888886
+[T+44.7h] Diastolic blood pressure=78.0, Mean blood pressure=86, Systolic blood pressure=103.0
+[T+45.6h] Heart Rate=60, Oxygen saturation=95.0
+[T+46.6h] Glucose=129.0, Heart Rate=63, Oxygen saturation=93.0
+[T+46.6h] Diastolic blood pressure=76.0, Mean blood pressure=89, Systolic blood pressure=120.0
+[T+47.1h] Glascow coma scale eye opening=Spontaneously, Glascow coma scale motor response=Obeys Commands, Glascow coma scale verbal response=Oriented
+[T+47.6h] Heart Rate=56, Oxygen saturation=93.0
+
+--- DECISION ---
+Does this patient die in the ICU? Answer only using one word - Yes or No
+Answer: 
+--------------------
+============================================================
+
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: SingleAgent
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8948370715192552,
+            "recall": 0.9762234533702677,
+            "f1-score": 0.9337602119673217,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.4824120603015075,
+            "recall": 0.16188870151770657,
+            "f1-score": 0.24242424242424243,
+            "support": 593.0
+        },
+        "accuracy": 0.8781725888324873,
+        "macro avg": {
+            "precision": 0.6886245659103813,
+            "recall": 0.5690560774439871,
+            "f1-score": 0.588092227195782,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.8451785879350675,
+            "recall": 0.8781725888324873,
+            "f1-score": 0.8505191500507641,
+            "support": 4925.0
+        },
+        "auroc": 0.7557842418240507,
+        "auprc": 0.3305968477418906
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 15949,
+        "average_modalities_per_patient": 3.2383756345177663,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 1174,
+            "radiology_report": 4925
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.2383756345177665,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 1.0,
+            "radiology_report": 1.1057476425684778
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/QWEN-cxr-sa/SingleAgent_detailed_results.json
+Evaluation summary saved to: ./results/QWEN-cxr-sa/SingleAgent_evaluation_summary.json

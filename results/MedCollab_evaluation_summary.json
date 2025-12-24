@@ -1,0 +1,226 @@
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8783406461906661,
+            "recall": 0.5083102493074793,
+            "f1-score": 0.643953794414388,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.11910669975186104,
+            "recall": 0.4856661045531197,
+            "f1-score": 0.19129857190302224,
+            "support": 593.0
+        },
+        "accuracy": 0.5055837563451777,
+        "macro avg": {
+            "precision": 0.4987236729712636,
+            "recall": 0.4969881769302995,
+            "f1-score": 0.41762618315870514,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.7869242542641258,
+            "recall": 0.5055837563451777,
+            "f1-score": 0.5894513483333241,
+            "support": 4925.0
+        }
+    },
+    "phenotyping_metrics": {
+        "Acute and unspecified renal failure": {
+            "precision": 0.3397226753670473,
+            "recall": 0.5,
+            "f1-score": 0.4045653229723167,
+            "support": 1666.0
+        },
+        "Acute cerebrovascular disease": {
+            "precision": 0.06683066830668306,
+            "recall": 0.45403899721448465,
+            "f1-score": 0.11651179413867048,
+            "support": 359.0
+        },
+        "Acute myocardial infarction": {
+            "precision": 0.09178743961352658,
+            "recall": 0.4924406047516199,
+            "f1-score": 0.15473362741771293,
+            "support": 463.0
+        },
+        "Cardiac dysrhythmias": {
+            "precision": 0.373371335504886,
+            "recall": 0.5052341597796143,
+            "f1-score": 0.4294076328728635,
+            "support": 1815.0
+        },
+        "Chronic kidney disease": {
+            "precision": 0.23188992310805343,
+            "recall": 0.5152877697841727,
+            "f1-score": 0.3198437063912922,
+            "support": 1112.0
+        },
+        "Chronic obstructive pulmonary disease and bronchiectasis": {
+            "precision": 0.1589322381930185,
+            "recall": 0.48074534161490684,
+            "f1-score": 0.2388888888888889,
+            "support": 805.0
+        },
+        "Complications of surgical procedures or medical care": {
+            "precision": 0.2417004048582996,
+            "recall": 0.49502487562189057,
+            "f1-score": 0.3248095756256801,
+            "support": 1206.0
+        },
+        "Conduction disorders": {
+            "precision": 0.1217564870259481,
+            "recall": 0.527681660899654,
+            "f1-score": 0.1978592280246513,
+            "support": 578.0
+        },
+        "Congestive heart failure; nonhypertensive": {
+            "precision": 0.29546366920915296,
+            "recall": 0.5044551062371487,
+            "f1-score": 0.37265822784810126,
+            "support": 1459.0
+        },
+        "Coronary atherosclerosis and other heart disease": {
+            "precision": 0.34146341463414637,
+            "recall": 0.5029940119760479,
+            "f1-score": 0.4067796610169492,
+            "support": 1670.0
+        },
+        "Diabetes mellitus with complications": {
+            "precision": 0.11516155758077878,
+            "recall": 0.4868651488616462,
+            "f1-score": 0.18626465661641542,
+            "support": 571.0
+        },
+        "Diabetes mellitus without complication": {
+            "precision": 0.1758018676410881,
+            "recall": 0.4926052332195677,
+            "f1-score": 0.25912627169359664,
+            "support": 879.0
+        },
+        "Disorders of lipid metabolism": {
+            "precision": 0.4000812347684809,
+            "recall": 0.4912718204488778,
+            "f1-score": 0.44101186478620996,
+            "support": 2005.0
+        },
+        "Essential hypertension": {
+            "precision": 0.4238517324738114,
+            "recall": 0.5089501693275278,
+            "f1-score": 0.46251923499670256,
+            "support": 2067.0
+        },
+        "Fluid and electrolyte disorders": {
+            "precision": 0.4351362342415616,
+            "recall": 0.48482102401449934,
+            "f1-score": 0.4586369481354479,
+            "support": 2207.0
+        },
+        "Gastrointestinal hemorrhage": {
+            "precision": 0.07298690995636652,
+            "recall": 0.5242165242165242,
+            "f1-score": 0.12813370473537605,
+            "support": 351.0
+        },
+        "Hypertension with complications and secondary hypertension": {
+            "precision": 0.23869877482044782,
+            "recall": 0.4816709292412617,
+            "f1-score": 0.3192090395480226,
+            "support": 1173.0
+        },
+        "Other liver diseases": {
+            "precision": 0.1409090909090909,
+            "recall": 0.4684065934065934,
+            "f1-score": 0.21664548919949175,
+            "support": 728.0
+        },
+        "Other lower respiratory disease": {
+            "precision": 0.12057877813504823,
+            "recall": 0.49504950495049505,
+            "f1-score": 0.19392372333548805,
+            "support": 606.0
+        },
+        "Other upper respiratory disease": {
+            "precision": 0.061975209916033586,
+            "recall": 0.5218855218855218,
+            "f1-score": 0.11079342387419586,
+            "support": 297.0
+        },
+        "Pleurisy; pneumothorax; pulmonary collapse": {
+            "precision": 0.0870980870980871,
+            "recall": 0.4672489082969432,
+            "f1-score": 0.14682675814751286,
+            "support": 458.0
+        },
+        "Pneumonia (except that caused by tuberculosis or sexually transmitted disease)": {
+            "precision": 0.16946377404830126,
+            "recall": 0.47586206896551725,
+            "f1-score": 0.24992453969212194,
+            "support": 870.0
+        },
+        "Respiratory failure; insufficiency; arrest (adult)": {
+            "precision": 0.2384,
+            "recall": 0.4974958263772955,
+            "f1-score": 0.3223363980530016,
+            "support": 1198.0
+        },
+        "Septicemia (except in labor)": {
+            "precision": 0.19705641864268192,
+            "recall": 0.4688715953307393,
+            "f1-score": 0.27748992515831894,
+            "support": 1028.0
+        },
+        "Shock": {
+            "precision": 0.1720081135902637,
+            "recall": 0.4851258581235698,
+            "f1-score": 0.25396825396825395,
+            "support": 874.0
+        },
+        "micro avg": {
+            "precision": 0.21237672824162077,
+            "recall": 0.4943089430894309,
+            "f1-score": 0.2971044138369926,
+            "support": 26445.0
+        },
+        "macro avg": {
+            "precision": 0.21248504158571213,
+            "recall": 0.49312997018184485,
+            "f1-score": 0.27971471588549135,
+            "support": 26445.0
+        },
+        "weighted avg": {
+            "precision": 0.27390944422063135,
+            "recall": 0.4943089430894309,
+            "f1-score": 0.337914482753637,
+            "support": 26445.0
+        },
+        "samples avg": {
+            "precision": 0.21221515336372873,
+            "recall": 0.48026247469394684,
+            "f1-score": 0.27576589580173816,
+            "support": 26445.0
+        }
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 14764,
+        "average_modalities_per_patient": 2.997766497461929,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 2508,
+            "radiology_report": 2406
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.5092385786802031,
+            "radiology_report": 0.4885279187817259
+        },
+        "percentage_request_when_available": {
+            "cxr": 0.5092385786802031,
+            "radiology_report": 0.4885279187817259
+        }
+    },
+    "total_patients_evaluated": 4925
+}

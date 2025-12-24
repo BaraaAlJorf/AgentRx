@@ -1,0 +1,323 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/Qwen/Debate_Unimodal-full",
+    "agent_setup": "Debate_Unimodal",
+    "seed": 42,
+    "batch_size": 3,
+    "num_workers": 4,
+    "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl",
+    "few_shot_data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/train.jsonl",
+    "consistency_samples": 5,
+    "num_shots": 2,
+    "refine_iterations": 1,
+    "debate_rounds": 3,
+    "modalities": "ehr-cxr-rr-ps",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 2
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/Qwen/Debate_Unimodal-full
+
+[Status] Initializing Data Loader from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl
+
+[Pre-Loading] Initializing parallel workers (4) to load data into RAM...
+[Pre-Loading] Successfully loaded 4925 samples into RAM.
+
+Starting simulation with agent setup: 'Debate_Unimodal'...
+Initializing Model and Processor for 'Qwen/Qwen2.5-VL-7B-Instruct'...
+⚡ Applying Left-Padding fix for Qwen...
+Loading Qwen/Qwen2.5-VL-7B-Instruct as Qwen2_5_VLForConditionalGeneration...
+✅ Using Token IDs - Yes: 9454, No: 2753
+✅ Model loaded successfully.
+
+--- Debate UniModal Round 1 (1/2) ---
+Stay ID: 37510196
+[TEXT BLOCK]:
+You are a Radiology Report Specialist. Analyze the text report. 
+
+--- COLLEAGUE OPINIONS ---
+EHR Specialist: Yes
+CXR Specialist: No
+Patient Summary Specialist: No
+
+--- TASK ---
+Update your analysis based on colleagues.
+Analysis:
+--------------------
+[TEXT BLOCK]:
+--- Patient DATA ---
+
+Radiology Reports:
+EXAMINATION:  CHEST (SINGLE VIEW)
+
+INDICATION:  PACER WIRE INSERTION
+
+IMPRESSION: 
+
+Fluoroscopic images show placement of a temporary pacer wider that appears to
+extend to the right ventricle.  Further information can be gathered from the
+procedure report.
+ EXAMINATION:  CHEST PORT. LINE PLACEMENT
+
+INDICATION:  ___ year old woman with COPD, s/p respiratory arrest and
+intubation with temp wire placement  // please verify placement of ET tube and
+right sided temp pacing wire   Contact name: ___: ___   
+please verify placement of ET tube and right sided temp pacing wire
+
+IMPRESSION: 
+
+In comparison with the study of ___, there has been placement of a right
+IJ temporary pacer that extends to the region of the right ventricle.  No
+evidence of pneumothorax.  Endotracheal tube is now in place with its tip
+approximately 4.5 cm above the carina.
+Otherwise little change in the appearance of the heart and lungs.
+ EXAMINATION:  CHEST (PORTABLE AP)
+
+INDICATION:  ___ year old woman with severe COPD s/p cardiac arrest  // Eval
+for interval change
+
+IMPRESSION: 
+
+Compared to prior chest radiographs since ___, most recently ___
+and ___.
+
+Mild pulmonary edema has not resolved.  Moderate cardiomegaly is stable. 
+Pleural effusion, small if any.  No pneumothorax.
+
+Right transjugular temporary pacer lead tip projects over the floor of the
+right ventricle.  ET tube in standard placement.  Esophageal probe ends at the
+level of the carina.  Transesophageal drainage tube passes into the stomach
+and out of view.
+
+
+ EXAMINATION:  CT HEAD W/O CONTRAST Q111 CT HEAD
+
+INDICATION:  ___ woman status post cardiac arrest.
+
+TECHNIQUE:  Contiguous axial images of the brain were obtained without
+contrast.
+
+DOSE:  Acquisition sequence:
+   1) Sequenced Acquisition 10.0 s, 17.0 cm; CTDIvol = 48.8 mGy (Head) DLP =
+829.0 mGy-cm.
+ Total DLP (Head) = 842 mGy-cm.
+
+COMPARISON:  ___ noncontrast sinus CT.
+
+FINDINGS: 
+
+No sulcal effacement or loss of gray-white matter differentiation.  There is
+prominence of the ventricles and sulci suggestive of involutional changes. No
+acute intracranial hemorrhage.
+
+There is no evidence of fracture.  Opacification of the maxillary sinuses and
+mastoid air cells.  Otherwise the visualized portion of the paranasal sinuses
+and middle ear cavities are clear.  The visualized portion of the orbits are
+unremarkable.
+
+IMPRESSION: 
+
+No evidence of infarction or hemorrhage; however, initial head CT may be
+normal in the setting of hypoxic brain injury, so could consider obtaining a
+brain MRI for further evaluation if clinically indicated, or a repeat head CT
+in 1 day.
+
+RECOMMENDATION(S):  No evidence of large ischemic infarct or intracranial
+hemorrhage; however, initial head CT may be normal in the setting of hypoxic
+brain injury, so could consider obtaining a brain MRI for further evaluation
+if clinically indicated, or a repeat head CT in 1 day.
+
+NOTIFICATION:  The findings were discussed with Dr. ___ by Dr. ___ on the
+telephone on ___ at 6:23 ___, 20 minutes after discovery of the findings.
+
+
+--- DECISION ---
+Does this patient die in the ICU? Answer only using one word - Yes or No
+Answer: 
+--------------------
+============================================================
+
+
+--- Debate UniModal Round 2 (2/2) ---
+Stay ID: 37510196
+[TEXT BLOCK]:
+You are a Radiology Report Specialist. Analyze the text report. 
+
+--- COLLEAGUE OPINIONS ---
+EHR Specialist: No
+CXR Specialist: No
+Patient Summary Specialist: No
+
+--- TASK ---
+Update your analysis based on colleagues.
+Analysis:
+--------------------
+[TEXT BLOCK]:
+--- Patient DATA ---
+
+Radiology Reports:
+EXAMINATION:  CHEST (SINGLE VIEW)
+
+INDICATION:  PACER WIRE INSERTION
+
+IMPRESSION: 
+
+Fluoroscopic images show placement of a temporary pacer wider that appears to
+extend to the right ventricle.  Further information can be gathered from the
+procedure report.
+ EXAMINATION:  CHEST PORT. LINE PLACEMENT
+
+INDICATION:  ___ year old woman with COPD, s/p respiratory arrest and
+intubation with temp wire placement  // please verify placement of ET tube and
+right sided temp pacing wire   Contact name: ___: ___   
+please verify placement of ET tube and right sided temp pacing wire
+
+IMPRESSION: 
+
+In comparison with the study of ___, there has been placement of a right
+IJ temporary pacer that extends to the region of the right ventricle.  No
+evidence of pneumothorax.  Endotracheal tube is now in place with its tip
+approximately 4.5 cm above the carina.
+Otherwise little change in the appearance of the heart and lungs.
+ EXAMINATION:  CHEST (PORTABLE AP)
+
+INDICATION:  ___ year old woman with severe COPD s/p cardiac arrest  // Eval
+for interval change
+
+IMPRESSION: 
+
+Compared to prior chest radiographs since ___, most recently ___
+and ___.
+
+Mild pulmonary edema has not resolved.  Moderate cardiomegaly is stable. 
+Pleural effusion, small if any.  No pneumothorax.
+
+Right transjugular temporary pacer lead tip projects over the floor of the
+right ventricle.  ET tube in standard placement.  Esophageal probe ends at the
+level of the carina.  Transesophageal drainage tube passes into the stomach
+and out of view.
+
+
+ EXAMINATION:  CT HEAD W/O CONTRAST Q111 CT HEAD
+
+INDICATION:  ___ woman status post cardiac arrest.
+
+TECHNIQUE:  Contiguous axial images of the brain were obtained without
+contrast.
+
+DOSE:  Acquisition sequence:
+   1) Sequenced Acquisition 10.0 s, 17.0 cm; CTDIvol = 48.8 mGy (Head) DLP =
+829.0 mGy-cm.
+ Total DLP (Head) = 842 mGy-cm.
+
+COMPARISON:  ___ noncontrast sinus CT.
+
+FINDINGS: 
+
+No sulcal effacement or loss of gray-white matter differentiation.  There is
+prominence of the ventricles and sulci suggestive of involutional changes. No
+acute intracranial hemorrhage.
+
+There is no evidence of fracture.  Opacification of the maxillary sinuses and
+mastoid air cells.  Otherwise the visualized portion of the paranasal sinuses
+and middle ear cavities are clear.  The visualized portion of the orbits are
+unremarkable.
+
+IMPRESSION: 
+
+No evidence of infarction or hemorrhage; however, initial head CT may be
+normal in the setting of hypoxic brain injury, so could consider obtaining a
+brain MRI for further evaluation if clinically indicated, or a repeat head CT
+in 1 day.
+
+RECOMMENDATION(S):  No evidence of large ischemic infarct or intracranial
+hemorrhage; however, initial head CT may be normal in the setting of hypoxic
+brain injury, so could consider obtaining a brain MRI for further evaluation
+if clinically indicated, or a repeat head CT in 1 day.
+
+NOTIFICATION:  The findings were discussed with Dr. ___ by Dr. ___ on the
+telephone on ___ at 6:23 ___, 20 minutes after discovery of the findings.
+
+
+--- DECISION ---
+Does this patient die in the ICU? Answer only using one word - Yes or No
+Answer: 
+--------------------
+============================================================
+
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: Debate_Unimodal
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8795939086294416,
+            "recall": 1.0,
+            "f1-score": 0.9359403694501458,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 593.0
+        },
+        "accuracy": 0.8795939086294416,
+        "macro avg": {
+            "precision": 0.4397969543147208,
+            "recall": 0.5,
+            "f1-score": 0.4679701847250729,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.7736854440980184,
+            "recall": 0.8795939086294416,
+            "f1-score": 0.8232474478087374,
+            "support": 4925.0
+        },
+        "auroc": 0.5612150995221257,
+        "auprc": 0.171411975561105
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 19700,
+        "average_modalities_per_patient": 4.0,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 4925,
+            "radiology_report": 4925
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 1.0,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 4.195059625212947,
+            "radiology_report": 1.1057476425684778
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/Qwen/Debate_Unimodal-full/Debate_Unimodal_detailed_results.json
+Evaluation summary saved to: ./results/Qwen/Debate_Unimodal-full/Debate_Unimodal_evaluation_summary.json

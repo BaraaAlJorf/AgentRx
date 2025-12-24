@@ -1,0 +1,34 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/Prisma",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 8,
+    "num_workers": 4,
+    "model_id": "QuixiAI/Prisma-VL-8B",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/val.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 0
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/Prisma
+Data loaded from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/val.jsonl
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'QuixiAI/Prisma-VL-8B'...
+The repository QuixiAI/Prisma-VL-8B contains custom code which must be executed to correctly load the model. You can inspect the repository content at https://hf.co/QuixiAI/Prisma-VL-8B .
+ You can inspect the repository content at https://hf.co/QuixiAI/Prisma-VL-8B.
+You can avoid this prompt in future by passing the argument `trust_remote_code=True`.
+
+Do you wish to run the custom code? [y/N] ❌ Failed to load model 'QuixiAI/Prisma-VL-8B'. Error: The repository QuixiAI/Prisma-VL-8B contains custom code which must be executed to correctly load the model. You can inspect the repository content at https://hf.co/QuixiAI/Prisma-VL-8B .
+ You can inspect the repository content at https://hf.co/QuixiAI/Prisma-VL-8B.
+Please pass the argument `trust_remote_code=True` to allow custom code to be run.

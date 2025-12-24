@@ -1,0 +1,52 @@
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8918003162412469,
+            "recall": 0.9113573407202216,
+            "f1-score": 0.9014727708642539,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.2289156626506024,
+            "recall": 0.19224283305227655,
+            "f1-score": 0.20898258478460127,
+            "support": 593.0
+        },
+        "accuracy": 0.824771573604061,
+        "macro avg": {
+            "precision": 0.5603579894459246,
+            "recall": 0.551800086886249,
+            "f1-score": 0.5552276778244276,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.8119849660728709,
+            "recall": 0.824771573604061,
+            "f1-score": 0.8180927342459322,
+            "support": 4925.0
+        },
+        "auroc": 0.5705553712985757,
+        "auprc": 0.17688141096420795
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 15949,
+        "average_modalities_per_patient": 3.2383756345177663,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 1174,
+            "radiology_report": 4925
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.2383756345177665,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 1.0,
+            "radiology_report": 1.1057476425684778
+        }
+    },
+    "total_patients_evaluated": 4925
+}

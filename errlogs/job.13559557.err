@@ -1,0 +1,15 @@
+usage: agent_main.py [-h] [--output_dir OUTPUT_DIR] --agent_setup
+                     {BaselineAgent,MedCollab,MultiAgent,SingleAgent,Few-Shot,SingleAgent-CoT,SingleAgent-RAG,Debate,MajorityVote,MDAgents,DualAgent}
+                     [--seed SEED] [--batch_size BATCH_SIZE]
+                     [--num_workers NUM_WORKERS] [--model_id MODEL_ID]
+                     [--max_new_tokens MAX_NEW_TOKENS] [--data_path DATA_PATH]
+                     [--few_shot_data_path FEW_SHOT_DATA_PATH]
+                     [--num_shots NUM_SHOTS] [--modalities MODALITIES]
+                     [--load_cxr LOAD_CXR] [--load_ehr LOAD_EHR]
+                     [--load_rr LOAD_RR] [--ablation ABLATION]
+                     [--normalizer_state NORMALIZER_STATE]
+                     [--ehr_data_dir EHR_DATA_DIR]
+                     [--cxr_data_dir CXR_DATA_DIR]
+                     [--debug_samples DEBUG_SAMPLES]
+agent_main.py: error: the following arguments are required: --agent_setup
+/var/spool/slurmd/job13559557/slurm_script: line 23: --modalities: command not found
