@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/scratch/baj321/MedAgent/agent_main.py", line 11, in <module>
+    from simulation import run_simulation
+  File "/scratch/baj321/MedAgent/simulation.py", line 5, in <module>
+    from agent_architectures import initialize_agent_setup
+  File "/scratch/baj321/MedAgent/agent_architectures.py", line 271
+    " Does this patient die in the ICU? Yes or no?'
+    ^
+SyntaxError: unterminated string literal (detected at line 271)

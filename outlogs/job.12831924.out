@@ -1,0 +1,720 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/stricter",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 16,
+    "num_workers": 4,
+    "model_id": "HuggingFaceM4/idefics2-8b",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/test_dataset.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 3
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/stricter
+Data loaded from: /scratch/baj321/MedAgent/test_dataset.jsonl
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'HuggingFaceM4/idefics2-8b'...
+✅ Found Canonical Yes ID: 5592, Canonical No ID: 1770
+✅ Model 'HuggingFaceM4/idefics2-8b' and Processor loaded successfully.
+
+--- DEBUG: SINGLE AGENT SAMPLE (1/3) ---
+Stay ID: 37510196
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 68
+ - Gender: F
+ - Ethnicity: BLACK/AFRICAN AMERICAN
+
+History of Present Illness:
+___ with COPD who has been admitted 9 times since ___ for 
+dyspnea, CAD, atrial fibrillation on apixaban who presented with 
+shortness of breath since being discharged on ___. She was 
+discharged home with services.
+
+Past Medical History:
+- COPD/Asthma on home 2L O2
+- Atypical Chest Pain
+- Hypertension
+- Hyperlipidemia
+- Osteroarthritis
+- Atrial Fibrillation on Apixaban
+- Anxiety
+- Cervical Radiculitis
+- Cervical Spondylosis
+- Coronary Artery Disease
+- Headache
+- Herpes Zoster
+- GI Bleeding
+- Peripheral Vascular Disease s/p bilateral iliac stents
+- s/
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+Mother with asthma and hypertension. Father with colon cancer. 
+Brother with leukemia.
+
+Medications on Admission:
+The Preadmission Medication list is accurate and complete.
+1. Acetaminophen 325 mg PO Q4H:PRN Pain 
+2. Calcitrate-Vitamin D (calcium citrate-vitamin D3) 315 mg - 
+200 units  oral DAILY 
+3. Tiotropium Bromide 1 CAP IH DAILY 
+4. Theophylline SR 300 mg PO BID 
+5. Sulfameth/Trimethoprim SS 1 TAB PO DAILY prophylaxis for long 
+term steroid use 
+6. Ranitidine 300 mg PO DAILY 
+7. PredniSONE 40 mg PO DAILY 
+8. Lorazepam 0.5 mg PO Q8H:PRN Insomnia, anxiety, vertigo 
+9. Latanoprost 0.005% Ophth. Soln. 1 DROP BOTH EYES QHS 
+10. Isosorbide Mononitrate (Extended Release) 240 mg PO DAILY 
+11. Ipratropium Bromide Neb 1 NEB IH Q6H Wheezing 
+12. Hydrochlorothiazide 50 mg PO DAILY 
+13. Guaifenesin ___ mL PO Q4H:PRN cough 
+14. Fluticasone-Salmeterol Diskus (500/50)  1 INH IH BID 
+15. Fluticasone Propionate NASAL 2
+
+
+Radiology Report:
+EXAMINATION:  CHEST (SINGLE VIEW)
+
+INDICATION:  PACER WIRE INSERTION
+
+IMPRESSION: 
+
+Fluoroscopic images show placement of a temporary pacer wider that appears to
+extend to the right ventricle.  Further information can be gathered from the
+procedure report.
+ EXAMINATION:  CHEST PORT. LINE PLACEMENT
+
+INDICATION:  ___ year old woman with COPD, s/p respiratory arrest and
+intubation with temp wire placement  // please verify placement of ET tube and
+right sided temp pacing wire   Contact name: ___: ___   
+please verify placement of ET tube and right sided temp pacing wire
+
+IMPRESSION: 
+
+In comparison with the study of ___, there has been placement of a right
+IJ temporary pacer that extends to the region of the right ventricle.  No
+evidence of pneumothorax.  Endotracheal tube is now in place with its tip
+approximately 4.5 cm above the carina.
+Otherwise little change in the appearance of the heart and lungs.
+ EXAMINATION:  CHEST (PORTABLE AP)
+
+INDICATION:  ___ year old woman with severe COPD s/p cardiac arrest  // Eval
+for interval change
+
+IMPRESSION: 
+
+Compared to prior chest radiographs since ___, most recently ___
+and ___.
+
+Mild pulmonary edema has not resolved.  Moderate cardiomegaly is stable. 
+Pleural effusion, small if any.  No pneumothorax.
+
+Right transjugular temporary pacer lead tip projects over the floor of the
+right ventricle.  ET tube in standard placement.  Esophageal probe ends at the
+level of the carina.  Transesophageal drainage tube passes into the stomach
+and out of view.
+
+
+ EXAMINATION:  CT HEAD W/O CONTRAST Q111 CT HEAD
+
+INDICATION:  ___ woman status post cardiac arrest.
+
+TECHNIQUE:  Contiguous axial images of the brain were obtained without
+contrast.
+
+DOSE:  Acquisition sequence:
+   1) Sequenced Acquisition 10.0 s, 17.0 cm; CTDIvol = 48.8 mGy (Head) DLP =
+829.0 mGy-cm.
+ Total DLP (Head) = 842 mGy-cm.
+
+COMPARISON:  ___ noncontrast sinus CT.
+
+FINDINGS: 
+
+No sulcal effacement or loss of gray-white matter differentiation.  There is
+prominence of the ventricles and sulci suggestive of involutional changes. No
+acute intracranial hemorrhage.
+
+There is no evidence of fracture.  Opacification of the maxillary sinuses and
+mastoid air cells.  Otherwise the visualized portion of the paranasal sinuses
+and middle ear cavities are clear.  The visualized portion of the orbits are
+unremarkable.
+
+IMPRESSION: 
+
+No evidence of infarction or hemorrhage; however, initial head CT may be
+normal in the setting of hypoxic brain injury, so could consider obtaining a
+brain MRI for further evaluation if clinically indicated, or a repeat head CT
+in 1 day.
+
+RECOMMENDATION(S):  No evidence of large ischemic infarct or intracranial
+hemorrhage; however, initial head CT may be normal in the setting of hypoxic
+brain injury, so could consider obtaining a brain MRI for further evaluation
+if clinically indicated, or a repeat head CT in 1 day.
+
+NOTIFICATION:  The findings were discussed with Dr. ___ by Dr. ___ on the
+telephone on ___ at 6:23 ___, 20 minutes after discovery of the findings.
+
+
+EHR:
+EHR timeseries data not available.
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+Image Path: /scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0/resized/7b25b3ed-e780a527-319cb7b3-02d5d071-f1cddee9.jpg
+Image Object: <PIL.Image.Image image mode=RGB size=512x462 at 0x155423B8E3B0>
+Image Size: (512, 462) | Image Mode: RGB
+---------------
+--- END DEBUG SAMPLE ---
+
+--- DEBUG: SINGLE AGENT SAMPLE (2/3) ---
+Stay ID: 33685454
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 80
+ - Gender: F
+ - Ethnicity: WHITE
+
+History of Present Illness:
+___ is a ___ yo female with a past medical history of 
+CAD with a 1 vessel CABG (SVG to LAD) in ___ who presents with 
+chest pressure.  She woke up at 8 am with substernal chest 
+pressure.  It was severe initially.  She took SL NTG x3 with 
+relief of CP for a short period of time.  The CP radiated to her 
+right side and eventually down both arms.  She reports 
+diaphoresis, but denied associated nausea, vomiting, 
+lightheadedness or dizziness.  She reports that she has felt 
+mildly SOB since her recent pneumonia (first diagnosed appox ___ 
+weeks ago).  She denied worsening dyspnea.  Her cough has 
+improved substantially and is very minimal at this time.  She 
+went to her PCP's office and was found to have a new LBBB and 
+anterior ST elevations.  She was transferred to the ED. She 
+received Plavix 300mg, Aspirin, boluses of heparin and 
+integrillin. Code STEMI was called and went to the cath lab.  
+Cath showed occluded SVG, Native 3vd, occluded proximal LAD. 
+Wiring the LAD was difficult and there was concern about a 
+possible dissection. One BMS was placed in the proximal LAD. 
+Distal LAD is diminutive past ___ septal and diag branches.   
+She has been hemodynamically stable with HR 60-70s and SBP 
+120-130s.  On the floor, she is currently chest pain free and 
+feels well.
+.   
+.  
+On review of systems, she denies any prior history of deep 
+venous thrombosis, pulmonary embolism, bleeding at the time of 
+surgery, myalgias, joint pains, cough, hemoptysis, black stools 
+or red stools. She denies recent fevers, chills or rigors. All 
+of the other review of systems were negative.  
+.  
+Cardiac review of systems is notable for absence of chest pain, 
+dyspnea on exertion, paroxysmal nocturnal dyspnea, orthopnea, 
+ankle edema, palpitations, syncope or presyncope.
+
+Past Medical History:
+1.
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+Her father died due to CAD at age ___.  Her mother had
+stomach cancer and bone cancer.
+
+Medications on Admission:
+# Clopidogrel [Plavix] 75 mg Tablet PO Daily
+# Ezetimibe-Simvastatin [Vytorin ___ 10 mg-20 mg PO daily
+
+
+Radiology Report:
+CHEST RADIOGRAPH
+
+INDICATION:  Hypoxia, evaluation for infiltrate or edema.
+
+COMPARISON:  ___.
+
+FINDINGS:  As compared to the previous radiograph, a right basal opacity, most
+likely to represent pneumonia, has newly appeared.  There also is blunting of
+the right costophrenic sinus, suggesting a small accompanying pleural
+effusion.
+
+Otherwise, no focal parenchymal opacity suggesting an infectious disease. 
+Normal size of the cardiac silhouette, slight tortuosity of the thoracic
+aorta.  The hilar and mediastinal contours are unremarkable.
+ INDICATION:  ___ female with hypoxia.
+
+COMPARISON:  Chest radiographs available from ___ and ___.
+
+UPRIGHT AP VIEW OF THE CHEST:  
+The previously seen right bibasilar opacity has increased in density and size,
+concerning for progressive pneumonia. Of note, the patient has had a prior
+right lower lobe pneumonia seen on the ___ radiograph. There is a hazy
+opacity at the left base, which may represent atalectasis or a new early
+consolidative process. The remaining areas of the lungs are clear with no
+evidence of pneumothorax.  Cardiac and mediastinal contours are unchanged.
+
+IMPRESSION:
+1.  Increased size and density of the right basilar opacity is concerning for
+progression of pneumonia. Given a previous history of pneumonia in this area,
+followup through complete resolution of this current pneumonia is recommended.
+If there is persistent consolidation in this area, a CT is recommended to rule
+out an obstructive mass.
+2.  New hazy opacity at the left base may represent a new consolidation.
+
+Findings discussed by Dr. ___ with Dr. ___ at 10:50AM ___. Per
+discussion, this patient has had a more recent pneumonia of her right lower
+lobe at an outside hospital, and CT will be performed to rule out an
+obstructing entity. 
+
+ PROCEDURE:  CT chest without contrast.
+
+REASON FOR EXAM:  Heavy smoking history, recent history of diagnosis
+unresolved with two courses of antibiotics.
+
+TECHNIQUE:  MDCT chest performed without IV contrast.  5-mm and 1.25-mm axial
+slices were acquired with coronal and sagittal reformats.
+
+COMPARISON:  No previous CT was available for comparison.
+
+FINDINGS:  Dense homogeneous consolidation in the right lower lobe (3.45)
+contains multiple air bronchograms. Less extensive right basal consolidation
+was present on chest radiographs approximately one year ago. Diffuse nodules
+throughout the remaining lungs predominate in the middle lobe, right middle
+lobe and right lower lobe with relative sparing of the left lower lobe and
+lung apices.  These nodules range in size from 1 to 4 mm.  A right pleural
+effusion is minimal, and no pathologically enlargement of mediastinal or
+axillary lymph nodes is present.The airways are widely patent to subsegmental
+level bilaterally. The aorta, and heart size are normal with no pericardial
+effusion. Calcification is severe in the coronary arteries, the pulmonary
+artery is normal.
+
+A fatty structure appears adherent to the lateral right atrial wall abutting
+an area of atrial calcification could be an interatrial lipoma.
+The left lobe of the thyroid is heterogenous and enlarged at 21 x 27 mm.
+
+Limited review of the upper abdomen reveals multiple cystic structures in both
+kidneys and high attenuation dependent material in the gallbladder most likely
+small stones.
+
+No destructive or sclerotic bone lesions are present.  Degenerative changes
+throughout the thoracic spine are moderate.
+
+IMPRESSION:
+1)Severe right lower lobe consolidation, progressed or recurrent over a year,
+and extensive, new diffuse lung nodules most readily explained by multifocal
+bronchioalveolar carcinoma.  Alhernatively, the multiple lung nodules could
+also be metastases from an extrathoracic malignancy including thyroid
+carcinoma.
+
+2)Diffuse severe coronary artery calcification.
+
+3)Probable interatrial lipoma.
+
+4)Bilateral renal cysts.  Small gallstones.
+
+The case was posted to the critical findings dashboard for direct notification
+of the referring physician.
+
+
+
+EHR:
+EHR timeseries data not available.
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+[No image attached for this sample]
+---------------
+--- END DEBUG SAMPLE ---
+
+--- DEBUG: SINGLE AGENT SAMPLE (3/3) ---
+Stay ID: 31090461
+--- PROMPT TEXT ---
+You are an expert ICU risk prediction model. Analyze the following data collected during the first 48 hours in the intensive care unit to determine the risk of in-hospital mortality. Note that some data modalities may be missing, so only process the ones that are provided. Respond *only* with 'Yes' or 'No'. Do not add any other text.
+
+--- DATA ---
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 80
+ - Gender: F
+ - Ethnicity: WHITE
+
+History of Present Illness:
+The patient is a ___ year-old female with a history of NSCLC 
+(stage IV) who presents with shortness of breath.
+.
+The patient was in her usual state of health until the evening 
+before admission when she began to feel somewhat short of 
+breath.  The next morning, this sensation persisted, so she 
+became concerned.  She also reports a few day history of a 
+non-productive cough.  Denies sick contacts, recent travel or 
+sedentary lifestyle.  She denied chest pain, fever, chills, 
+dizziness, lightheadedness or syncope.  She presented to the ED 
+where she was found to be hypoxic to the ___ on room air.
+.  
+In the ED, she was placed on a non-rebreather with sats up to 
+the high 90's.  Attempts were made to wean her to NC but they 
+were unsuccessful, as she was satting 88% on 4L NC.  She 
+remained afebrile in the ED but was found to have WBC of 17.  
+Given that, she received levofloxacin and vancomycin.  Blood 
+cultures were drawn prior to antibiotic administration.  CXR did 
+not show PNA, but demonstrated progression of known lung cancer. 
+ She underwent a CT head to rule out metastases, which was 
+negative.  On transfer, patient was afebrile with HR- 77, BP- 
+112/49, RR- 16, SaO2- 98% on 15L NRB  
+.
+On transfer to the ICU, the patient was stable and comfortable.  
+Sats were 97% on 5L NC and 95% high-flow with a face-tent.  
+.
+
+Past Medical History:
+CAD s/p MI ___ s/p CABG ___
+
+Past Surgical History:
+Not available
+
+Social History:
+___
+
+Family History:
+Her father died due to CAD at age ___. Her mother had stomach 
+cancer and osteosarcoma. No history of lung cancer, colon cancer 
+or breast cancer.
+
+Medications on Admission:
+amlodipine 5 mg Tablet- one Tablet(s) by mouth one daily  
+atorvastatin [Lipitor] 80 mg Tablet- one Tablet(s) by mouth one 
+daily 
+calcitriol 0.25 mcg Capsule- 1 Capsule(s) by mouth once a day
+clopidogrel [Plavix] 75 mg Tablet 1 Tablet(s) by mouth once a 
+day 
+folic acid- 1 mg Tablet one Tablet(s) by mouth one daily 
+furosemide 40 mg Tablet- 1 Tablet(s) by mouth daily
+loperamide 2 mg Capsule- one Capsule(s) by mouth one twice daily 
+as needed 
+lorazepam 0.5 mg Tablet ___ Tablet(s) by mouth q6 hours as 
+needed for Nausea 
+metoprolol tartrate [Lopressor] 50 mg Tablet- one Tablet(s) by 
+mouth ___ AM and one in ___ 
+tramadol 50 mg Tablet- 0.5 (One half) Tablet(s) by mouth three 
+times a day as needed for Pain  
+trazodone 50 mg Tablet- one Tablet(s) by mouth one daily as 
+needed 
+aspirin 81 mg Tablet, Chewable- 2 Tablet(s) by mouth one daily 
+ranitidine HCl [Acid Control] 150 mg Tablet- one Tablet(s)
+
+
+Radiology Report:
+AP CHEST 4:42 A.M. ___
+
+HISTORY:  Hypoxia and a white count.
+
+IMPRESSION:  AP chest compared to ___ through ___:
+
+The extent of consolidation in the left lower lung has increased substantially
+since ___, even since ___.  I suspect that in addition to
+widespread bronchoalveolar carcinoma there is new pneumonia.  The volume of
+any pleural effusion is indeterminate, at least small on the right.  Heart
+size is top normal.  Extensive nodulation and consolidation in the right lung
+is fully attributable to disseminated adenocarcinoma.
+ HISTORY:  ___ female with hypoxia.
+
+STUDY:  Bilateral lower extremity venous ultrasound.
+
+COMPARISON:  ___ left lower extremity venous ultrasound.
+
+FINDINGS:  Grayscale and color Doppler sonographic imaging was performed of
+the bilateral common femoral, superficial femoral, popliteal, peroneal, and
+posterior tibial veins.  Normal compressibility, flow and augmentation was
+demonstrated.
+
+IMPRESSION:  No evidence of DVT.
+
+
+EHR:
+EHR timeseries data not available.
+
+--- DECISION ---
+-------------------
+--- IMAGE ---
+[No image attached for this sample]
+---------------
+--- END DEBUG SAMPLE ---
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: SingleAgent
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8840477863668307,
+            "recall": 0.871191135734072,
+            "f1-score": 0.877572375305197,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.14939024390243902,
+            "recall": 0.16526138279932545,
+            "f1-score": 0.15692554043234588,
+            "support": 593.0
+        },
+        "accuracy": 0.7861928934010153,
+        "macro avg": {
+            "precision": 0.5167190151346348,
+            "recall": 0.5182262592666987,
+            "f1-score": 0.5172489578687715,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.7955905431827933,
+            "recall": 0.7861928934010153,
+            "f1-score": 0.7908021066595928,
+            "support": 4925.0
+        },
+        "auroc": 0.5024779319827037,
+        "auprc": 0.14483961958929836
+    },
+    "phenotyping_metrics": {
+        "Acute and unspecified renal failure": {
+            "precision": 0.3382741116751269,
+            "recall": 1.0,
+            "f1-score": 0.5055378546502807,
+            "support": 1666.0
+        },
+        "Acute cerebrovascular disease": {
+            "precision": 0.07289340101522843,
+            "recall": 1.0,
+            "f1-score": 0.13588190764572294,
+            "support": 359.0
+        },
+        "Acute myocardial infarction": {
+            "precision": 0.09401015228426396,
+            "recall": 1.0,
+            "f1-score": 0.1718634001484781,
+            "support": 463.0
+        },
+        "Cardiac dysrhythmias": {
+            "precision": 0.36852791878172586,
+            "recall": 1.0,
+            "f1-score": 0.5385756676557863,
+            "support": 1815.0
+        },
+        "Chronic kidney disease": {
+            "precision": 0.22578680203045684,
+            "recall": 1.0,
+            "f1-score": 0.36839489812820936,
+            "support": 1112.0
+        },
+        "Chronic obstructive pulmonary disease and bronchiectasis": {
+            "precision": 0.1634517766497462,
+            "recall": 1.0,
+            "f1-score": 0.28097731239092494,
+            "support": 805.0
+        },
+        "Complications of surgical procedures or medical care": {
+            "precision": 0.2448730964467005,
+            "recall": 1.0,
+            "f1-score": 0.39341053661719133,
+            "support": 1206.0
+        },
+        "Conduction disorders": {
+            "precision": 0.11736040609137056,
+            "recall": 1.0,
+            "f1-score": 0.21006723605306196,
+            "support": 578.0
+        },
+        "Congestive heart failure; nonhypertensive": {
+            "precision": 0.296243654822335,
+            "recall": 1.0,
+            "f1-score": 0.45708020050125314,
+            "support": 1459.0
+        },
+        "Coronary atherosclerosis and other heart disease": {
+            "precision": 0.33908629441624366,
+            "recall": 1.0,
+            "f1-score": 0.5064442759666414,
+            "support": 1670.0
+        },
+        "Diabetes mellitus with complications": {
+            "precision": 0.11593908629441624,
+            "recall": 1.0,
+            "f1-score": 0.20778748180494905,
+            "support": 571.0
+        },
+        "Diabetes mellitus without complication": {
+            "precision": 0.1784771573604061,
+            "recall": 1.0,
+            "f1-score": 0.30289455547898003,
+            "support": 879.0
+        },
+        "Disorders of lipid metabolism": {
+            "precision": 0.4071065989847716,
+            "recall": 1.0,
+            "f1-score": 0.5786435786435786,
+            "support": 2005.0
+        },
+        "Essential hypertension": {
+            "precision": 0.4196954314720812,
+            "recall": 1.0,
+            "f1-score": 0.5912471395881007,
+            "support": 2067.0
+        },
+        "Fluid and electrolyte disorders": {
+            "precision": 0.4481218274111675,
+            "recall": 1.0,
+            "f1-score": 0.6189007291082446,
+            "support": 2207.0
+        },
+        "Gastrointestinal hemorrhage": {
+            "precision": 0.07126903553299492,
+            "recall": 1.0,
+            "f1-score": 0.13305534495830174,
+            "support": 351.0
+        },
+        "Hypertension with complications and secondary hypertension": {
+            "precision": 0.23817258883248732,
+            "recall": 1.0,
+            "f1-score": 0.3847163004263693,
+            "support": 1173.0
+        },
+        "Other liver diseases": {
+            "precision": 0.14781725888324873,
+            "recall": 1.0,
+            "f1-score": 0.25756235627100654,
+            "support": 728.0
+        },
+        "Other lower respiratory disease": {
+            "precision": 0.12304568527918781,
+            "recall": 1.0,
+            "f1-score": 0.21912854818296873,
+            "support": 606.0
+        },
+        "Other upper respiratory disease": {
+            "precision": 0.06030456852791878,
+            "recall": 1.0,
+            "f1-score": 0.11374952125622367,
+            "support": 297.0
+        },
+        "Pleurisy; pneumothorax; pulmonary collapse": {
+            "precision": 0.09299492385786802,
+            "recall": 1.0,
+            "f1-score": 0.17016533531488018,
+            "support": 458.0
+        },
+        "Pneumonia (except that caused by tuberculosis or sexually transmitted disease)": {
+            "precision": 0.1766497461928934,
+            "recall": 1.0,
+            "f1-score": 0.3002588438308887,
+            "support": 870.0
+        },
+        "Respiratory failure; insufficiency; arrest (adult)": {
+            "precision": 0.243248730964467,
+            "recall": 1.0,
+            "f1-score": 0.3913114486362894,
+            "support": 1198.0
+        },
+        "Septicemia (except in labor)": {
+            "precision": 0.20873096446700506,
+            "recall": 1.0,
+            "f1-score": 0.3453720813035444,
+            "support": 1028.0
+        },
+        "Shock": {
+            "precision": 0.17746192893401017,
+            "recall": 1.0,
+            "f1-score": 0.30143128125538887,
+            "support": 874.0
+        },
+        "micro avg": {
+            "precision": 0.21478172588832486,
+            "recall": 1.0,
+            "f1-score": 0.35361369258541153,
+            "support": 26445.0
+        },
+        "macro avg": {
+            "precision": 0.21478172588832486,
+            "recall": 1.0,
+            "f1-score": 0.3393783134326906,
+            "support": 26445.0
+        },
+        "weighted avg": {
+            "precision": 0.2762007384351968,
+            "recall": 1.0,
+            "f1-score": 0.4198920460805434,
+            "support": 26445.0
+        },
+        "samples avg": {
+            "precision": 0.21478172588832492,
+            "recall": 0.9695431472081218,
+            "f1-score": 0.3384956951974885,
+            "support": 26445.0
+        }
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 15949,
+        "average_modalities_per_patient": 3.2383756345177663,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 1174,
+            "radiology_report": 4925
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.2383756345177665,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 0.2383756345177665,
+            "radiology_report": 1.0
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/stricter/SingleAgent_detailed_results.json
+Evaluation summary saved to: ./results/stricter/SingleAgent_evaluation_summary.json

@@ -1,0 +1,29 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/Prisma",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 8,
+    "num_workers": 4,
+    "model_id": "QuixiAI/Prisma-VL-8B",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/val.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 0
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/Prisma
+Data loaded from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/val.jsonl
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'QuixiAI/Prisma-VL-8B'...
+❌ Failed to load model 'QuixiAI/Prisma-VL-8B'. Error: Unrecognized configuration class <class 'transformers_modules.QuixiAI.Prisma-VL-8B.7d7a63f0a011180b6056e6f9fe71646578e87ef0.configuration.PrismaVLConfig'> for this kind of AutoModel: AutoModelForImageTextToText.
+Model type should be one of AriaConfig, AyaVisionConfig, BlipConfig, Blip2Config, ChameleonConfig, Emu3Config, FuyuConfig, Gemma3Config, Gemma3nConfig, GitConfig, Glm4vConfig, GotOcr2Config, IdeficsConfig, Idefics2Config, Idefics3Config, InstructBlipConfig, InternVLConfig, JanusConfig, Kosmos2Config, Llama4Config, LlavaConfig, LlavaNextConfig, LlavaNextVideoConfig, LlavaOnevisionConfig, Mistral3Config, MllamaConfig, PaliGemmaConfig, Pix2StructConfig, PixtralVisionConfig, Qwen2_5_VLConfig, Qwen2VLConfig, ShieldGemma2Config, SmolVLMConfig, UdopConfig, VipLlavaConfig, VisionEncoderDecoderConfig.

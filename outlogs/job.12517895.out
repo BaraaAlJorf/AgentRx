@@ -1,0 +1,271 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/MedCollab_idefics_run",
+    "agent_setup": "MajorityVote",
+    "seed": 42,
+    "batch_size": 16,
+    "num_workers": 4,
+    "model_id": "HuggingFaceM4/idefics2-8b",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/test_dataset.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0"
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/MedCollab_idefics_run
+Data loaded from: /scratch/baj321/MedAgent/test_dataset.jsonl
+
+Starting simulation with agent setup: 'MajorityVote'...
+Initializing Model and Processor for 'HuggingFaceM4/idefics2-8b'...
+✅ 'Yes' token ID: 5592, 'No' token ID: 1770
+✅ Model 'HuggingFaceM4/idefics2-8b' and Processor loaded successfully.
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: MajorityVote
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8797546012269939,
+            "recall": 0.9930747922437673,
+            "f1-score": 0.9329863370201692,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.14285714285714285,
+            "recall": 0.008431703204047217,
+            "f1-score": 0.01592356687898089,
+            "support": 593.0
+        },
+        "accuracy": 0.8745177664974619,
+        "macro avg": {
+            "precision": 0.5113058720420683,
+            "recall": 0.5007532477239073,
+            "f1-score": 0.47445495194957504,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.7910276585237813,
+            "recall": 0.8745177664974619,
+            "f1-score": 0.8225663933260119,
+            "support": 4925.0
+        },
+        "auroc": 0.5796358018059261,
+        "auprc": 0.15437407938536957
+    },
+    "phenotyping_metrics": {
+        "Acute and unspecified renal failure": {
+            "precision": 0.3382741116751269,
+            "recall": 1.0,
+            "f1-score": 0.5055378546502807,
+            "support": 1666.0
+        },
+        "Acute cerebrovascular disease": {
+            "precision": 0.07289340101522843,
+            "recall": 1.0,
+            "f1-score": 0.13588190764572294,
+            "support": 359.0
+        },
+        "Acute myocardial infarction": {
+            "precision": 0.09401015228426396,
+            "recall": 1.0,
+            "f1-score": 0.1718634001484781,
+            "support": 463.0
+        },
+        "Cardiac dysrhythmias": {
+            "precision": 0.36852791878172586,
+            "recall": 1.0,
+            "f1-score": 0.5385756676557863,
+            "support": 1815.0
+        },
+        "Chronic kidney disease": {
+            "precision": 0.22578680203045684,
+            "recall": 1.0,
+            "f1-score": 0.36839489812820936,
+            "support": 1112.0
+        },
+        "Chronic obstructive pulmonary disease and bronchiectasis": {
+            "precision": 0.1634517766497462,
+            "recall": 1.0,
+            "f1-score": 0.28097731239092494,
+            "support": 805.0
+        },
+        "Complications of surgical procedures or medical care": {
+            "precision": 0.2448730964467005,
+            "recall": 1.0,
+            "f1-score": 0.39341053661719133,
+            "support": 1206.0
+        },
+        "Conduction disorders": {
+            "precision": 0.11736040609137056,
+            "recall": 1.0,
+            "f1-score": 0.21006723605306196,
+            "support": 578.0
+        },
+        "Congestive heart failure; nonhypertensive": {
+            "precision": 0.296243654822335,
+            "recall": 1.0,
+            "f1-score": 0.45708020050125314,
+            "support": 1459.0
+        },
+        "Coronary atherosclerosis and other heart disease": {
+            "precision": 0.33908629441624366,
+            "recall": 1.0,
+            "f1-score": 0.5064442759666414,
+            "support": 1670.0
+        },
+        "Diabetes mellitus with complications": {
+            "precision": 0.11593908629441624,
+            "recall": 1.0,
+            "f1-score": 0.20778748180494905,
+            "support": 571.0
+        },
+        "Diabetes mellitus without complication": {
+            "precision": 0.1784771573604061,
+            "recall": 1.0,
+            "f1-score": 0.30289455547898003,
+            "support": 879.0
+        },
+        "Disorders of lipid metabolism": {
+            "precision": 0.4071065989847716,
+            "recall": 1.0,
+            "f1-score": 0.5786435786435786,
+            "support": 2005.0
+        },
+        "Essential hypertension": {
+            "precision": 0.4196954314720812,
+            "recall": 1.0,
+            "f1-score": 0.5912471395881007,
+            "support": 2067.0
+        },
+        "Fluid and electrolyte disorders": {
+            "precision": 0.4481218274111675,
+            "recall": 1.0,
+            "f1-score": 0.6189007291082446,
+            "support": 2207.0
+        },
+        "Gastrointestinal hemorrhage": {
+            "precision": 0.07126903553299492,
+            "recall": 1.0,
+            "f1-score": 0.13305534495830174,
+            "support": 351.0
+        },
+        "Hypertension with complications and secondary hypertension": {
+            "precision": 0.23817258883248732,
+            "recall": 1.0,
+            "f1-score": 0.3847163004263693,
+            "support": 1173.0
+        },
+        "Other liver diseases": {
+            "precision": 0.14781725888324873,
+            "recall": 1.0,
+            "f1-score": 0.25756235627100654,
+            "support": 728.0
+        },
+        "Other lower respiratory disease": {
+            "precision": 0.12304568527918781,
+            "recall": 1.0,
+            "f1-score": 0.21912854818296873,
+            "support": 606.0
+        },
+        "Other upper respiratory disease": {
+            "precision": 0.06030456852791878,
+            "recall": 1.0,
+            "f1-score": 0.11374952125622367,
+            "support": 297.0
+        },
+        "Pleurisy; pneumothorax; pulmonary collapse": {
+            "precision": 0.09299492385786802,
+            "recall": 1.0,
+            "f1-score": 0.17016533531488018,
+            "support": 458.0
+        },
+        "Pneumonia (except that caused by tuberculosis or sexually transmitted disease)": {
+            "precision": 0.1766497461928934,
+            "recall": 1.0,
+            "f1-score": 0.3002588438308887,
+            "support": 870.0
+        },
+        "Respiratory failure; insufficiency; arrest (adult)": {
+            "precision": 0.243248730964467,
+            "recall": 1.0,
+            "f1-score": 0.3913114486362894,
+            "support": 1198.0
+        },
+        "Septicemia (except in labor)": {
+            "precision": 0.20873096446700506,
+            "recall": 1.0,
+            "f1-score": 0.3453720813035444,
+            "support": 1028.0
+        },
+        "Shock": {
+            "precision": 0.17746192893401017,
+            "recall": 1.0,
+            "f1-score": 0.30143128125538887,
+            "support": 874.0
+        },
+        "micro avg": {
+            "precision": 0.21478172588832486,
+            "recall": 1.0,
+            "f1-score": 0.35361369258541153,
+            "support": 26445.0
+        },
+        "macro avg": {
+            "precision": 0.21478172588832486,
+            "recall": 1.0,
+            "f1-score": 0.3393783134326906,
+            "support": 26445.0
+        },
+        "weighted avg": {
+            "precision": 0.2762007384351968,
+            "recall": 1.0,
+            "f1-score": 0.4198920460805434,
+            "support": 26445.0
+        },
+        "samples avg": {
+            "precision": 0.21478172588832492,
+            "recall": 0.9695431472081218,
+            "f1-score": 0.3384956951974885,
+            "support": 26445.0
+        }
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 19700,
+        "average_modalities_per_patient": 4.0,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 4925,
+            "radiology_report": 4925
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 1.0,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 1.0,
+            "radiology_report": 1.0
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/MedCollab_idefics_run/MajorityVote_detailed_results.json
+Evaluation summary saved to: ./results/MedCollab_idefics_run/MajorityVote_evaluation_summary.json

@@ -1,0 +1,29 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/stricter",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 16,
+    "num_workers": 4,
+    "model_id": "HuggingFaceM4/idefics2-8b",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/test_dataset.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 3
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/stricter
+Data loaded from: /scratch/baj321/MedAgent/test_dataset.jsonl
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'HuggingFaceM4/idefics2-8b'...
+✅ Found Canonical Yes ID: 5592, Canonical No ID: 1770
+✅ Model 'HuggingFaceM4/idefics2-8b' and Processor loaded successfully.

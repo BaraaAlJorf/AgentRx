@@ -1,0 +1,29 @@
+Running Simulation for 'MedCollab':   0%|          | 0/616 [00:00<?, ?it/s]Chat templates should be in a 'chat_template.jinja' file but found key='chat_template' in the processor's config. Make sure to move your template to its own file.
+
+Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading checkpoint shards:  14%|█▍        | 1/7 [00:02<00:15,  2.65s/it][A
+Loading checkpoint shards:  29%|██▊       | 2/7 [00:05<00:13,  2.64s/it][A
+Loading checkpoint shards:  43%|████▎     | 3/7 [00:07<00:10,  2.61s/it][A
+Loading checkpoint shards:  57%|█████▋    | 4/7 [00:10<00:07,  2.62s/it][A
+Loading checkpoint shards:  71%|███████▏  | 5/7 [00:13<00:05,  2.63s/it][A
+Loading checkpoint shards:  86%|████████▌ | 6/7 [00:15<00:02,  2.60s/it][A
+Loading checkpoint shards: 100%|██████████| 7/7 [00:17<00:00,  2.48s/it][ALoading checkpoint shards: 100%|██████████| 7/7 [00:17<00:00,  2.56s/it]
+Running Simulation for 'MedCollab':   0%|          | 0/616 [00:25<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/baj321/MedAgent/agent_main.py", line 100, in <module>
+    main()
+  File "/scratch/baj321/MedAgent/agent_main.py", line 60, in main
+    all_results = run_simulation(test_loader, args)
+  File "/scratch/baj321/MedAgent/simulation.py", line 25, in run_simulation
+    batch_results = initialize_agent_setup(batch, args)
+  File "/scratch/baj321/MedAgent/agent_architectures.py", line 211, in initialize_agent_setup
+    return _run_multi_agent_batch(batch, model, processor, args)
+  File "/scratch/baj321/MedAgent/agent_architectures.py", line 161, in _run_multi_agent_batch
+    ehr_analyses = generate_response(prompts, [None]*len(batch), model, processor, max_tokens)
+  File "/scratch/baj321/MedAgent/agent_architectures.py", line 50, in generate_response
+    inputs = processor(text=prompts, images=images, return_tensors="pt", padding=True).to(model.device)
+  File "/scratch/baj321/conda-envs/llama3_env/lib/python3.10/site-packages/transformers/models/idefics2/processing_idefics2.py", line 185, in __call__
+    images, text = _validate_images_text_input_order(images, text)
+  File "/scratch/baj321/conda-envs/llama3_env/lib/python3.10/site-packages/transformers/processing_utils.py", line 1776, in _validate_images_text_input_order
+    raise ValueError("Invalid input type. Check that `images` and/or `text` are valid inputs.")
+ValueError: Invalid input type. Check that `images` and/or `text` are valid inputs.

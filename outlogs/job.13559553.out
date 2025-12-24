@@ -1,0 +1,147 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/QWEN+ehr",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 8,
+    "num_workers": 4,
+    "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl",
+    "few_shot_data_path": null,
+    "num_shots": null,
+    "modalities": "ps-ehr",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 2
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/QWEN+ehr
+
+[Status] Initializing Data Loader from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl
+
+[Pre-Loading] Initializing parallel workers (4) to load data into RAM...
+[Pre-Loading] Successfully loaded 4925 samples into RAM.
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'Qwen/Qwen2.5-VL-7B-Instruct'...
+⚡ Applying Left-Padding fix for Qwen (Fixes 'addCriterion' bug)...
+Loading Qwen/Qwen2.5-VL-7B-Instruct as Qwen2_5_VLForConditionalGeneration...
+✅ Using Token IDs - Yes: 9454, No: 2753
+✅ Model loaded successfully.
+
+--- DEBUG SAMPLE (1/2) ---
+Stay ID: 37510196
+[TEXT BLOCK]: You are an expert ICU risk prediction model. This patient was just admitted.
+
+
+[TEXT BLOCK]: --- Patient DATA ---
+
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 68
+ - Gender: F
+ - Ethnicity: BLACK/AFRICAN AMERICAN
+
+History of Present Illness:
+___ with COPD who has been admitted 9 times since ___ for 
+dyspnea, CAD, atrial fibrillation on apixaban w...
+--------------------------------------------------
+
+
+--- DEBUG SAMPLE (2/2) ---
+Stay ID: 39880770
+[TEXT BLOCK]: You are an expert ICU risk prediction model. This patient was just admitted.
+
+
+[TEXT BLOCK]: --- Patient DATA ---
+
+Patient Summary:
+PATIENT BASELINE SUMMARY:
+------------------------
+Demographics:
+ - Age: 28
+ - Gender: F
+ - Ethnicity: WHITE
+
+History of Present Illness:
+___ s/p transferred to ___ from ___, where she was 
+originally brought in by EMS due to MVC. Patient was found 
+unrestraine...
+--------------------------------------------------
+
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: SingleAgent
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8971313312415957,
+            "recall": 0.9240535549399815,
+            "f1-score": 0.9103934500795997,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.2894168466522678,
+            "recall": 0.22596964586846544,
+            "f1-score": 0.2537878787878788,
+            "support": 593.0
+        },
+        "accuracy": 0.84,
+        "macro avg": {
+            "precision": 0.5932740889469318,
+            "recall": 0.5750116004042235,
+            "f1-score": 0.5820906644337392,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.8239588054829213,
+            "recall": 0.84,
+            "f1-score": 0.8313341396682311,
+            "support": 4925.0
+        },
+        "auroc": 0.6305831811266873,
+        "auprc": 0.17816150023028393
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 9850,
+        "average_modalities_per_patient": 2.0,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 0,
+            "radiology_report": 0
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.0,
+            "radiology_report": 0.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 0.0,
+            "radiology_report": 0.0
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/QWEN+ehr/SingleAgent_detailed_results.json
+Evaluation summary saved to: ./results/QWEN+ehr/SingleAgent_evaluation_summary.json

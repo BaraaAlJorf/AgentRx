@@ -1,0 +1,11 @@
+Running Simulation for 'MajorityVote':   0%|          | 0/308 [00:00<?, ?it/s]Chat templates should be in a 'chat_template.jinja' file but found key='chat_template' in the processor's config. Make sure to move your template to its own file.
+
+Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s][A
+Loading checkpoint shards:  14%|█▍        | 1/7 [00:02<00:16,  2.77s/it][A
+Loading checkpoint shards:  29%|██▊       | 2/7 [00:05<00:13,  2.70s/it][A
+Loading checkpoint shards:  43%|████▎     | 3/7 [00:08<00:10,  2.65s/it][A
+Loading checkpoint shards:  57%|█████▋    | 4/7 [00:10<00:08,  2.71s/it][A
+Loading checkpoint shards:  71%|███████▏  | 5/7 [00:13<00:05,  2.69s/it][A
+Loading checkpoint shards:  86%|████████▌ | 6/7 [00:15<00:02,  2.64s/it][A
+Loading checkpoint shards: 100%|██████████| 7/7 [00:18<00:00,  2.51s/it][ALoading checkpoint shards: 100%|██████████| 7/7 [00:18<00:00,  2.61s/it]
+Running Simulation for 'MajorityVote':   0%|          | 1/308 [01:53<9:38:29, 113.06s/it]Running Simulation for 'MajorityVote':   1%|          | 2/308 [02:50<6:50:25, 80.48s/it] Running Simulation for 'MajorityVote':   1%|          | 3/308 [03:37<5:30:26, 65.00s/it]Running Simulation for 'MajorityVote':   1%|▏         | 4/308 [04:15<4:35:59, 54.47s/it]slurmstepd: error: *** JOB 12831332 ON cn011 CANCELLED AT 2025-11-11T15:00:04 ***

@@ -1,0 +1,96 @@
+--- Arguments Loaded ---
+{
+    "output_dir": "./results/varyingmods-newprompt",
+    "agent_setup": "SingleAgent",
+    "seed": 42,
+    "batch_size": 8,
+    "num_workers": 4,
+    "model_id": "HuggingFaceM4/idefics2-8b",
+    "max_new_tokens": 128,
+    "data_path": "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl",
+    "modalities": "EHR-CXR-RR-DN",
+    "load_cxr": null,
+    "load_ehr": null,
+    "load_rr": null,
+    "ablation": null,
+    "normalizer_state": null,
+    "ehr_data_dir": "/scratch/fs999/shamoutlab/data/mimic-iv-extracted",
+    "cxr_data_dir": "/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0",
+    "debug_samples": 0
+}
+--------------------------
+Random seed set to: 42
+Results will be saved to: ./results/varyingmods-newprompt
+Data loaded from: /scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl
+
+Starting simulation with agent setup: 'SingleAgent'...
+Initializing Model and Processor for 'HuggingFaceM4/idefics2-8b'...
+✅ Found Canonical Yes ID: 5592, Canonical No ID: 1770
+✅ Model 'HuggingFaceM4/idefics2-8b' and Processor loaded successfully.
+...Simulation complete.
+
+Evaluating predictions...
+...Evaluation complete.
+
+==================================================
+      Pipeline Finished Successfully
+==================================================
+
+Agent Setup: SingleAgent
+
+--- Evaluation Summary ---
+{
+    "in_hospital_mortality_metrics": {
+        "Survived": {
+            "precision": 0.8815126050420168,
+            "recall": 0.9686057248384118,
+            "f1-score": 0.923009238891333,
+            "support": 4332.0
+        },
+        "Mortality": {
+            "precision": 0.17575757575757575,
+            "recall": 0.048903878583473864,
+            "f1-score": 0.07651715039577836,
+            "support": 593.0
+        },
+        "accuracy": 0.8578680203045685,
+        "macro avg": {
+            "precision": 0.5286350903997963,
+            "recall": 0.5087548017109428,
+            "f1-score": 0.4997631946435557,
+            "support": 4925.0
+        },
+        "weighted avg": {
+            "precision": 0.7965354005007632,
+            "recall": 0.8578680203045685,
+            "f1-score": 0.8210864351394825,
+            "support": 4925.0
+        },
+        "auroc": 0.5389818348569569,
+        "auprc": 0.13711984844318642
+    },
+    "modality_usage_analysis": {
+        "total_modality_requests": 14775,
+        "average_modalities_per_patient": 3.0,
+        "request_counts": {
+            "patient_summary": 4925,
+            "ehr_timeseries": 4925,
+            "cxr": 0,
+            "radiology_report": 4925
+        },
+        "percentage_of_patients_requesting_modality": {
+            "patient_summary": 1.0,
+            "ehr_timeseries": 1.0,
+            "cxr": 0.0,
+            "radiology_report": 1.0
+        },
+        "percentage_request_when_available": {
+            "cxr": 0.0,
+            "radiology_report": 1.1057476425684778
+        }
+    },
+    "total_patients_evaluated": 4925
+}
+
+Detailed results saved to: ./results/varyingmods-newprompt/SingleAgent_detailed_results.json
+Evaluation summary saved to: ./results/varyingmods-newprompt/SingleAgent_evaluation_summary.json
