@@ -7,6 +7,8 @@ from transformers import AutoProcessor, AutoModel, AutoModelForCausalLM
 from PIL import Image
 from datasets.data_utils import load_few_shot_data
 
+from medprompt_memory import HFTextEmbedder, MedPromptMemory
+
 # --------------------------------------------------------------------
 # 1. Model & Processor Setup
 # --------------------------------------------------------------------
@@ -281,7 +283,22 @@ def _build_prompt_content(patient_data, ehr_text, allowed_modalities, is_trainin
 
     # Prompt Logic
     if outcome is not None:
-        # Few-Shot Example
+        if previous_reasoning is not None:
+            # Few-Shot Example with Reasoning (for MedPrompt)
+            outcome_str = "Yes" if outcome == 1 else "No"
+            prompt_text = (
+                f"{data_block}\n\n"
+                "--- ANALYSIS ---\n"
+                "Analyze the patient's condition step by step. Consider vitals, labs, and history. "
+                "Identify key risk factors for imminent mortality.\n"
+                f"Reasoning: {previous_reasoning}\n\n"
+                "--- DECISION ---\n"
+                "Based on the analysis above, does this patient die in the ICU? Answer only using one word - Yes or No\n"
+                f"Answer: {outcome_str}\n\n"
+                "--------------------------------------------------\n"
+            )
+
+        # Few-Shot Example without Reasoning
         outcome_str = "Yes" if outcome == 1 else "No"
         prompt_text = (
             f"{data_block}\n\n"
@@ -290,13 +307,25 @@ def _build_prompt_content(patient_data, ehr_text, allowed_modalities, is_trainin
             f"Answer: {outcome_str}\n\n"
             "--------------------------------------------------\n"
         )
+    
+    # elif prompt_type == "cot_complete":
+    #     prompt_text = (
+    #         f"{data_block}\n\n"
+    #         "Analyze the patient's condition step by step. Consider vitals, labs, and history. "
+    #         "Identify key risk factors for imminent mortality.\n"
+    #         "Then, based on your analysis, does this patient die in the ICU? Answer only using one word - Yes or No\n"
+    #         f"Answer must match the following template:\n\n"
+    #         "{Step by step analysis}\n{Final answer: Yes/No}"
+    #     )
+
     elif prompt_type == "cot_reasoning":
         # CoT Step 1
         prompt_text = (
             f"{data_block}\n\n"
             "--- ANALYSIS ---\n"
             "Analyze the patient's condition step by step. Consider vitals, labs, and history. "
-            "Identify key risk factors for imminent mortality.\n"
+            "Identify key risk factors for imminent mortality."
+            "Do NOT output a final decision yet, just the reasoning.\n"
             "Reasoning:"
         )
         
@@ -840,6 +869,164 @@ def _run_dual_agent_batch(batch, model, processor, args):
     texts, exp_probs = generate_yes_no_probability(decision_prompts, model, processor, max_tokens=1)
     return _format_batch_results(batch, texts, exp_probs, modality_requests_list)
 
+# --------------------------------------------------------------------
+# 7. MedPrompt Inference Phase (Ensemble with CoT and kNN-based Few-Shot)
+# --------------------------------------------------------------------
+
+MEDPROMPT_MEMORY_CACHE = None
+EMBEDDER_CACHE = {}
+
+def _medprompt_query_text(patient: dict, allowed_mods: list[str]) -> str:
+    # This is the "question text" you embed for kNN.
+    # Keep it consistent between preprocessing and inference.
+    parts = []
+    if "ps" in allowed_mods:
+        parts.append(f"Patient Summary:\n{patient.get('patient_summary_text', '')}")
+    if "rr" in allowed_mods:
+        parts.append(f"Radiology Report:\n{patient.get('radiology_report_text', '')}")
+    if "ehr" in allowed_mods:
+        parts.append(f"EHR:\n{patient.get('ehr_text', patient.get('ehr_text', ''))}")
+
+    parts.append("Task: Predict in-hospital mortality within 48 hours (Yes/No).")
+    return "\n\n".join(parts)
+
+
+def _get_medprompt_exemplars(patient, args):
+    """
+    Inference phase:
+    - Load the MedPrompt memory (once) from disk
+    - Embed the test patient query text
+    - Return k nearest exemplars
+    """
+    global MEDPROMPT_MEMORY_CACHE, EMBEDDER_CACHE
+
+    k = int(getattr(args, "num_shots", 4))
+    memory_dir = getattr(args, "medprompt_memory_dir", None)
+    if not memory_dir:
+        raise ValueError("MedPrompt requires --medprompt_memory_dir (path to built memory)")
+
+    embed_model_id = getattr(args, "medprompt_embed_model_id", "BAAI/bge-small-en-v1.5")
+    if embed_model_id not in EMBEDDER_CACHE:
+        EMBEDDER_CACHE[embed_model_id] = HFTextEmbedder(model_id=embed_model_id)
+
+    if MEDPROMPT_MEMORY_CACHE is None:
+        MEDPROMPT_MEMORY_CACHE = MedPromptMemory.load(memory_dir, embedder=EMBEDDER_CACHE[embed_model_id])
+
+    allowed_mods = _parse_allowed_modalities(args)
+    qtext = _medprompt_query_text(patient, allowed_mods)
+    return MEDPROMPT_MEMORY_CACHE.retrieve(qtext, k=k)
+
+def _build_medprompt_prompt(patient, exemplars, allowed_mods):
+    full_content = []
+    full_content.append({
+        "type": "text",
+        "text": "You are an expert ICU risk prediction model. Here are examples of patient data with their outcomes.\n\n"
+    })
+
+    # Exemplars
+    #TODO: edit this out to suit the exact structure of the exemplar data
+    #TODO: either save prompt in exemplar or re-build it here (keep in mind cot_reasoning and cot_answer)
+    for ex in exemplars:
+        y = ex["labels"]["in_hospital_mortality_48hr"]
+        previous_reasoning = ex.get("model_reasoning", "")
+        ex_content, _ = _build_prompt_content(
+            ex,
+            ex.get("ehr_text", "EHR Data Not Available"),
+            allowed_mods,
+            is_training_example=True,
+            outcome=y,
+            previous_reasoning=previous_reasoning,
+            prompt_type="standard",
+        )
+        full_content.extend(ex_content)
+
+    # Target
+    full_content.append({"type": "text", "text": "Now analyze this new patient:\n"})
+    target_content, has_image = _build_prompt_content(
+        patient,
+        patient.get("ehr_text", "EHR Data Not Available"),
+        allowed_mods,
+        is_training_example=False,
+        prompt_type="cot_reasoning",
+    )
+    full_content.extend(target_content)
+
+    prompt = [{"role": "user", "content": full_content}]
+    return prompt, has_image
+
+
+def _run_medprompt_batch(batch, model, processor, args):
+    allowed_mods = _parse_allowed_modalities(args)
+
+    # Build reasoning prompts with exemplars
+    reasoning_prompts = []
+    modality_requests_list = []
+    for patient in batch:
+        exemplars = _get_medprompt_exemplars(patient, args) # i.e few-shot reasoning examples, selected dynamically from the pre-processed dataset using the cosine similarity measure
+        p, has_image = _build_medprompt_prompt(patient, exemplars, allowed_mods)
+        reasoning_prompts.append(p)
+
+        modality_requests_list.append({
+            "patient_summary": 1 if "ps" in allowed_mods else 0,
+            "ehr_timeseries": 1 if "ehr" in allowed_mods else 0,
+            "radiology_report": 1 if "rr" in allowed_mods else 0,
+            "cxr": 1 if ("cxr" in allowed_mods and has_image) else 0,
+        })
+
+    # Ensemble models for voting - run the SAME model K times, exploring K different reasoning paths
+    n_passes = int(getattr(args, "medprompt_ensemble_size", 5))
+    if n_passes <= 0:
+        raise ValueError("Provide --medprompt_ensemble_size as a positive integer")
+
+    all_votes = np.zeros((n_passes, len(batch)), dtype=np.int32)
+
+    # Optional: store per-pass probs for debugging
+    # all_probs = np.zeros((n_passes, len(batch)), dtype=np.float32)
+
+    for p_idx in range(n_passes):
+        _print_debug_sample(args, batch, reasoning_prompts, tag="MedPrompt CoT Step 1")
+        # Generation should be conditioned on kwargs for diversity, as is done in the MedPrompt paper.
+        reasoning_outputs = generate_response(reasoning_prompts, model, processor, max_tokens=getattr(args, "medprompt_reasoning_tokens", 256), do_sample=getattr(args, "medprompt_do_sample", True), temperature=getattr(args, "medprompt_temperature", 0.7), top_p=getattr(args, "medprompt_top_p", 0.9)) # this response is directly conditioned on the exemplars
+
+        # 2. Answer
+        answer_prompts = []
+        for i, patient in enumerate(batch):
+            ehr_text = patient.get("ehr_text", "EHR Data Not Available")
+            content, _ = _build_prompt_content(
+                patient,
+                ehr_text,
+                allowed_mods,
+                prompt_type="cot_answer",
+                previous_reasoning=reasoning_outputs[i],
+            )
+            answer_prompts.append([{"role": "user", "content": content}])
+
+        _print_debug_sample(args, batch, answer_prompts, tag="MedPrompt CoT Step 2")
+        texts, exp_probs = generate_yes_no_probability(answer_prompts, model, processor, max_tokens=1) # this response is only indirectly conditioned on the exemplars via the reasoning step
+
+        # If probs are invalid for a model, fall back to decoded text
+        if exp_probs is None or np.any(np.isnan(exp_probs)):
+            votes = np.array([1 if t.strip().lower().startswith("y") else 0 for t in texts], dtype=np.int32)
+        else:
+            votes = (exp_probs > 0.5).astype(np.int32)
+
+        all_votes[p_idx] = votes
+        # all_probs[p_idx] = probs
+
+        # Optional memory cleanup if you are tight on VRAM
+        # del model 
+        # gc.collect()
+        # torch.cuda.empty_cache()
+
+    # Aggregation mechanism: Majority Vote
+    votes_yes = all_votes.sum(axis=0)               # shape [batch]
+    final_probs = (votes_yes / n_passes).astype(np.float32)
+
+    # You can report a short text label for logging
+    final_texts = [f"Ensemble Vote yes={int(v)}/{n_passes}" for v in votes_yes]
+
+    return _format_batch_results(batch, final_texts, final_probs, modality_requests_list)
+
 def initialize_agent_setup(batch, args):
     model, processor = get_model_and_processor(args)
     agent_setup_name = args.agent_setup
@@ -864,5 +1051,7 @@ def initialize_agent_setup(batch, args):
         return _run_debate_multimodal_batch(batch, model, processor, args)
     elif agent_setup_name == 'DualAgent':
         return _run_dual_agent_batch(batch, model, processor, args)
+    elif agent_setup_name == 'MedPrompt':
+        return _run_medprompt_batch(batch, model, processor, args)
     else:
         raise ValueError(f"Unknown agent_setup: '{agent_setup_name}'.")
