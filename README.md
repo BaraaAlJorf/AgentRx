@@ -21,11 +21,6 @@ First, we establish performance baselines using only a single modality, specific
 Second, we assess the capacity of a single agent to synthesize heterogeneous multimodal data within one context window, utilizing modality dropping ablations to measure robustness. 
 Finally, we investigate whether multi-agent reasoning across specialized agents can improve performance compared to single agent approaches.
 
-
-Setup
-====================================
-We build on the MIMIC-IV, MIMIC-CXR, and MIMIC-Note datasets for our experiments. 
-
 Environment Setup
 ==================
 ```bash
