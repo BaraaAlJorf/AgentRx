@@ -6,7 +6,7 @@ import numpy as np
 # ---------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------
-BASE_DIR = "/scratch/baj321/MedAgent/results"
+BASE_DIR = "/MedAgent/results"
 
 MODEL_MAP = [
     ("final_qwen", "Qwen"),
@@ -180,4 +180,5 @@ def main():
         print_section("Full Modality (Multi)", GROUP_FULL_MULTI, "Multi-Agent", task)
 
 if __name__ == "__main__":
+
     main()
