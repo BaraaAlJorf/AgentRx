@@ -84,7 +84,8 @@ def args_parser():
     group_legacy.add_argument('--load_rr', type=str, default=None, help='Path to pretrained RR model state')
     group_legacy.add_argument('--ablation', type=str, default=None, help='Specify an ablation study to run')
     group_legacy.add_argument('--normalizer_state', type=str, default=None, help='Path to a state file of a normalizer.')
-    group_legacy.add_argument('--ehr_data_dir', type=str, default='/scratch/fs999/shamoutlab/data/mimic-iv-extracted', help='Path to supplementary EHR data directory')
-    group_legacy.add_argument('--cxr_data_dir', type=str, default='/scratch/fs999/shamoutlab/data/physionet.org/files/mimic-cxr-jpg/2.0.0', help='Path to supplementary CXR data directory')
+    group_legacy.add_argument('--ehr_data_dir', type=str, default='data/mimic-iv-extracted', help='Path to supplementary EHR data directory')
+    group_legacy.add_argument('--cxr_data_dir', type=str, default='data/physionet.org/files/mimic-cxr-jpg/2.0.0', help='Path to supplementary CXR data directory')
     parser.add_argument('--debug_samples', type=int, default=0, help='Number of samples to print for debugging.')
+
     return parser
