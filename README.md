@@ -25,6 +25,7 @@ Finally, we investigate whether multi-agent reasoning across specialized agents 
 Setup
 ====================================
 We build on the MIMIC-IV, MIMIC-CXR, and MIMIC-Note datasets for our experiments. 
+
 Environment Setup
 ==================
 ```bash
