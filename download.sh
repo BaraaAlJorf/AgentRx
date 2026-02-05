@@ -6,8 +6,8 @@
 #SBATCH -o outlogs/job.%J.out
 #SBATCH -e errlogs/job.%J.err
 
-export HF_HOME="/scratch/baj321/.cache/huggingface"
-export HUGGING_FACE_HUB_TOKEN="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"
+export HF_HOME=".cache/huggingface"
+export HUGGING_FACE_HUB_TOKEN=""
 export HF_HUB_ENABLE_DOWNLOAD_PROGRESS=1
 export HF_HUB_ENABLE_HF_TRANSFER=1
 
