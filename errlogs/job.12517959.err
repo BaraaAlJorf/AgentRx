@@ -1,11 +1,0 @@
-Running Simulation for 'Debate':   0%|          | 0/308 [00:00<?, ?it/s]Chat templates should be in a 'chat_template.jinja' file but found key='chat_template' in the processor's config. Make sure to move your template to its own file.
-
-Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s][A
-Loading checkpoint shards:  14%|█▍        | 1/7 [00:02<00:15,  2.66s/it][A
-Loading checkpoint shards:  29%|██▊       | 2/7 [00:05<00:13,  2.64s/it][A
-Loading checkpoint shards:  43%|████▎     | 3/7 [00:07<00:10,  2.59s/it][A
-Loading checkpoint shards:  57%|█████▋    | 4/7 [00:10<00:07,  2.58s/it][A
-Loading checkpoint shards:  71%|███████▏  | 5/7 [00:12<00:05,  2.58s/it][A
-Loading checkpoint shards:  86%|████████▌ | 6/7 [00:15<00:02,  2.57s/it][A
-Loading checkpoint shards: 100%|██████████| 7/7 [00:17<00:00,  2.46s/it][ALoading checkpoint shards: 100%|██████████| 7/7 [00:17<00:00,  2.53s/it]
-Running Simulation for 'Debate':   0%|          | 1/308 [15:22<78:38:01, 922.09s/it]Running Simulation for 'Debate':   1%|          | 2/308 [20:29<47:38:29, 560.49s/it]Running Simulation for 'Debate':   1%|          | 3/308 [25:29<37:25:22, 441.71s/it]Running Simulation for 'Debate':   1%|▏         | 4/308 [30:25<32:25:59, 384.08s/it]Running Simulation for 'Debate':   2%|▏         | 5/308 [54:01<63:37:52, 756.02s/it]Running Simulation for 'Debate':   2%|▏         | 6/308 [58:53<50:11:21, 598.28s/it]slurmstepd: error: *** JOB 12517959 ON cn260 CANCELLED AT 2025-10-23T19:12:15 ***

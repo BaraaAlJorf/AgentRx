@@ -1,23 +1,0 @@
-Running Simulation for 'SingleAgent':   0%|          | 0/308 [00:00<?, ?it/s]Chat templates should be in a 'chat_template.jinja' file but found key='chat_template' in the processor's config. Make sure to move your template to its own file.
-
-Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s][A
-Loading checkpoint shards:  14%|█▍        | 1/7 [00:02<00:16,  2.70s/it][A
-Loading checkpoint shards:  29%|██▊       | 2/7 [00:05<00:13,  2.66s/it][A
-Loading checkpoint shards:  43%|████▎     | 3/7 [00:07<00:10,  2.62s/it][A
-Loading checkpoint shards:  57%|█████▋    | 4/7 [00:11<00:08,  2.82s/it][A
-Loading checkpoint shards:  71%|███████▏  | 5/7 [00:19<00:09,  4.76s/it][A
-Loading checkpoint shards:  86%|████████▌ | 6/7 [00:21<00:04,  4.03s/it][A
-Loading checkpoint shards: 100%|██████████| 7/7 [00:24<00:00,  3.45s/it][ALoading checkpoint shards: 100%|██████████| 7/7 [00:24<00:00,  3.44s/it]
-Running Simulation for 'SingleAgent':   0%|          | 0/308 [00:31<?, ?it/s]
-Traceback (most recent call last):
-  File "/scratch/baj321/MedAgent/agent_main.py", line 100, in <module>
-    main()
-  File "/scratch/baj321/MedAgent/agent_main.py", line 60, in main
-    all_results = run_simulation(test_loader, args)
-  File "/scratch/baj321/MedAgent/simulation.py", line 25, in run_simulation
-    batch_results = initialize_agent_setup(batch, args)
-  File "/scratch/baj321/MedAgent/agent_architectures.py", line 641, in initialize_agent_setup
-    return _run_single_agent_batch(batch, model, processor, args)
-  File "/scratch/baj321/MedAgent/agent_architectures.py", line 321, in _run_single_agent_batch
-    if _GLOBAL_DEBUG_PRINT_COUNT < debug_limit:
-NameError: name '_GLOBAL_DEBUG_PRINT_COUNT' is not defined

@@ -1,25 +1,0 @@
-Running Simulation for 'MajorityVote':   0%|          | 0/308 [00:00<?, ?it/s]Chat templates should be in a 'chat_template.jinja' file but found key='chat_template' in the processor's config. Make sure to move your template to its own file.
-
-Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s][A
-Loading checkpoint shards:  14%|█▍        | 1/7 [00:03<00:18,  3.15s/it][A
-Loading checkpoint shards:  29%|██▊       | 2/7 [00:06<00:15,  3.14s/it][A
-Loading checkpoint shards:  43%|████▎     | 3/7 [00:09<00:12,  3.12s/it][A
-Loading checkpoint shards:  57%|█████▋    | 4/7 [00:12<00:09,  3.13s/it][A
-Loading checkpoint shards:  71%|███████▏  | 5/7 [00:15<00:06,  3.15s/it][A
-Loading checkpoint shards:  86%|████████▌ | 6/7 [00:18<00:03,  3.13s/it][A
-Loading checkpoint shards: 100%|██████████| 7/7 [00:21<00:00,  3.00s/it][ALoading checkpoint shards: 100%|██████████| 7/7 [00:21<00:00,  3.08s/it]
-Running Simulation for 'MajorityVote':   0%|          | 0/308 [00:30<?, ?it/s]
-Traceback (most recent call last):
-  File "/scratch/baj321/MedAgent/agent_main.py", line 100, in <module>
-    main()
-  File "/scratch/baj321/MedAgent/agent_main.py", line 60, in main
-    all_results = run_simulation(test_loader, args)
-  File "/scratch/baj321/MedAgent/simulation.py", line 25, in run_simulation
-    batch_results = initialize_agent_setup(batch, args)
-  File "/scratch/baj321/MedAgent/agent_architectures.py", line 661, in initialize_agent_setup
-    return _run_majority_vote_batch(batch, model, processor, args)
-  File "/scratch/baj321/MedAgent/agent_architectures.py", line 390, in _run_majority_vote_batch
-    texts_ehr, exp_ehr, imp_ehr = generate_probability_with_scores(prompts_ehr, model, processor, max_tokens=10)
-  File "/scratch/baj321/MedAgent/agent_architectures.py", line 181, in generate_probability_with_scores
-    text = cleaned_texts[i].strip()
-IndexError: list index out of range

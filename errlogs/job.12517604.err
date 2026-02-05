@@ -1,11 +1,0 @@
-Running Simulation for 'MedCollab':   0%|          | 0/308 [00:00<?, ?it/s]Chat templates should be in a 'chat_template.jinja' file but found key='chat_template' in the processor's config. Make sure to move your template to its own file.
-
-Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s][A
-Loading checkpoint shards:  14%|█▍        | 1/7 [00:02<00:12,  2.16s/it][A
-Loading checkpoint shards:  29%|██▊       | 2/7 [00:04<00:10,  2.11s/it][A
-Loading checkpoint shards:  43%|████▎     | 3/7 [00:06<00:08,  2.07s/it][A
-Loading checkpoint shards:  57%|█████▋    | 4/7 [00:08<00:06,  2.07s/it][A
-Loading checkpoint shards:  71%|███████▏  | 5/7 [00:10<00:04,  2.07s/it][A
-Loading checkpoint shards:  86%|████████▌ | 6/7 [00:12<00:02,  2.07s/it][A
-Loading checkpoint shards: 100%|██████████| 7/7 [00:14<00:00,  1.97s/it][ALoading checkpoint shards: 100%|██████████| 7/7 [00:14<00:00,  2.03s/it]
-Running Simulation for 'MedCollab':   0%|          | 1/308 [14:56<76:29:14, 896.92s/it]Running Simulation for 'MedCollab':   1%|          | 2/308 [23:32<57:11:12, 672.79s/it]Running Simulation for 'MedCollab':   1%|          | 3/308 [30:01<46:01:41, 543.28s/it]Running Simulation for 'MedCollab':   1%|▏         | 4/308 [37:37<42:56:14, 508.47s/it]Running Simulation for 'MedCollab':   2%|▏         | 5/308 [56:24<61:34:03, 731.50s/it]Running Simulation for 'MedCollab':   2%|▏         | 6/308 [1:01:34<49:20:46, 588.23s/it]slurmstepd: error: *** JOB 12517604 ON cn262 CANCELLED AT 2025-10-23T19:12:18 ***
