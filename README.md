@@ -1,4 +1,4 @@
-AgentRX: Multimodal Agentic Benchmark
+### AgentRX: Multimodal Agentic Benchmark
 
 Table of Contents
 =================
