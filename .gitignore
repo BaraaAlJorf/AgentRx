@@ -1,0 +1,25 @@
+# Logs
+errlogs/
+final_errlogs/
+outlogs/
+final_outlogs/
+
+# Research Results and Data
+results/
+datasets/
+comparison/
+*.png
+*.csv
+*.json
+*.parquet
+
+# Python/Environment
+__pycache__/
+*.pyc
+environment.yml
+.ipynb_checkpoints/
+Untitled.ipynb
+
+# Model Checkpoints
+finetuned_models/
+Qwen/Multimodal/finetuned_models/

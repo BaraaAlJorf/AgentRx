@@ -139,27 +139,64 @@ def format_ehr_as_text(path: str) -> str:
 
     return "\n".join(formatted_lines)
 
-def load_few_shot_data(data_path: str, num_shots: int = 2) -> list:
-    """Helper for few-shot loading (kept simple)."""
+def load_few_shot_data(data_path: str, num_shots: int = 4) -> list:
+    """
+    Loads balanced few-shot data (num_shots/2 per class) AND loads their images.
+    """
     shots = []
     try:
         import random
+        from PIL import Image # Ensure PIL is available
+        import os
+
         all_lines = []
         with open(data_path, 'r') as f:
             for line in f:
                 if line.strip(): all_lines.append(json.loads(line))
         
-        selected_data = random.sample(all_lines, min(len(all_lines), num_shots))
-            
+        # 1. Separate by Class
+        positives = [p for p in all_lines if p['labels']['in_hospital_mortality_48hr'] == 1]
+        negatives = [p for p in all_lines if p['labels']['in_hospital_mortality_48hr'] == 0]
+
+        if not positives or not negatives:
+            print("[Error] Few-shot data file does not contain both classes.")
+            return []
+
+        # 2. Balanced Sampling (e.g., if num_shots=4, take 2 Pos, 2 Neg)
+        n_per_class = max(1, num_shots // 2)
+        
+        # Safety check if we request more than available
+        selected_pos = random.sample(positives, min(len(positives), n_per_class))
+        selected_neg = random.sample(negatives, min(len(negatives), n_per_class))
+        
+        # Combine and Shuffle
+        selected_data = selected_pos + selected_neg
+        random.shuffle(selected_data)
+
+        # 3. Process Text AND Images
         for patient in selected_data:
+            # A. Process EHR
             if 'ehr_timeseries_path' in patient:
                 patient['ehr_text'] = format_ehr_as_text(patient['ehr_timeseries_path'])
-            # We don't preload images for few-shot here to save complexity, 
-            # unless desired.
+            
+            # B. Load Image (PIL) - Re-enabled!
+            # We explicitly load the image into RAM here.
+            patient['pil_image'] = None
+            if 'cxr_image_path' in patient and patient['cxr_image_path'] != 'CXR not available':
+                if os.path.exists(patient['cxr_image_path']):
+                    try:
+                        img = Image.open(patient['cxr_image_path']).convert("RGB")
+                        img.load() # Force load into memory
+                        patient['pil_image'] = img
+                    except Exception as e:
+                        print(f"Warning: Failed to load few-shot image: {e}")
+
             shots.append(patient)
+            
     except Exception as e:
         print(f"[Warning] Could not load few-shot data: {e}")
         return []
+        
     return shots
 
 # --- 1. The Worker Dataset (Reads from Disk) ---
@@ -268,3 +305,65 @@ def get_data_loader(data_path: str, batch_size: int, num_workers: int) -> DataLo
         num_workers=0, # Fast access from RAM, no overhead needed
         collate_fn=custom_collate_fn
     )
+
+def get_train_data_loader(
+    data_path: str,
+    batch_size: int,
+    num_workers: int,
+    max_train_samples: int = None,
+    seed: int = None
+) -> DataLoader:
+    """
+    1. Loads the full dataset into RAM via ClinicalDataset + a temp DataLoader.
+    2. If max_train_samples is set and < dataset size, draws a random subset (seeded).
+    3. Returns a MemoryDataset-backed DataLoader (num_workers=0).
+    """
+    print(f"\n[Pre-Loading] Initializing parallel workers ({num_workers}) to load data into RAM...")
+    
+    # 1. Create the worker dataset
+    disk_dataset = ClinicalDataset(data_path=data_path)
+    
+    # 2. Create a temporary loader to fetch batches using multiprocessing
+    temp_loader = DataLoader(
+        disk_dataset,
+        batch_size=batch_size, 
+        shuffle=False, 
+        num_workers=num_workers,
+        collate_fn=custom_collate_fn
+    )
+    
+    print("Max Train Samples:",max_train_samples)
+    
+    all_data = []
+    
+    # 3. Iterate and collect into RAM
+    for batch in tqdm(temp_loader, desc="Loading Dataset to RAM"):
+        all_data.extend(batch)
+        
+    total = len(all_data)
+    print(f"[Pre-Loading] Successfully loaded {total} samples into RAM.")
+    
+    # 4. If sampling requested, draw a random subset (seeded) — DO NOT PERSIST TO DISK
+    if isinstance(max_train_samples, int) and 0 < max_train_samples < total:
+        import random as _rnd
+        rnd = _rnd.Random(seed)
+        indices = rnd.sample(range(total), k=max_train_samples)
+        sampled = [all_data[i] for i in indices]
+        print(f"[Sampling] Selected {len(sampled)} / {total} random samples (seed={seed}).")
+        memory_dataset = MemoryDataset(sampled)
+    else:
+        memory_dataset = MemoryDataset(all_data)
+        if isinstance(max_train_samples, int) and max_train_samples >= total:
+            print(f"[Sampling] Requested max_train_samples={max_train_samples} >= dataset size ({total}). Using full dataset.")
+        else:
+            print("[Sampling] No max_train_samples provided. Using full dataset.")
+    
+    # 5. Return the final loader (num_workers=0 because data is already in RAM)
+    return DataLoader(
+        memory_dataset,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=0,
+        collate_fn=custom_collate_fn
+    )
+

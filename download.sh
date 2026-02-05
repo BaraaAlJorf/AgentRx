@@ -19,7 +19,7 @@ conda activate llama3_env
 python - <<'PY'
 from huggingface_hub import snapshot_download
 
-repo_id = "microsoft/Phi-4-multimodal-instruct"
+repo_id = "chaoyinshe/llava-med-v1.5-mistral-7b-hf"
 
 snapshot_download(
     repo_id=repo_id,
