@@ -6,7 +6,7 @@ import numpy as np
 # ---------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------
-BASE_DIR = "/scratch/baj321/MedAgent/results/ablations/Llava"
+BASE_DIR = "AgentRx/results/ablations/Llava"
 
 # The specific folders you listed
 FOLDERS = [
@@ -127,4 +127,5 @@ def main():
             print(f"{folder:<30} | {score}")
 
 if __name__ == "__main__":
+
     main()
