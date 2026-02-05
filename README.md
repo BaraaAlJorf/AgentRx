@@ -1,4 +1,4 @@
-## AgentRX: Multimodal Agentic Benchmark
+AgentRX: Multimodal Agentic Benchmark
 
 Table of Contents
 =================
@@ -22,7 +22,7 @@ Second, we assess the capacity of a single agent to synthesize heterogeneous mul
 Finally, we investigate whether multi-agent reasoning across specialized agents can improve performance compared to single agent approaches.
 
 
-Overview of the MedPatch Network
+Setup
 ====================================
 We build on the MIMIC-IV, MIMIC-CXR, and MIMIC-Note datasets for our experiments. 
 Environment Setup
