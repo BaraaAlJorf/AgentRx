@@ -15,7 +15,7 @@ module load cuda/11.8.0
 module load gcc/9.2.0
 
 # Set the Hugging Face cache directory to your scratch space
-export HF_HOME="/scratch/baj321/.cache/huggingface"
+export HF_HOME=".cache/huggingface"
 
 # Set your Hugging Face authentication token
 export HUGGING_FACE_HUB_TOKEN="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"
@@ -25,8 +25,8 @@ eval "$(conda shell.bash hook)"
 conda activate llama3_env
 
 python agent_main.py \
-    --data_path "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/test.jsonl" \
-    --few_shot_data_path "/scratch/baj321/MedAgent/datasets/multimodal_dataset_splits/train.jsonl" \
+    --data_path "/MedAgent/datasets/multimodal_dataset_splits/test.jsonl" \
+    --few_shot_data_path "/MedAgent/datasets/multimodal_dataset_splits/train.jsonl" \
     --modalities "ps" \
     --agent_setup "SingleAgent-CoT" \
     --model_id "OpenGVLab/InternVL2-8B" \
