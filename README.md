@@ -16,7 +16,7 @@ Table of Contents
 
 Background
 ============
-we introduce \texttt{AgentRx}, a comprehensive evaluation framework to analyze agent performance across three progressive settings. 
+we introduce **AgentRx**, a comprehensive evaluation framework to analyze agent performance across three progressive settings. 
 First, we establish performance baselines using only a single modality, specifically clinical notes encompassed within patient summaries. 
 Second, we assess the capacity of a single agent to synthesize heterogeneous multimodal data within one context window, utilizing modality dropping ablations to measure robustness. 
 Finally, we investigate whether multi-agent reasoning across specialized agents can improve performance compared to single agent approaches.
