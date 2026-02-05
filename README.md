@@ -66,7 +66,7 @@ Model Inference
 Feel free to run any of the scripts inside the scripts folder.
 
 ```bash
-# Train Each unimodal encoder for mortality
+# Vary the task, modality setting, and model backbone
 sh ./scripts/mortality/Unimodal/Qwen/CoT.sh
 ```
 
